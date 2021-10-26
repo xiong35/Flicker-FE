@@ -2,6 +2,8 @@ import "./App.scss";
 
 import { useState } from "react";
 
+import TextField from "@material-ui/core/TextField";
+
 import logo from "./logo.svg";
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
+        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+
         <p>
           <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
