@@ -1,29 +1,6 @@
 #!/usr/bin/env node
 
-const child_process = require("child_process");
-
-async function exec(command) {
-  return new Promise((resolve, reject) => {
-    child_process.exec(command, (err, stdout, stderr) => {
-      console.log(stdout);
-      if (stderr || err) console.log(err, stderr);
-      resolve();
-    });
-  });
-}
-
-async function readLineSync(hint) {
-  const readline = require("readline").createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  return new Promise((resolve, reject) => {
-    readline.question(hint, (res) => {
-      resolve(res);
-      readline.close();
-    });
-  });
-}
+const { exec, readLineSync } = require("./_utils");
 
 (async function () {
   const ans = await readLineSync(`Have you committed? [Y/n]`);
