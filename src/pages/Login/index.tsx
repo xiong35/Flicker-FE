@@ -26,9 +26,7 @@ function Login(props: LoginProps) {
         variant="outlined"
       />
 
-      <div className="spacer"></div>
-
-      <Button className="login-login_btn" variant="outlined">
+      <Button className="login-login_btn m" variant="outlined">
         登录
       </Button>
     </div>

@@ -4,11 +4,15 @@
   align-items: center;
 
   &-logo {
-    width: 4rem;
-    margin: 5rem 0 2rem;
+    width: 5rem;
+    margin: 5rem 0 3rem;
   }
 
   &-input.m {
-    margin: 0.3rem;
+    margin: 0.5rem 0;
+  }
+
+  &-login_btn.m {
+    margin-top: 3rem;
   }
 }
