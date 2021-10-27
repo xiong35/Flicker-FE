@@ -8,17 +8,6 @@
 echo -e "\n### switch to DEV ###\n"
 git switch dev
 
-echo -e "\n### build ###\n"
-cd fe
-yarn build
-cd ../be
-yarn build
-
-echo -e "\n### commit ###\n"
-cd ..
-git add .
-git commit -m "build fe & be"
-
 echo -e "\n### push DEV ###\n"
 git push
 
