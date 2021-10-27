@@ -14,6 +14,7 @@ function {COMP_NAME}(props: {COMP_NAME}Props) {
 
   return (
     <div className="{KEBAB_NAME}">
+      {COMP_NAME}
     </div>
   );
 }
@@ -30,6 +31,7 @@ const scssTemplate = `
 const hooksTemplate = `
 export function useSetup() {
   
+  return {}
 }
 `;
 
