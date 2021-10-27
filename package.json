@@ -10,12 +10,14 @@
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "@loadable/component": "^5.15.0",
     "@material-ui/core": "^5.0.0-beta.5",
     "@material-ui/lab": "^5.0.0-alpha.44",
     "axios": "^0.24.0",
     "node-sass": "^6.0.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "^5.3.0",
     "sass": "^1.43.3",
     "sass-loader": "^12.2.0"
@@ -23,9 +25,11 @@
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
+    "@types/loadable__component": "^5.13.4",
     "@types/material-ui": "^0.21.12",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router-config": "^5.0.3",
     "@types/react-router-dom": "^5.3.2",
     "@vitejs/plugin-react": "^1.0.0",
     "commitizen": "^4.2.4",
