@@ -4,12 +4,15 @@ import Button from "@mui/material/Button";
 import "./index.scss";
 import { useSetup } from "./hooks";
 import logoImg from "../../../public/logo.svg";
+import { useHistory } from "react-router-dom";
 
 type LoginProps = {};
 
 function Login(props: LoginProps) {
   const {} = props;
   const {} = useSetup();
+
+  const history = useHistory();
 
   return (
     <div className="login">
@@ -26,7 +29,13 @@ function Login(props: LoginProps) {
         variant="outlined"
       />
 
-      <Button className="login-login_btn m" variant="outlined">
+      <Button
+        onClick={() => {
+          history.push("/");
+        }}
+        className="login-login_btn m"
+        variant="outlined"
+      >
         登录
       </Button>
     </div>
