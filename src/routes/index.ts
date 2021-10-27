@@ -19,6 +19,11 @@ export const routes: RouteConfig[] = [
     exact: true,
   },
   {
+    path: "/explore",
+    component: loadable(() => import("../pages/Explore")),
+    exact: true,
+  },
+  {
     path: "/deck/upload",
     component: loadable(() => import("../pages/DeckUpload")),
     exact: true,
