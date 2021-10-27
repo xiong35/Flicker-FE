@@ -4,6 +4,11 @@ import { RouteConfig } from "react-router-config";
 
 export const routes: RouteConfig[] = [
   {
+    path: "/",
+    component: loadable(() => import("../pages/Home")),
+    exact: true,
+  },
+  {
     path: "/login",
     component: loadable(() => import("../pages/Login")),
     exact: true,
@@ -11,11 +16,6 @@ export const routes: RouteConfig[] = [
   {
     path: "/register",
     component: loadable(() => import("../pages/Register")),
-    exact: true,
-  },
-  {
-    path: "/home",
-    component: loadable(() => import("../pages/Home")),
     exact: true,
   },
   {
@@ -44,6 +44,11 @@ export const routes: RouteConfig[] = [
   {
     path: "/user",
     component: loadable(() => import("../pages/User")),
+    exact: true,
+  },
+  {
+    path: "*",
+    component: loadable(() => import("../pages/NotFound")),
     exact: true,
   },
 ];
