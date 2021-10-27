@@ -21,8 +21,6 @@ module.exports = {
     { name: "utils" },
     { name: "other" },
   ],
-
-  // override the messages, defaults are as follows
   messages: {
     type: "选择一种你的提交类型:",
     scope: "选择一个作用范围 (可选):",
@@ -34,8 +32,6 @@ module.exports = {
     footer: "关联关闭的issue，例如：#31, #34(可选):",
     confirmCommit: "确定提交说明?",
   },
-  allowCustomScopes: true,
   allowBreakingChanges: ["特性", "修复"],
-  // limit subject length
   subjectLimit: 100,
 };
