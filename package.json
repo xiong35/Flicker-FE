@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "flicker",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
