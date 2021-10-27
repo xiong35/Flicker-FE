@@ -19,6 +19,7 @@ module.exports = {
     { name: "model" },
     { name: "network" },
     { name: "utils" },
+    { name: "style" },
     { name: "other" },
   ],
   messages: {
