@@ -25,8 +25,8 @@ async function readLineSync(hint) {
 
 const kebabCase = (string) =>
   string
-    .replace(/([a-z])([A-Z])/g, "$1-$2")
-    .replace(/\s+/g, "-")
+    .replace(/([a-z])([A-Z])/g, "$1_$2")
+    .replace(/\s+/g, "_")
     .toLowerCase();
 
 module.exports = { exec, readLineSync, kebabCase };
