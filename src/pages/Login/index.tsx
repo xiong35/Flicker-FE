@@ -1,22 +1,14 @@
-
 import "./index.scss";
 
 import { useSetup } from "./hooks";
 
-
-type LoginProps = {
-  
-};
+type LoginProps = {};
 
 function Login(props: LoginProps) {
   const {} = props;
   const {} = useSetup();
 
-  return (
-    <div className="login">
-      Login
-    </div>
-  );
+  return <div className="login">Login</div>;
 }
 
 export default Login;
