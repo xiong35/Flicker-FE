@@ -1,0 +1,47 @@
+$primary: hsl(152, 79%, 66%);
+$primary-d: darken($primary, 20%);
+$primary-l: lighten($primary, 20%);
+
+$secondary: hsl(200, 80%, 40%);
+$secondary-d: darken($secondary, 20%);
+$secondary-l: lighten($secondary, 20%);
+
+$on-bg: hsl(221, 22%, 15%);
+$on-bg-d: darken($on-bg, 10%);
+$on-bg-l: lighten($on-bg, 10%);
+
+$bg: hsl(221, 10%, 90%);
+$bg-d: darken($bg, 8%);
+$bg-l: lighten($bg, 8%);
+
+body {
+  --primary: $primary;
+  --primary-d: $primary-d;
+  --primary-l: $primary-l;
+
+  --secondary: $secondary;
+  --secondary-d: $secondary-d;
+  --secondary-l: $secondary-l;
+
+  --on-bg: $on-bg;
+  --on-bg-d: $on-bg-d;
+  --on-bg-l: $on-bg-l;
+
+  --bg: $bg;
+  --bg-d: $bg-d;
+  --bg-l: $bg-l;
+}
+
+.dark {
+  --primary-d: $primary-l;
+  --primary-l: $primary-d;
+
+  --secondary-d: $secondary-l;
+  --secondary-l: $secondary-d;
+
+  --on-bg-d: $on-bg-l;
+  --on-bg-l: $on-bg-d;
+
+  --bg-d: $bg-l;
+  --bg-l: $bg-d;
+}
