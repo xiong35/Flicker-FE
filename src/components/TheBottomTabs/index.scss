@@ -1,0 +1,36 @@
+$height: 42px;
+
+.the_bottom_tabs {
+  height: $height;
+  position: fixed;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  background-color: var(--bg-l);
+  padding: 4px;
+
+  cursor: pointer;
+
+  &-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-icon {
+      width: 20px;
+      margin-bottom: 4px;
+    }
+    &-text {
+      font-size: 12px;
+    }
+  }
+
+  &-spacer {
+    height: $height;
+  }
+}

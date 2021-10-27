@@ -12,7 +12,7 @@ $on-bg-l: lighten($on-bg, 10%);
 
 $bg: hsl(221, 10%, 90%);
 $bg-d: darken($bg, 8%);
-$bg-l: lighten($bg, 8%);
+$bg-l: lighten($bg, 100%);
 
 body {
   --primary: #{$primary};
