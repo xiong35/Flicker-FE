@@ -1,5 +1,9 @@
 
+
+import useActivePath from "./useActivePath";
+
 export function useSetup() {
-  
-  return {}
+  const { activePath } = useActivePath();
+
+  return { activePath };
 }

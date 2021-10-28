@@ -1,12 +1,9 @@
-
 import "./index.scss";
 
 import { useSetup } from "./hooks";
+import TheBottomTabs from "../../components/TheBottomTabs";
 
-
-type UserProps = {
-  
-};
+type UserProps = {};
 
 function User(props: UserProps) {
   const {} = props;
@@ -15,6 +12,7 @@ function User(props: UserProps) {
   return (
     <div className="user">
       User
+      <TheBottomTabs />
     </div>
   );
 }

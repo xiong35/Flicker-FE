@@ -1,12 +1,9 @@
-
 import "./index.scss";
 
 import { useSetup } from "./hooks";
+import TheBottomTabs from "../../components/TheBottomTabs";
 
-
-type ExploreProps = {
-  
-};
+type ExploreProps = {};
 
 function Explore(props: ExploreProps) {
   const {} = props;
@@ -15,6 +12,7 @@ function Explore(props: ExploreProps) {
   return (
     <div className="explore">
       Explore
+      <TheBottomTabs />
     </div>
   );
 }
