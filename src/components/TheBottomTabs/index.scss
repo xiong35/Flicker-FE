@@ -22,7 +22,7 @@ $height: 42px;
     justify-content: center;
 
     &:not(.active) {
-      filter: contrast(10) grayscale(1);
+      filter: grayscale(1);
       opacity: 0.6;
     }
 
