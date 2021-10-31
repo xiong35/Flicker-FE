@@ -35,13 +35,13 @@ export const routes: RouteConfig[] = [
     exact: true,
   },
   {
-    path: "/deck/:id",
+    path: "/deck/intro/:id",
     component: loadable(() => import("../pages/DeckIntro")),
     exact: true,
     strict: true,
   },
   {
-    path: "/deck/:id/:question_id",
+    path: "/deck/question/:id",
     component: loadable(() => import("../pages/DeckQuestion")),
     exact: true,
     strict: true,
