@@ -1,5 +1,7 @@
 import "./index.scss";
 
+import { useHistory } from "react-router-dom";
+
 import { useSetup } from "./hooks";
 
 type DeckCardProps = {};
@@ -8,8 +10,10 @@ function DeckCard(props: DeckCardProps) {
   const {} = props;
   const {} = useSetup();
 
+  const history = useHistory();
+
   return (
-    <div className="deck_card">
+    <div className="deck_card" onClick={() => history.push("/deck/intro/213")}>
       <div className="deck_card-title">title</div>
       <div className="deck_card-desc">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
