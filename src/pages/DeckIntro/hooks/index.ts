@@ -1,5 +1,7 @@
+import { useParams } from "react-router-dom";
 
 export function useSetup() {
-  
-  return {}
+  let { id } = useParams<{ id: string }>();
+
+  return { id };
 }
