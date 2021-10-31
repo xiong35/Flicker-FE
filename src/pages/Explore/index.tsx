@@ -16,7 +16,7 @@ function Explore(props: ExploreProps) {
         {Array.from({ length: 20 }, (v, i) => i).map((i) => (
           <DeckCard key={i} />
         ))}
-      </div>{" "}
+      </div>
       <TheBottomTabs />
     </div>
   );
