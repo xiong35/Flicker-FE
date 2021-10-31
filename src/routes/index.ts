@@ -4,7 +4,7 @@ import loadable from "@loadable/component";
 
 export const routes: RouteConfig[] = [
   {
-    path: "/",
+    path: "/home",
     component: loadable(() => import("../pages/Home")),
     exact: true,
   },

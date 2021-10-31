@@ -20,7 +20,7 @@ function TheBottomTabs(props: TheBottomTabsProps) {
       <div className="the_bottom_tabs">
         <div
           className={`the_bottom_tabs-tab ${
-            activePath === "/" ? "active" : ""
+            activePath === "/home" ? "active" : ""
           }`}
           onClick={() => history.push("/")}
         >

@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import { routes } from "./routes";
 
@@ -9,6 +9,7 @@ export default function App() {
     <div className="main">
       <BrowserRouter>
         <Switch>
+          <Redirect to="/home" path="/" exact></Redirect>
           {routes.map((route, i) => (
             <Route key={i} {...route} />
           ))}

@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
-type ActivePagePath = "/" | "/explore" | "/user";
+type ActivePagePath = "/home" | "/explore" | "/user";
 
 export default function useActivePath() {
   const location = useLocation();
