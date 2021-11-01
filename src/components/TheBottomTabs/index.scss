@@ -1,3 +1,5 @@
+@import "../../styles/css-constants.scss";
+
 $height: 42px;
 
 .the_bottom_tabs {
@@ -7,6 +9,8 @@ $height: 42px;
   bottom: 0;
   left: 0;
   right: 0;
+  max-width: $page-max-width;
+  margin: auto;
 
   display: flex;
   background-color: var(--bg-l);

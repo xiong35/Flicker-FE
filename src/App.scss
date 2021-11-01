@@ -1,4 +1,6 @@
+@import "./styles/css-constants.scss";
+
 .main {
   margin: auto;
-  max-width: 500px;
+  max-width: $page-max-width;
 }

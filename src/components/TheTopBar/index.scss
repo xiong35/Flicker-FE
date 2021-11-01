@@ -1,3 +1,5 @@
+@import "../../styles/css-constants.scss";
+
 $height: 40px;
 .the_top_bar {
   position: absolute;
@@ -7,6 +9,8 @@ $height: 40px;
   height: $height;
   display: flex;
   align-items: center;
+  max-width: $page-max-width;
+  margin: auto;
 
   background-color: var(--bg-l);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
