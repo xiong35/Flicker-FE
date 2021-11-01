@@ -1,5 +1,7 @@
 import "./index.scss";
 
+import { useHistory } from "react-router-dom";
+
 import Button from "@mui/material/Button";
 
 import { useSetup } from "./hooks";
@@ -10,6 +12,7 @@ type DeckIntroProps = {};
 function DeckIntro(props: DeckIntroProps) {
   const {} = props;
   const { id } = useSetup();
+  const history = useHistory();
 
   return (
     <div className="deck_intro">
@@ -31,10 +34,30 @@ function DeckIntro(props: DeckIntroProps) {
       <div className="deck_intro-study deck_intro-action_container">
         <h4>学习</h4>
         <div className="deck_intro-action_container-actions">
-          <Button variant="outlined">浏览</Button>
-          <Button variant="outlined">单词卡</Button>
-          <Button variant="outlined">填空</Button>
-          <Button variant="outlined">配对</Button>
+          <Button
+            onClick={() => history.push("/deck/question/123")}
+            variant="outlined"
+          >
+            浏览
+          </Button>
+          <Button
+            onClick={() => history.push("/deck/question/123")}
+            variant="outlined"
+          >
+            单词卡
+          </Button>
+          <Button
+            onClick={() => history.push("/deck/question/123")}
+            variant="outlined"
+          >
+            填空
+          </Button>
+          <Button
+            onClick={() => history.push("/deck/question/123")}
+            variant="outlined"
+          >
+            配对
+          </Button>
         </div>
       </div>
       <div className="deck_intro-manage deck_intro-action_container">
