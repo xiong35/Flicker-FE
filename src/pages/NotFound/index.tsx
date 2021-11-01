@@ -1,12 +1,8 @@
-
 import "./index.scss";
 
 import { useSetup } from "./hooks";
 
-
-type NotFoundProps = {
-  
-};
+type NotFoundProps = {};
 
 function NotFound(props: NotFoundProps) {
   const {} = props;
@@ -14,7 +10,7 @@ function NotFound(props: NotFoundProps) {
 
   return (
     <div className="not-found">
-      NotFound
+      <h1>Error 404</h1>
     </div>
   );
 }
