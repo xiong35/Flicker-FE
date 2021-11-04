@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosRequestConfig } from "axios";
 // import { addToast, removeToast } from "../../redux/toasts/toastsSlice";
 // import { responseType } from "./responseType";
 
-const SERVER_BASE_URL = "http://localhost:3030";
+const SERVER_BASE_URL = "https://flicker.woolensheep.top/api/v1";
 
 /**
  * 失败会返回200以外的http状态码
