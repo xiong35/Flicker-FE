@@ -1,5 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
+import { getToken } from "../utils/token";
+
 // import { nanoid } from "@reduxjs/toolkit";
 
 // import { store } from "../../redux/store";
@@ -34,9 +36,9 @@ export default function _request<T = {}>(config: AxiosRequestConfig) {
 
   instance.interceptors.request.use(
     (config) => {
-      const token = window.localStorage.getItem("Flicker-token");
+      const token = getToken();
       config.headers = config.headers || {};
-      config.headers.Authorization = token || "";
+      config.headers.Authorization = token?.value ?? "";
       return config;
     },
     (err) => {

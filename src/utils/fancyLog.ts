@@ -1,5 +1,3 @@
-import { getLatestVersion } from "./versions";
-
 const logo = `
 
                                                         ......                           
@@ -68,7 +66,4 @@ export function fancyLog() {
   } else {
     console.log("%c" + logo, "color: #F6B252;", text);
   }
-
-  const curVersion = getLatestVersion();
-  console.log(`%cCurrent version: ${curVersion}`, "font-size: 16px;");
 }
