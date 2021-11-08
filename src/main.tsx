@@ -1,19 +1,19 @@
-import "./styles/index.scss";
+import './styles/index.scss';
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import React from "react";
-import ReactDOM from "react-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import App from "./App";
+import App from './App';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#a39391",
+      main: "#0F4C3A",
     },
     secondary: {
-      main: "#e79686",
+      main: "#66BAB7",
     },
   },
 });

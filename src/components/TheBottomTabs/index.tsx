@@ -1,11 +1,11 @@
-import "./index.scss";
+import './index.scss';
 
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-import { useSetup } from "./hooks";
-import userIcon from "../../assets/img/nav-user.svg";
-import homeIcon from "../../assets/img/nav-home.svg";
-import exploreIcon from "../../assets/img/nav-explore.svg";
+import NavExplore from '../../imgComponents/NavExplore';
+import NavHome from '../../imgComponents/NavHome';
+import NavUser from '../../imgComponents/NavUser';
+import { useSetup } from './hooks';
 
 type TheBottomTabsProps = {};
 
@@ -24,7 +24,7 @@ function TheBottomTabs(props: TheBottomTabsProps) {
           }`}
           onClick={() => history.push("/")}
         >
-          <img src={homeIcon} alt="" className="the_bottom_tabs-tab-icon" />
+          <NavHome className="the_bottom_tabs-tab-icon" />
           <span className="the_bottom_tabs-tab-text">首页</span>
         </div>
         <div
@@ -33,7 +33,7 @@ function TheBottomTabs(props: TheBottomTabsProps) {
           }`}
           onClick={() => history.push("/explore")}
         >
-          <img src={exploreIcon} alt="" className="the_bottom_tabs-tab-icon" />
+          <NavExplore className="the_bottom_tabs-tab-icon" />
           <span className="the_bottom_tabs-tab-text">发现</span>
         </div>
         <div
@@ -42,7 +42,7 @@ function TheBottomTabs(props: TheBottomTabsProps) {
           }`}
           onClick={() => history.push("/user")}
         >
-          <img src={userIcon} alt="" className="the_bottom_tabs-tab-icon" />
+          <NavUser className="the_bottom_tabs-tab-icon" />
           <span className="the_bottom_tabs-tab-text">用户</span>
         </div>
       </div>

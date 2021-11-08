@@ -1,10 +1,10 @@
-import "./index.scss";
+import './index.scss';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useSetup } from "./hooks";
-import TheTopBar from "../../components/TheTopBar";
-import arrowLeft from "../../assets/img/arrow-left-p_round.svg";
+import TheTopBar from '../../components/TheTopBar';
+import ArrowLeftCircle from '../../imgComponents/ArrowLeftCircle';
+import { useSetup } from './hooks';
 
 type DeckQuestionProps = {};
 
@@ -27,29 +27,24 @@ function DeckQuestion(props: DeckQuestionProps) {
           }}
           className={`deck_question-card ${flipState}`}
         >
-          {flipState === "flipped"
-            ? "answer"
-            : `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
+          <div className="deck_question-card-scroll">
+            {flipState === "flipped"
+              ? "answer"
+              : `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
           inventore recusandae modi repudiandae accusantium quia tenetur, quasi
           amet! Animi eius inventore itaque maiores molestiae commodi aliquid
           distinctio tempora cumque nostrum?`}
+          </div>
         </div>
 
         <div className="deck_question-actions">
           <div className="deck_question-actions-action">
-            <img
-              className="deck_question-actions-action-icon"
-              src={arrowLeft}
-            />
+            <ArrowLeftCircle className="deck_question-actions-action-icon" />
             上一条
           </div>
           <div className="deck_question-actions-action">
             下一条
-            <img
-              className="deck_question-actions-action-icon"
-              style={{ transform: "rotate(180deg)" }}
-              src={arrowLeft}
-            />
+            <ArrowLeftCircle className="deck_question-actions-action-icon rotate" />
           </div>
         </div>
       </div>

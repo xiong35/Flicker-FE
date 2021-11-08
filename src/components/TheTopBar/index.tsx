@@ -1,9 +1,9 @@
-import "./index.scss";
+import './index.scss';
 
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-import { useSetup } from "./hooks";
-import arrowLeftP from "../../assets/img/arrow-left-p.svg";
+import ArrowLeftP from '../../imgComponents/ArrowLeftP';
+import { useSetup } from './hooks';
 
 type TheTopBarProps = {
   title: string;
@@ -18,12 +18,10 @@ function TheTopBar(props: TheTopBarProps) {
   return (
     <>
       <div className="the_top_bar">
-        <img
-          src={arrowLeftP}
-          onClick={() => history.goBack()}
+        <ArrowLeftP
           className="the_top_bar-back"
+          onClick={() => history.goBack()}
         />
-
         <span className="the_top_bar-title">{title}</span>
       </div>
       <div className="the_top_bar-spacer"></div>

@@ -5,17 +5,13 @@ $action-m-b: 3rem;
 .deck_question {
   position: relative;
   height: calc(100vh - #{$header-h});
+
   &-card {
     position: absolute;
     margin: auto;
     top: $card-m-t;
     right: 1rem;
     left: 1rem;
-
-    min-height: 200px;
-    max-height: calc(80vh - #{$header-h} - #{$card-m-t} - #{$action-m-b});
-
-    overflow-y: scroll;
 
     overflow-wrap: break-word;
     text-justify: inter-ideograph;
@@ -24,13 +20,20 @@ $action-m-b: 3rem;
 
     padding: 1rem;
     border-radius: 1rem;
-    background-color: var(--primary-l);
+    border: 2px solid var(--primary-l);
+    // background-color: var(--primary-l);
 
     transition: transform 0.3s;
     cursor: pointer;
 
     &.flipping {
       transform: rotateX(90deg);
+    }
+
+    &-scroll {
+      overflow: scroll;
+      max-height: calc(80vh - #{$header-h} - #{$card-m-t} - #{$action-m-b});
+      padding: 0 0.5rem;
     }
   }
 

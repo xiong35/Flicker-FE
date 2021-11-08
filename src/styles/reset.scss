@@ -18,11 +18,12 @@ code {
 
 *::-webkit-scrollbar {
   width: 6px;
-  background-color: #fff;
 }
+
 *::-webkit-scrollbar-thumb {
   background-color: var(--primary);
   border-radius: 999px;
+  -webkit-border-radius: 6px;
 
   &:hover {
     background-color: var(--primary-l);
