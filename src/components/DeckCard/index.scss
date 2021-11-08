@@ -1,8 +1,10 @@
 .deck_card {
   display: flex;
   flex-direction: column;
-
-  margin: 0.5rem;
+  box-shadow: rgb(50 50 93 / 10%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 15%) 0px 1px 3px -1px;
+  color: var(--primary-d);
+  margin: 1rem 0.5rem;
   padding: 0.5rem;
   border-radius: 4px;
   border: 1px solid var(--bg);
@@ -11,6 +13,7 @@
   &-title {
     font-size: 1.4rem;
     font-weight: bold;
+    margin-bottom: 0.3rem;
   }
 
   &-desc {
@@ -32,5 +35,21 @@
   &-footer {
     display: flex;
     align-items: center;
+    margin-top: 0.3rem;
+    &-collected,
+    &-visited {
+      padding-right: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &-time {
+      opacity: 0.5;
+    }
   }
 }
