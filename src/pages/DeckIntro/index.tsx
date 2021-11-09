@@ -1,11 +1,14 @@
-import "./index.scss";
+import './index.scss';
 
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 
-import { useSetup } from "./hooks";
-import TheTopBar from "../../components/TheTopBar";
+import DeckCard from '../../components/DeckCard';
+import TheTopBar from '../../components/TheTopBar';
+import Fire from '../../imgComponents/Fire';
+import Star from '../../imgComponents/star';
+import { useSetup } from './hooks';
 
 type DeckIntroProps = {};
 
@@ -19,16 +22,29 @@ function DeckIntro(props: DeckIntroProps) {
       <TheTopBar title="详情" />
       <div className="deck_intro-info">
         <div className="deck_intro-info-title">标题标题</div>
+        <div className="deck_intro-info-data">
+          <div className="deck_intro-info-data-time">
+            <span className="t-p">@王小明</span> 2020/2/2
+          </div>
+          {/* <div className="deck_intro-info-data-question_count">题目数: 56</div> */}
+          <div className="spacer"></div>
+          <div className="deck_intro-info-data-collection">
+            <Star className="deck_intro-info-data-icon" />
+            123
+          </div>
+          <div className="deck_intro-info-data-hot">
+            <Fire className="deck_intro-info-data-icon scale-110" />
+            123
+          </div>
+        </div>
         <div className="deck_intro-info-brief">
           简介简介简介简介简介简介简介简介简介简介 简介 简介 简介 简介
           简介简介简介简介简介简介
         </div>
-        <div className="deck_intro-info-data">
-          <div className="deck_intro-info-data-question_count">题目数: 56</div>
-          <div className="deck_intro-info-data-hot">热度: 123</div>
-          <div className="spacer"></div>
-          <div className="deck_intro-info-data-time">创建于: 2020/2/2</div>
-        </div>
+      </div>
+
+      <div className="deck_intro-some_ques">
+        <div className="deck_intro-some_ques-title">题目预览</div>
       </div>
 
       <div className="deck_intro-study deck_intro-action_container">
