@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { SvgProps } from './';
 
-export default function ArrowLeftP({ className, onClick }: SvgProps) {
+export default function ArrowLeftCircle({ className, onClick }: SvgProps) {
   return useMemo(
     () => (
       <svg
