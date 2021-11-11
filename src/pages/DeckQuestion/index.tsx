@@ -1,16 +1,18 @@
-import './index.scss';
+import "./index.scss";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import TheTopBar from '../../components/TheTopBar';
-import ArrowLeftCircle from '../../imgComponents/ArrowLeftCircle';
-import { useSetup } from './hooks';
+import useQuestionComp from "./hooks/useQuestionComp";
+import { useSetup } from "./hooks";
+import ArrowLeftCircle from "../../imgComponents/ArrowLeftCircle";
+import TheTopBar from "../../components/TheTopBar";
 
 type DeckQuestionProps = {};
 
 function DeckQuestion(props: DeckQuestionProps) {
   const {} = props;
   const {} = useSetup();
+  const { Comp } = useQuestionComp();
 
   const [flipState, setFlipState] = useState<
     "initial" | "flipping" | "flipped"
@@ -19,7 +21,8 @@ function DeckQuestion(props: DeckQuestionProps) {
   return (
     <>
       <TheTopBar title="学习" />
-      <div className="deck_question">
+      <Comp />
+      {/* <div className="deck_question">
         <div
           onClick={() => {
             setFlipState("flipping");
@@ -47,7 +50,7 @@ function DeckQuestion(props: DeckQuestionProps) {
             <ArrowLeftCircle className="deck_question-actions-action-icon rotate" />
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
