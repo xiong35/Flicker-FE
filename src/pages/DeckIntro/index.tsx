@@ -1,14 +1,14 @@
-import './index.scss';
+import "./index.scss";
 
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
-import DeckCard from '../../components/DeckCard';
-import TheTopBar from '../../components/TheTopBar';
-import Fire from '../../imgComponents/Fire';
-import Star from '../../imgComponents/star';
-import { useSetup } from './hooks';
+import { useSetup } from "./hooks";
+import Star from "../../imgComponents/Star";
+import Fire from "../../imgComponents/Fire";
+import TheTopBar from "../../components/TheTopBar";
+import DeckCard from "../../components/DeckCard";
 
 type DeckIntroProps = {};
 

@@ -1,10 +1,10 @@
-import './index.scss';
+import "./index.scss";
 
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-import Fire from '../../imgComponents/Fire';
-import Star from '../../imgComponents/star';
-import { useSetup } from './hooks';
+import { useSetup } from "./hooks";
+import Star from "../../imgComponents/Star";
+import Fire from "../../imgComponents/Fire";
 
 type DeckCardProps = {};
 
