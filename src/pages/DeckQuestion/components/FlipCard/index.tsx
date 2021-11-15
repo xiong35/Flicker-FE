@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useSetup } from "./hooks";
 import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
 
-type FadeCardProps = {};
+type FlipCardProps = {};
 
 const ans = `this is answer`;
 const question = `Lorem ipsum, dolor sit amet consectetur adipisicing
@@ -15,7 +15,7 @@ const question = `Lorem ipsum, dolor sit amet consectetur adipisicing
           distinctio tempora cumque nostrum?`;
 const ANIMATION_TIME = 150;
 
-function FadeCard(props: FadeCardProps) {
+function FlipCard(props: FlipCardProps) {
   const {} = props;
   const {} = useSetup();
 
@@ -25,7 +25,7 @@ function FadeCard(props: FadeCardProps) {
 
   const [text, setText] = useState(question);
   return (
-    <div className="dq-fade_card">
+    <div className="dq-flip_card">
       <div
         onClick={() => {
           console.log("# index", "click");
@@ -42,22 +42,22 @@ function FadeCard(props: FadeCardProps) {
             }
           }, ANIMATION_TIME);
         }}
-        className={`dq-fade_card-card ${questionState}`}
+        className={`dq-flip_card-card ${questionState}`}
       >
-        <div className="dq-fade_card-card-scroll">{text}</div>
+        <div className="dq-flip_card-card-scroll">{text}</div>
       </div>
-      <div className="dq-fade_card-actions">
-        <div className="dq-fade_card-actions-action">
-          <ArrowLeftCircle className="dq-fade_card-actions-action-icon" />
+      <div className="dq-flip_card-actions">
+        <div className="dq-flip_card-actions-action">
+          <ArrowLeftCircle className="dq-flip_card-actions-action-icon" />
           上一条
         </div>
-        <div className="dq-fade_card-actions-action">
+        <div className="dq-flip_card-actions-action">
           下一条
-          <ArrowLeftCircle className="dq-fade_card-actions-action-icon rotate" />
+          <ArrowLeftCircle className="dq-flip_card-actions-action-icon rotate" />
         </div>
       </div>
     </div>
   );
 }
 
-export default FadeCard;
+export default FlipCard;

@@ -9,7 +9,7 @@ $no-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
 $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
   rgba(99, 99, 99, 15%) 2px 2px 3px 0px inset;
 
-.dq-fade_card {
+.dq-flip_card {
   position: relative;
   height: calc(100vh - #{$header-h});
 
@@ -34,13 +34,26 @@ $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
       transform: rotateX(0deg);
       color: var(--on-primary);
       background-color: var(--primary);
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--bg);
+        border-radius: 999px;
+        -webkit-border-radius: 6px;
+
+        &:hover {
+          background-color: var(--bg-l);
+        }
+
+        &:active {
+          background-color: var(--bg-d);
+        }
+      }
     }
     &.fading {
       transform: rotateX(90deg);
     }
 
     &-scroll {
-      overflow: scroll;
+      overflow-y: scroll;
       max-height: calc(80vh - #{$header-h} - #{$card-m-t} - #{$action-m-b});
       padding: 0 0.5rem;
       overflow-wrap: break-word;
