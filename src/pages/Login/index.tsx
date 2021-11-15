@@ -1,10 +1,13 @@
+import "./index.scss";
+
+import { useHistory } from "react-router-dom";
+
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-import "./index.scss";
 import { useSetup } from "./hooks";
+import Logo from "../../imgComponents/Logo";
 import logoImg from "../../../public/logo.svg";
-import { useHistory } from "react-router-dom";
 
 type LoginProps = {};
 
@@ -16,7 +19,7 @@ function Login(props: LoginProps) {
 
   return (
     <div className="login">
-      <img src={logoImg} alt="logoImg" className="login-logo" />
+      <Logo className="login-logo"></Logo>
 
       <TextField
         className="login-input m login-email"
