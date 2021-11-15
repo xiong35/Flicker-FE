@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 
 import TheBottomTabs from '../../components/TheBottomTabs';
 import ArrowLeftP from '../../imgComponents/ArrowLeftP';
-import Deck from '../../imgComponents/deck';
+import Deck from '../../imgComponents/Deck';
 import NavHome from '../../imgComponents/NavHome';
 import Record from '../../imgComponents/Record';
 import Theme from '../../imgComponents/Theme';
