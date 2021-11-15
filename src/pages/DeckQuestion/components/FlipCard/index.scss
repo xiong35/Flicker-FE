@@ -1,0 +1,89 @@
+$header-h: 40px;
+$card-m-t: 2rem;
+$action-m-b: 3rem;
+
+$outset-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+$inset-in-shadow: rgba(99, 99, 99, 10%) -3px -3px 3px 1px inset,
+  rgba(99, 99, 99, 15%) -2px -2px 3px 0px inset;
+$no-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+$inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
+  rgba(99, 99, 99, 15%) 2px 2px 3px 0px inset;
+
+.dq-flip_card {
+  position: relative;
+  height: calc(100vh - #{$header-h});
+
+  &-card {
+    position: absolute;
+    margin: auto;
+    top: $card-m-t;
+    right: 1rem;
+    left: 1rem;
+
+    padding: 1rem;
+    border-radius: 1rem;
+
+    transition: all 0.15s;
+    cursor: pointer;
+    box-shadow: $outset-shadow;
+
+    &.question {
+      transform: rotateX(0deg);
+    }
+    &.answer {
+      transform: rotateX(0deg);
+      color: var(--on-primary);
+      background-color: var(--primary);
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--bg);
+        border-radius: 999px;
+        -webkit-border-radius: 6px;
+
+        &:hover {
+          background-color: var(--bg-l);
+        }
+
+        &:active {
+          background-color: var(--bg-d);
+        }
+      }
+    }
+    &.fading {
+      transform: rotateX(90deg);
+    }
+
+    &-scroll {
+      overflow-y: scroll;
+      max-height: calc(80vh - #{$header-h} - #{$card-m-t} - #{$action-m-b});
+      padding: 0 0.5rem;
+      overflow-wrap: break-word;
+      text-justify: inter-ideograph;
+      text-align: justify;
+      word-break: normal;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: absolute;
+    bottom: $action-m-b;
+    right: 1rem;
+    left: 1rem;
+    margin: auto;
+    max-width: 300px;
+
+    &-action {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      &-icon {
+        width: 1.7em;
+        line-height: 0;
+      }
+    }
+  }
+}
