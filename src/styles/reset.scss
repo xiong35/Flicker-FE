@@ -16,6 +16,11 @@ code {
     monospace;
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) #fff;
+}
+
 *::-webkit-scrollbar {
   width: 6px;
 }
@@ -32,8 +37,4 @@ code {
   &:active {
     background-color: var(--primary-d);
   }
-}
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary) #fff;
 }
