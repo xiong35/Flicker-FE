@@ -38,7 +38,7 @@ export default function _request<T = {}>(config: AxiosRequestConfig) {
     (config) => {
       const token = getToken();
       config.headers = config.headers || {};
-      config.headers.Authorization = token?.value ?? "";
+      config.headers.Authorization = "Bearer " + (token?.value ?? "");
       return config;
     },
     (err) => {

@@ -22,13 +22,16 @@ export const userNameValidator: Validator = async (value: string) => {
   // 匹配中文，英文字母和数字及_
   if (!/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/.test(value)) return "昵称包含奇怪的字符";
 };
+export const emailValidator: Validator = async (value: string) => {
+  if (!/^.+@.+$/.test(value)) return "邮箱格式不正确";
+};
 
 export const passwordValidator: Validator = async (value: string) => {
   if (value.length < 6) return "密码长度至少为 6 个字符";
 };
 
 export const validateCodeValidator: Validator = async (value: string) => {
-  if (!/^\d{6,6}$/.test(value)) return "验证码格式有误";
+  if (!/^\d{5,5}$/.test(value)) return "验证码格式有误";
 };
 
 export const phoneValidator: Validator = async (value: string) => {
