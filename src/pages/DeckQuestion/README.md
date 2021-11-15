@@ -6,7 +6,7 @@
 
 | 模式     | Comp 名字  | 对应 type   |
 | -------- | ---------- | ----------- |
-| 翻面卡片 | `FlipCard` | `flip-card` |
+| 翻面卡片 | `FadeCard` | `fade-card` |
 | 填空题   | `FillIn`   | `fill-in`   |
 
 `hooks/useQuestionComp`会根据路由中提取出的 type(见上) query 来决定在主体部分渲染哪个组件并返回之

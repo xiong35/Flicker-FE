@@ -2,7 +2,13 @@ $header-h: 40px;
 $card-m-t: 2rem;
 $action-m-b: 3rem;
 
-.dq-flip_card {
+$outset-shadow: rgba(99, 99, 99, 10%) -3px -3px 3px 1px inset,
+  rgba(99, 99, 99, 15%) -2px -2px 3px 0px inset;
+$no-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+$inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
+  rgba(99, 99, 99, 15%) 2px 2px 3px 0px inset;
+
+.dq-fade_card {
   position: relative;
   height: calc(100vh - #{$header-h});
 
@@ -13,27 +19,31 @@ $action-m-b: 3rem;
     right: 1rem;
     left: 1rem;
 
-    overflow-wrap: break-word;
-    text-justify: inter-ideograph;
-    text-align: justify;
-    word-break: normal;
-
     padding: 1rem;
     border-radius: 1rem;
-    border: 2px solid var(--primary-l);
-    // background-color: var(--primary-l);
 
-    transition: transform 0.3s;
+    transition: all 0.15s;
     cursor: pointer;
 
-    &.flipping {
-      transform: rotateX(90deg);
+    &.question {
+      box-shadow: $outset-shadow;
+    }
+    &.answer {
+      box-shadow: $inset-shadow;
+    }
+    &.fading {
+      box-shadow: $no-shadow;
+      opacity: 0;
     }
 
     &-scroll {
       overflow: scroll;
       max-height: calc(80vh - #{$header-h} - #{$card-m-t} - #{$action-m-b});
       padding: 0 0.5rem;
+      overflow-wrap: break-word;
+      text-justify: inter-ideograph;
+      text-align: justify;
+      word-break: normal;
     }
   }
 

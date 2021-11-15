@@ -1,14 +1,14 @@
-import FlipCard from "../components/FlipCard";
 import FillIn from "../components/FillIn";
+import FadeCard from "../components/FadeCard";
 import { useQuery } from "../../../hooks/useQuery";
 
 enum QuesType {
   FillIn = "fill-in",
-  FlipCard = "flip-card",
+  FadeCard = "fade-card",
 }
 const type2Comp: Record<QuesType, (...a: any) => JSX.Element> = {
   [QuesType.FillIn]: FillIn,
-  [QuesType.FlipCard]: FlipCard,
+  [QuesType.FadeCard]: FadeCard,
 };
 
 /**
@@ -19,7 +19,7 @@ export default function useQuestionComp() {
   const query = useQuery<{ type: QuesType }>();
   let Comp = type2Comp[query.get("type")];
 
-  if (!Comp) Comp = FlipCard;
+  if (!Comp) Comp = FadeCard;
 
   return { Comp };
 }
