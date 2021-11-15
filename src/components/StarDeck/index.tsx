@@ -9,7 +9,9 @@ export default function StarDeck(props: StarDeckProps) {
 
   return (
     <div className="star_deck">
-      <div className="star_deck-percent" style={{ width: progress }}></div>
+      <div className="star_deck-percent" style={{ width: progress }}>
+        <div className="star_deck-percent-text">{progress}</div>
+      </div>
       <div className="star_deck-title">title</div>
       <div className="star_deck-last">上次学习：2021/11/15</div>
     </div>

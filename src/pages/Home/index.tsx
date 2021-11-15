@@ -14,8 +14,8 @@ function Home(props: HomeProps) {
   return (
     <div className="home">
       <div className="home-deck_container">
-        {Array.from({ length: 20 }, (v, i) => i).map((i) => (
-          <StarDeck key={i} progress={Math.random() * 100 + "%"} />
+        {Array.from({ length: 20 }).map((_, i) => (
+          <StarDeck key={i} progress={~~(Math.random() * 100) + "%"} />
         ))}
       </div>
       <TheBottomTabs />
