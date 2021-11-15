@@ -1,0 +1,34 @@
+.star_deck {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: rgb(50 50 93 / 10%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 15%) 0px 1px 3px -1px;
+  overflow: hidden;
+
+  &-percent {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--secondary-l);
+    z-index: -1;
+  }
+
+  &-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    flex: 1;
+  }
+
+  &-last {
+    font-size: 0.9rem;
+    opacity: 0.5;
+  }
+}
