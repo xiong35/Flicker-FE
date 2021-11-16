@@ -9,10 +9,10 @@ $secondary-d: darken($secondary, 15%);
 $secondary-l: lighten($secondary, 15%);
 
 $on-bg: hsl(220, 13%, 9%);
-$on-bg-d: darken($on-bg, 10%);
+$on-bg-d: darken($on-bg, 5%);
 $on-bg-l: lighten($on-bg, 10%);
 
-$bg: hsl(221, 10%, 90%);
+$bg: #f6f7fb;
 $bg-d: darken($bg, 8%);
 $bg-l: lighten($bg, 100%);
 $on-primary: $bg;
