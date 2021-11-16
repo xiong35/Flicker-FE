@@ -1,5 +1,6 @@
 import { mockCards } from "../../mock/card";
 import { Card } from "../../models/card";
+import { pickFromArr } from "../../utils/pickFromArr";
 import _request from "../_request";
 
 export type GetCardByIdReqData = {};
@@ -15,5 +16,5 @@ export async function getCardByIdReq(data: GetCardByIdReqData): Promise<Card> {
   //   data,
   // });
 
-  return mockCards[0];
+  return pickFromArr(mockCards);
 }
