@@ -3,21 +3,17 @@ import "./index.scss";
 import { useState } from "react";
 
 import { useSetup } from "./hooks";
+import { CompProps } from "../../hooks/useQuestionComp";
 import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
+import Loading from "../../../../components/Loading";
 
-type FlipCardProps = {};
-
-const ans = `this is answer`;
-const question = `Lorem ipsum, dolor sit amet consectetur adipisicing
- elit. Ipsum
-          inventore recusandae modi repudiandae accusantium quia tenetur, quasi
-          amet! Animi eius inventore itaque maiores molestiae commodi aliquid
-          distinctio tempora cumque nostrum?`;
 const ANIMATION_TIME = 150;
 
-function FlipCard(props: FlipCardProps) {
-  const {} = props;
-  const {} = useSetup();
+function FlipCard(props: CompProps) {
+  const { card } = props;
+  if (!card) return <Loading></Loading>;
+
+  const { answer, question } = card;
 
   const [questionState, setQuestionState] = useState<
     "answer" | "question" | "fading"
@@ -28,7 +24,6 @@ function FlipCard(props: FlipCardProps) {
     <div className="dq-flip_card">
       <div
         onClick={() => {
-          console.log("# index", "click");
           if (questionState === "fading") return;
           setQuestionState("fading");
 
@@ -37,7 +32,7 @@ function FlipCard(props: FlipCardProps) {
               setText(question);
               setQuestionState("question");
             } else {
-              setText(ans);
+              setText(answer);
               setQuestionState("answer");
             }
           }, ANIMATION_TIME);

@@ -12,6 +12,7 @@ $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
 .dq-flip_card {
   position: relative;
   height: calc(100vh - #{$header-h});
+  transform-style: preserve-3d;
 
   &-card {
     position: absolute;
@@ -28,10 +29,10 @@ $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
     box-shadow: $outset-shadow;
 
     &.question {
-      transform: rotateX(0deg);
+      transform: rotate3d(1, 0, 0, 0deg);
     }
     &.answer {
-      transform: rotateX(0deg);
+      transform: rotate3d(1, 0, 0, 0deg);
       color: var(--on-primary);
       background-color: var(--primary);
       ::-webkit-scrollbar-thumb {
@@ -49,7 +50,7 @@ $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
       }
     }
     &.fading {
-      transform: rotateX(90deg);
+      transform: rotate3d(1, 0, 0, 90deg);
     }
 
     &-scroll {

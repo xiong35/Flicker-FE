@@ -1,12 +1,18 @@
 import FlipCard from "../components/FlipCard";
 import FillIn from "../components/FillIn";
+import { Card } from "../../../models/card";
 import { useQuery } from "../../../hooks/useQuery";
 
 enum QuesType {
   FillIn = "fill-in",
   FlipCard = "flip-card",
 }
-const type2Comp: Record<QuesType, (...a: any) => JSX.Element> = {
+
+export type CompProps = {
+  card?: Card;
+};
+
+const type2Comp: Record<QuesType, (props: CompProps) => JSX.Element> = {
   [QuesType.FillIn]: FillIn,
   [QuesType.FlipCard]: FlipCard,
 };
