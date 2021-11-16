@@ -5,7 +5,7 @@ export type Card = {
   /** 答案 */
   answer: string;
   /** 图片url */
-  image: string;
+  image?: string;
   /** 音频url */
-  audio: string;
+  audio?: string;
 };

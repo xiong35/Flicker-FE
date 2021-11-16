@@ -1,11 +1,11 @@
 export type UserID = string;
 export type UserPublic = {
   username: string;
-  password: string;
+  avatar: string;
   id: UserID;
 };
 
 export type UserDetail = {
-  main: string;
+  mail: string;
   password: string;
-};
+} & UserPublic;
