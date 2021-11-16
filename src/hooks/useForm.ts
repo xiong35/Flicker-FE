@@ -54,7 +54,9 @@ export function useForm<T extends { [name: string]: ConfigOpts }>(config: T) {
     }
     setFormValidate(newIsValidate);
 
-    return Object.values(newIsValidate).every((v) => v === undefined);
+    return keysToCheck
+      .map((k) => formErrorHint[k])
+      .every((v) => v === undefined);
   }
 
   return { form, setForm, formErrorHint, doValidate };
