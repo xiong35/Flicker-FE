@@ -3,8 +3,15 @@ import { Card } from "../models/card";
 export const mockCards: Card[] = [
   {
     id: "1",
-    answer: "this is answer",
+    answer:
+      "this is answer this is answer this is answer this is answer this is answer this is answer this is answer this is answer this is answer this is answer this is answer this is answer this is answer this is answer ",
     question: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
+ inventore recusandae modi repudiandae accusantium quia tenetur, quasi
+ amet! Animi eius inventore itaque maiores molestiae commodi aliquid
+ distinctio tempora cumque nostrum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
+ inventore recusandae modi repudiandae accusantium quia tenetur, quasi
+ amet! Animi eius inventore itaque maiores molestiae commodi aliquid
+ distinctio tempora cumque nostrum?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
  inventore recusandae modi repudiandae accusantium quia tenetur, quasi
  amet! Animi eius inventore itaque maiores molestiae commodi aliquid
  distinctio tempora cumque nostrum?`,

@@ -1,9 +1,11 @@
 import { mockCards } from "../../mock/card";
-import { Card } from "../../models/card";
+import { Card, CardId } from "../../models/card";
 import { pickFromArr } from "../../utils/pickFromArr";
 import _request from "../_request";
 
-export type GetCardByIdReqData = {};
+export type GetCardByIdReqData = {
+  id: CardId;
+};
 
 /**
  * DESCRIPTION
