@@ -3,7 +3,7 @@ import './index.scss';
 import { Button, TextField } from '@mui/material';
 
 import TheTopBar from '../../components/TheTopBar';
-import AddUpper from '../../imgComponents/addUpper';
+import AddUpper from '../../imgComponents/AddUpper';
 import TrashBin from '../../imgComponents/TrashBin';
 import { useSetup } from './hooks';
 
