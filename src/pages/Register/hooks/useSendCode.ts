@@ -16,8 +16,8 @@ export function useSendCode(
     const isValidate = await doValidate("mail");
     if (!isValidate) return;
 
-    const success = true;
-    // const success = await sendCodeReq({ mail: form.mail });
+    // const success = true;
+    const success = await sendCodeReq({ mail: form.mail });
     if (!success) return showToast("发送失败", "error");
 
     let newTimeLeft = 60;

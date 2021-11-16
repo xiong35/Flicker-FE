@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
-import react from '@vitejs/plugin-react';
+import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,6 +9,9 @@ export default defineConfig({
     fs: {
       // Allow serving files from one level up to the project root
       strict: false,
+    },
+    proxy: {
+      "/api": "https://flicker.woolensheep.top/api/v1",
     },
   },
 });
