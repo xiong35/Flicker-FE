@@ -11,7 +11,7 @@ export default defineConfig({
       strict: false,
     },
     proxy: {
-      "/api": "https://flicker.woolensheep.top/api/v1",
+      "/api/v1": "https://flicker.woolensheep.top",
     },
   },
 });
