@@ -30,7 +30,7 @@ export default function NavExplore({ className }: SvgProps) {
           fill="#e79686"
           p-id="7077"
           data-spm-anchor-id="a313x.7781069.0.i0"
-          className="secondary-fill"
+          className="primary-fill"
         ></path>
       </svg>
     ),
