@@ -1,7 +1,7 @@
 import { mockCards } from "./card";
 import { Deck } from "../models/deck";
 
-export const mockDeck: Deck[] = [
+export const mockDecks: Deck[] = [
   {
     access: 1,
     cards: mockCards,
