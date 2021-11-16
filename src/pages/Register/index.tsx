@@ -13,29 +13,41 @@ type RegisterProps = {};
 
 function Register(props: RegisterProps) {
   const {} = props;
-  const { doValidate, form, formErrorHint, setForm, register } = useSetup();
+  const {
+    doValidate,
+    form,
+    formErrorHint,
+    setForm,
+    register,
+    sendCode,
+    timeLeft,
+    clearError,
+  } = useSetup();
 
   return (
     <div className="register">
       <Logo className="register-logo"></Logo>
 
-      <div className="register-email">
+      <div className="register-mail">
         <TextField
           className="register-input m"
           label="邮箱"
           variant="outlined"
-          value={form.email}
-          onChange={(e) => setForm({ email: e.target.value })}
-          onBlur={() => doValidate("email")}
-          helperText={formErrorHint.email}
-          error={formErrorHint.email !== undefined}
+          value={form.mail}
+          onChange={(e) => setForm({ mail: e.target.value })}
+          onBlur={() => doValidate("mail")}
+          helperText={formErrorHint.mail}
+          error={formErrorHint.mail !== undefined}
+          onFocus={() => clearError("mail")}
         />
         <Button
           size="small"
           variant="outlined"
-          className="register-email-send_btn m"
+          className="register-mail-send_btn m"
+          disabled={timeLeft !== 0}
+          onClick={sendCode}
         >
-          发送验证码
+          {timeLeft === 0 ? "发送验证码" : `重发(${timeLeft})`}
         </Button>
       </div>
       <TextField
@@ -47,6 +59,7 @@ function Register(props: RegisterProps) {
         onChange={(e) => setForm({ code: e.target.value })}
         helperText={formErrorHint.code}
         error={formErrorHint.code !== undefined}
+        onFocus={() => clearError("code")}
       />
       <TextField
         className="register-input m"
@@ -57,6 +70,7 @@ function Register(props: RegisterProps) {
         onBlur={() => doValidate("username")}
         helperText={formErrorHint.username}
         error={formErrorHint.username !== undefined}
+        onFocus={() => clearError("username")}
       />
       <TextField
         className="register-input m"
@@ -67,6 +81,7 @@ function Register(props: RegisterProps) {
         onBlur={() => doValidate("password")}
         helperText={formErrorHint.password}
         error={formErrorHint.password !== undefined}
+        onFocus={() => clearError("password")}
       />
 
       <LoadingButton

@@ -55,9 +55,26 @@ export function useForm<T extends { [name: string]: ConfigOpts }>(config: T) {
     setFormValidate(newIsValidate);
 
     return keysToCheck
-      .map((k) => formErrorHint[k])
+      .map((k) => newIsValidate[k])
       .every((v) => v === undefined);
   }
 
-  return { form, setForm, formErrorHint, doValidate };
+  /**
+   * 消除表单指定字段的错误提示
+   * @param keysToClear 传入多个参数作为需要检验的字段, 若不传参数则检查所有字段
+   */
+  function clearError(...keysToClear: (keyof T)[]) {
+    if (keysToClear.length === 0) {
+      // 如果不传入参数则检查所有字段
+      keysToClear = Object.keys(config);
+    }
+
+    const newIsValidate = { ...formErrorHint };
+    for (let key of keysToClear) {
+      newIsValidate[key] = undefined;
+    }
+    setFormValidate(newIsValidate);
+  }
+
+  return { form, setForm, formErrorHint, doValidate, clearError };
 }
