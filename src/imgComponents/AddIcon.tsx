@@ -1,8 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
-import { SvgProps } from './';
+import { SvgProps } from "./";
 
-export default function ArrowLeftCircle({ className, onClick }: SvgProps) {
+/**
+ * 发现 页面悬浮按钮中的加号
+ */
+export default function AddIcon({ className, onClick }: SvgProps) {
   return useMemo(
     () => (
       <svg
@@ -16,11 +19,13 @@ export default function ArrowLeftCircle({ className, onClick }: SvgProps) {
           d="M185.3952 558.336h665.6a43.52 43.52 0 0 0 0-87.04h-665.6a43.52 43.52 0 1 0 0 87.04z"
           fill="#ffffff"
           p-id="4268"
+          className="on-p-fill"
         ></path>
         <path
           d="M474.6752 182.016v665.6a43.52 43.52 0 0 0 87.04 0v-665.6a43.52 43.52 0 1 0-87.04 0z"
           fill="#ffffff"
           p-id="4269"
+          className="on-p-fill"
         ></path>
       </svg>
     ),

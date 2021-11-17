@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
-import { SvgProps } from './';
+import { SvgProps } from "./";
 
+/** header 上的返回按钮 */
 export default function ArrowLeftP({ className, onClick }: SvgProps) {
   return useMemo(
     () => (
@@ -18,14 +19,14 @@ export default function ArrowLeftP({ className, onClick }: SvgProps) {
           fill="#e79686"
           p-id="3321"
           data-spm-anchor-id="a313x.7781069.0.i0"
-          className="primary-fill"
+          className="primary-l-fill"
         ></path>
         <path
           d="M631.466667 290.133333l-102.4-102.4L716.8 0l102.4 102.4-187.733333 187.733333z m0 443.733334L819.2 921.6l-102.4 102.4-187.733333-187.733333 102.4-102.4z"
           fill="#a39391"
           p-id="3322"
           data-spm-anchor-id="a313x.7781069.0.i1"
-          className="secondary-fill"
+          className="primary-fill"
         ></path>
       </svg>
     ),

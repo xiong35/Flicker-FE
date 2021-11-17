@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
-import { SvgProps } from './';
+import { SvgProps } from "./";
 
+/** 答题界面左右翻动的按钮图标 */
 export default function ArrowLeftCircle({ className, onClick }: SvgProps) {
   return useMemo(
     () => (
@@ -19,7 +20,7 @@ export default function ArrowLeftCircle({ className, onClick }: SvgProps) {
           fill="#e79686"
           p-id="2611"
           data-spm-anchor-id="a313x.7781069.0.i5"
-          className="primary-fill"
+          className="primary-l-fill"
         ></path>
         <path
           d="M119.466667 418.133333h-8.533334c-8.533333-4.266667-17.066667-17.066667-12.8-29.866666 42.666667-119.466667 128-213.333333 238.933334-256 12.8-4.266667 21.333333 0 25.6 12.8 4.266667 12.8 0 21.333333-12.8 25.6C256 213.333333 174.933333 298.666667 140.8 405.333333c-4.266667 8.533333-12.8 12.8-21.333333 12.8z"
