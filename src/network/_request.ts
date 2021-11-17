@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 import { getToken } from "../utils/token";
+import { showToast } from "../utils/showToast";
 
 // import { nanoid } from "@reduxjs/toolkit";
 
@@ -8,7 +9,8 @@ import { getToken } from "../utils/token";
 // import { addToast, removeToast } from "../../redux/toasts/toastsSlice";
 // import { responseType } from "./responseType";
 
-const SERVER_BASE_URL = "https://flicker.woolensheep.top/api/v1";
+const SERVER_BASE_URL = "http://localhost:3000/api/v1";
+// const SERVER_BASE_URL = "https://flicker.woolensheep.top/api/v1";
 
 /**
  * 失败会返回200以外的http状态码
@@ -38,7 +40,7 @@ export default function _request<T = {}>(config: AxiosRequestConfig) {
     (config) => {
       const token = getToken();
       config.headers = config.headers || {};
-      config.headers.Authorization = token?.value ?? "";
+      config.headers.Authorization = "Bearer " + (token?.value ?? "");
       return config;
     },
     (err) => {
@@ -73,6 +75,7 @@ export default function _request<T = {}>(config: AxiosRequestConfig) {
       }
 
       console.log({ errMsg });
+      showToast(errMsg, "error");
 
       resolve(null);
     }

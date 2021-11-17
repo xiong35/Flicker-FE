@@ -1,20 +1,21 @@
 import "./App.scss";
 
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import { routes } from "./routes";
+import SelfHOC from "./context/Self";
 
 export default function App() {
   return (
     <div className="main">
-      <BrowserRouter>
+      <SelfHOC>
         <Switch>
           <Redirect to="/home" path="/" exact></Redirect>
           {routes.map((route, i) => (
             <Route key={i} {...route} />
           ))}
         </Switch>
-      </BrowserRouter>
+      </SelfHOC>
     </div>
   );
 }
