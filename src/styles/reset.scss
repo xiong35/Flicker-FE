@@ -9,8 +9,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  overflow-y: scroll;
+
+  min-height: 100vh;
+  background-color: var(--bg);
 }
 
 code {
@@ -42,5 +43,7 @@ code {
 }
 
 .MuiTextField-root {
-  background-color: var(--bg);
+  input {
+    background-color: var(--bg-l);
+  }
 }
