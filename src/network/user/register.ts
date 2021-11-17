@@ -13,7 +13,7 @@ export type RegisterReqData = {
  */
 export async function registerReq(data: RegisterReqData) {
   const res = await _request({
-    url: "/user/",
+    url: "/signup",
     method: "POST",
     data,
   });
