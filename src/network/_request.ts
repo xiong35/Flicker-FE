@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 import { getToken } from "../utils/token";
+import { showToast } from "../utils/showToast";
 
 // import { nanoid } from "@reduxjs/toolkit";
 
@@ -74,6 +75,7 @@ export default function _request<T = {}>(config: AxiosRequestConfig) {
       }
 
       console.log({ errMsg });
+      showToast(errMsg, "error");
 
       resolve(null);
     }

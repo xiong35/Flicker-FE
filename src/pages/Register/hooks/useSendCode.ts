@@ -18,14 +18,14 @@ export function useSendCode(
 
     // const success = true;
     const success = await sendCodeReq({ mail: form.mail });
-    if (!success) return showToast("发送失败", "error");
+    if (!success) return;
 
-    let newTimeLeft = 60;
+    let newTimeLeft = 6;
 
     setTimeLeft(newTimeLeft);
 
     const timer = setInterval(() => {
-      if (newTimeLeft === 0) clearInterval(timer);
+      if (newTimeLeft === 0) return clearInterval(timer);
       newTimeLeft--;
       setTimeLeft(newTimeLeft);
     }, 1000);

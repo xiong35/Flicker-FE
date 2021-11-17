@@ -31,7 +31,9 @@ export function useSetup() {
     const passValidation = await doValidate();
     if (!passValidation) return;
     const success = await registerReq(form);
-    if (success) showToast("注册成功！", "success");
+    if (!success) return;
+
+    showToast("注册成功！", "success");
 
     history.push("/");
   }

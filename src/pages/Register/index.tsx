@@ -82,6 +82,7 @@ function Register(props: RegisterProps) {
         helperText={formErrorHint.password}
         error={formErrorHint.password !== undefined}
         onFocus={() => clearError("password")}
+        type="password"
       />
 
       <LoadingButton
