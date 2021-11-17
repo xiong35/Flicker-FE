@@ -20,7 +20,7 @@ export function useSendCode(
     const success = await sendCodeReq({ mail: form.mail });
     if (!success) return;
 
-    let newTimeLeft = 6;
+    let newTimeLeft = 60;
 
     setTimeLeft(newTimeLeft);
 

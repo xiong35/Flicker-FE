@@ -30,5 +30,13 @@ export function useSetup() {
     setToken({ value: token });
   }
 
-  return { clearError, doValidate, form, formErrorHint, setForm, login };
+  return {
+    clearError,
+    doValidate,
+    form,
+    formErrorHint,
+    setForm,
+    login,
+    history,
+  };
 }

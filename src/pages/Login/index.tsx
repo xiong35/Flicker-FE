@@ -6,14 +6,22 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 import { useSetup } from "./hooks";
+import { showToast } from "../../utils/showToast";
 import Logo from "../../imgComponents/Logo";
 import logoImg from "../../../public/logo.svg";
 
 type LoginProps = {};
 
 function Login(props: LoginProps) {
-  const { clearError, doValidate, form, formErrorHint, setForm, login } =
-    useSetup();
+  const {
+    clearError,
+    doValidate,
+    form,
+    formErrorHint,
+    setForm,
+    login,
+    history,
+  } = useSetup();
 
   return (
     <div className="login">
@@ -42,6 +50,21 @@ function Login(props: LoginProps) {
         onFocus={() => clearError("password")}
         type="password"
       />
+
+      <div className="login-actions">
+        <div
+          className="login-actions-item"
+          onClick={() => showToast("敬请期待", "warn")}
+        >
+          找回密码
+        </div>
+        <div
+          className="login-actions-item"
+          onClick={() => history.push("/register")}
+        >
+          注册
+        </div>
+      </div>
 
       <Button onClick={login} className="login-login_btn m" variant="outlined">
         登录
