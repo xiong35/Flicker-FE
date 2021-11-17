@@ -1,7 +1,7 @@
-import './index.scss';
+import "./index.scss";
 
 type StarDeckProps = {
-  progress: string; // 学习进度，进度条百分比
+  progress: number; // 学习进度，进度条百分比
 };
 
 export default function StarDeck(props: StarDeckProps) {
@@ -9,9 +9,11 @@ export default function StarDeck(props: StarDeckProps) {
 
   return (
     <div className="star_deck">
-      <div className="star_deck-percent" style={{ width: progress }}>
-        <div className="star_deck-percent-text">{progress}</div>
-      </div>
+      {progress > 1 && (
+        <div className="star_deck-percent" style={{ width: progress + "%" }}>
+          <div className="star_deck-percent-text">{progress + "%"}</div>
+        </div>
+      )}
       <div className="star_deck-title">title</div>
       <div className="star_deck-last">上次学习：2021/11/15</div>
     </div>

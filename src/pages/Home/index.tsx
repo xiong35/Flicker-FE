@@ -1,9 +1,9 @@
-import './index.scss';
+import "./index.scss";
 
-import DeckCard from '../../components/DeckCard';
-import StarDeck from '../../components/StarDeck';
-import TheBottomTabs from '../../components/TheBottomTabs';
-import { useSetup } from './hooks';
+import { useSetup } from "./hooks";
+import TheBottomTabs from "../../components/TheBottomTabs";
+import StarDeck from "../../components/StarDeck";
+import DeckCard from "../../components/DeckCard";
 
 type HomeProps = {};
 
@@ -15,7 +15,7 @@ function Home(props: HomeProps) {
     <div className="home">
       <div className="home-deck_container">
         {Array.from({ length: 20 }).map((_, i) => (
-          <StarDeck key={i} progress={~~(Math.random() * 100) + "%"} />
+          <StarDeck key={i} progress={~~(Math.random() * 100)} />
         ))}
       </div>
       <TheBottomTabs />
