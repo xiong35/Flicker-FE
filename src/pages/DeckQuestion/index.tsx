@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import useQuestionComp from "./hooks/useQuestionComp";
 import { useSetup } from "./hooks";
-import ArrowLeftCircle from "../../imgComponents/ArrowLeftCircle";
 import TheTopBar from "../../components/TheTopBar";
 
 type DeckQuestionProps = {};
