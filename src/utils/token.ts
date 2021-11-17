@@ -11,7 +11,7 @@ export function setToken(token: Token) {
   const now = new Date();
   now.setDate(now.getDate() + 7);
   token.expire = now.getTime();
-  window.localStorage.setItem(TOKEN_KEY, JSON.stringify({ token }));
+  window.localStorage.setItem(TOKEN_KEY, JSON.stringify(token));
 }
 
 export function clearToken() {

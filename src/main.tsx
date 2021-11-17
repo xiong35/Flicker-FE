@@ -1,11 +1,12 @@
-import './styles/index.scss';
+import "./styles/index.scss";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom";
+import React from "react";
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import App from './App';
+import App from "./App";
 
 const theme = createTheme({
   palette: {
@@ -21,7 +22,9 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
