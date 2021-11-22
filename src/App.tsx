@@ -2,8 +2,9 @@ import "./App.scss";
 
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import { routes } from "./routes";
+import Toasts from "./components/Toasts";
 import SelfHOC from "./context/Self";
+import { routes } from "./routes";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           ))}
         </Switch>
       </SelfHOC>
+      <Toasts />
     </div>
   );
 }
