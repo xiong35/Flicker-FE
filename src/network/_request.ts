@@ -9,8 +9,7 @@ import { showToast } from "../utils/showToast";
 // import { addToast, removeToast } from "../../redux/toasts/toastsSlice";
 // import { responseType } from "./responseType";
 
-const SERVER_BASE_URL = "http://localhost:3000/api/v1";
-// const SERVER_BASE_URL = "https://flicker.woolensheep.top/api/v1";
+const SERVER_BASE_URL = import.meta.env.VITE_BE_URL as string;
 
 /**
  * 失败会返回200以外的http状态码
