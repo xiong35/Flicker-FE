@@ -37,6 +37,6 @@ export default function Star({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

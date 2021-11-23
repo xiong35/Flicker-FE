@@ -38,6 +38,6 @@ export default function Fire({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

@@ -39,6 +39,6 @@ export default function NavExplore({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

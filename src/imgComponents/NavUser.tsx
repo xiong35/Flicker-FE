@@ -34,6 +34,6 @@ export default function NavUser({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

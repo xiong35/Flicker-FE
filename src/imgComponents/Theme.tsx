@@ -41,6 +41,6 @@ export default function Theme({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

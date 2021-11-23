@@ -32,6 +32,6 @@ export default function TrashBin({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

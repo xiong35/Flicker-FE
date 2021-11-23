@@ -30,6 +30,6 @@ export default function AddIcon({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

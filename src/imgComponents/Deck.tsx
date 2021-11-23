@@ -37,6 +37,6 @@ export default function Deck({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

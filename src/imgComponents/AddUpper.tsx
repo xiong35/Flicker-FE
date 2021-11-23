@@ -23,6 +23,6 @@ export default function AddUpper({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

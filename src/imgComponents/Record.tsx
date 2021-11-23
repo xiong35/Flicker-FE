@@ -35,6 +35,6 @@ export default function Record({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }
