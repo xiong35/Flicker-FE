@@ -1,11 +1,12 @@
-import './index.scss';
+import "./index.scss";
 
-import { Button, TextField } from '@mui/material';
+import { Button, TextField } from "@mui/material";
 
-import TheTopBar from '../../components/TheTopBar';
-import AddUpper from '../../imgComponents/AddUpper';
-import TrashBin from '../../imgComponents/TrashBin';
-import { useSetup } from './hooks';
+import TheTopBar from "../../components/TheTopBar";
+import AddIcon from "../../imgComponents/AddIcon";
+import AddUpper from "../../imgComponents/AddUpper";
+import TrashBin from "../../imgComponents/TrashBin";
+import { useSetup } from "./hooks";
 
 type DeckUploadProps = {};
 
@@ -54,6 +55,10 @@ function DeckUpload(props: DeckUploadProps) {
             />
           </div>
         ))}
+        <div className="deck_upload-cards-add">
+          <AddIcon className="deck_upload-cards-add-icon" />
+          添加卡片
+        </div>
         <Button variant="contained">创建</Button>
       </div>
     </div>
