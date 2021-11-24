@@ -4,6 +4,10 @@
     margin: 1rem;
   }
 
+  &-access.m {
+    margin: 0 1rem;
+  }
+
   &-cards {
     padding: 1rem;
     text-align: center;
@@ -22,6 +26,7 @@
           width: 1.2rem;
           height: 1.2rem;
           margin-left: 0.5rem;
+          cursor: pointer;
         }
       }
     }
@@ -42,6 +47,27 @@
         .on-p-fill {
           fill: var(--primary);
         }
+      }
+    }
+  }
+
+  &-dialog {
+    .MuiPaper-root {
+      width: 80vw;
+      min-width: 30rem;
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+
+      &-linear_progress {
+        flex: 1;
+      }
+
+      &-progress_text {
+        padding-left: 1rem;
+        transform: translateY(-2px);
       }
     }
   }

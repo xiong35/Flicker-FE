@@ -1,3 +1,5 @@
+import { showToast } from "./showToast";
+
 /**
  * 接受表单的值作为参数, 返回`undefined`则表示合法, 否则返回对应的提示信息
  */
@@ -12,7 +14,7 @@ export type Validator = (value: string) => Promise<string | undefined>;
 export async function useValidator(validator: Validator, value: string) {
   const res = await validator(value);
   if (res === undefined) return true;
-  alert(res);
+  showToast(res, "error");
   return false;
 }
 
@@ -58,4 +60,17 @@ export const postContentValidator: Validator = async (value: string) => {
     return `帖子不能少于 ${CONTENT_MIN_LEN} 字`;
   if (value.length > CONTENT_MAX_LEN)
     return `帖子不能超过 ${CONTENT_MAX_LEN} 字`;
+};
+
+export const deckNameValidator: Validator = async (value: string) => {
+  const NAME_MAX_LEN = 20;
+  if (value.length === 0) return "卡片集标题不得为空";
+  if (value.length > NAME_MAX_LEN)
+    return `卡片集标题不能超过 ${NAME_MAX_LEN} 字`;
+};
+
+export const deckDescriptionValidator: Validator = async (value: string) => {
+  const DESCRIPTION_MAX_LEN = 500;
+  if (value.length > DESCRIPTION_MAX_LEN)
+    return `卡片集描述不能超过 ${DESCRIPTION_MAX_LEN} 字`;
 };

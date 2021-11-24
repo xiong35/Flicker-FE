@@ -12,6 +12,7 @@ export default function Theme({ className, onClick }: SvgProps) {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         p-id="46904"
+        onClick={onClick}
       >
         <path
           d="M991.976864 367.884226m-42.604921 0a42.60492 42.60492 0 1 0 85.209841 0 42.60492 42.60492 0 1 0-85.209841 0Z"
@@ -40,6 +41,6 @@ export default function Theme({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

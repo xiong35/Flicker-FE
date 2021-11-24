@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { SvgProps } from "./";
 
 /** 底部导航栏 发现 界面 icon */
-export default function NavExplore({ className }: SvgProps) {
+export default function NavExplore({ className, onClick }: SvgProps) {
   return useMemo(
     () => (
       <svg
@@ -16,6 +16,7 @@ export default function NavExplore({ className }: SvgProps) {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         width="200"
         height="200"
+        onClick={onClick}
       >
         <path
           d="M512 1024a448 448 0 0 1-103.36-883.84l14.72 62.08a384 384 0 1 0 177.28 0l14.72-62.08A448 448 0 0 1 512 1024z"
@@ -38,6 +39,6 @@ export default function NavExplore({ className }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

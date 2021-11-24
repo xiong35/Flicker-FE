@@ -30,6 +30,6 @@ export default function ArrowLeftP({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

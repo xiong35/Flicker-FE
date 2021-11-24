@@ -38,6 +38,6 @@ export default function Logo({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }
