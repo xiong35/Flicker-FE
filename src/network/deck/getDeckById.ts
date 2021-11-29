@@ -1,20 +1,20 @@
 import { mockDecks } from "../../mock/deck";
-import { Deck } from "../../models/deck";
+import { Deck, DeckID } from "../../models/deck";
 import { pickFromArr } from "../../utils/pickFromArr";
 import _request from "../_request";
 
-export type GetDeckByIdReqData = {};
+export type GetDeckByIdReqData = {
+  id: DeckID;
+};
 
 /**
- * DESCRIPTION
- * @returns
+ * 根据 ID 获得一个卡片集的简略信息
+ * @returns 得到的卡片集
  */
 export async function getDeckByIdReq(data: GetDeckByIdReqData): Promise<Deck> {
-  // const res = await _request({
-  //   url: "/#TODO",
-  //   method: "GET",
-  //   data,
-  // });
-
   return pickFromArr(mockDecks);
+  const res = await _request<Deck>({
+    url: `/cardset/${data.id}`,
+    method: "GET",
+  });
 }
