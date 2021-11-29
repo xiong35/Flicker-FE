@@ -12,8 +12,8 @@ const ANIMATION_TIME = 150;
 
 function FlipCard(props: CompProps) {
   const { cards, switchCard } = props;
-  console.log("# index FlipCard", { cards });
   const card = cards?.[2] ?? undefined;
+
   if (!card) return <Loading></Loading>;
 
   const { questionState, setQuestionState, text } = useCardState(card);

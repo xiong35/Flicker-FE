@@ -76,7 +76,7 @@ export function useCard() {
     if (!deck || !cardQueue) return;
     console.log("# useCard", "switchCard", { deck, cardQueue });
 
-    if (deck.cards.length < 5) {
+    if (deck.cards.length <= 5) {
       /**
        * 将这种情况: [undefined, Card1, Card2, Card3, undefined]
        * 变成这样的: [undefined, Card2, Card3, Card1, undefined]
@@ -96,25 +96,20 @@ export function useCard() {
 
       setCardQueue(newCardQueue);
     } else {
-      /** 要获取下一个, 需先知道当前队列里最后一个卡片 */
-      const lastItem = (
-        direction === "forward" ? cardQueue[cardQueue.length - 1] : cardQueue[0]
-      ) as Card;
+      const existingIDs = new Set(cardQueue.map((c) => c?.id));
 
-      /** 在卡组中找到这个卡片的下标 */
-      const lastItemIndex = deck.cards.findIndex((cardID) => {
-        lastItem.id === cardID;
-      });
+      // 随机出一个没出现过的 ID 作为下一题
+      let nextQuestionID: string = "";
+      let maxIter = 20;
+      while (maxIter--) {
+        const randIndex = Math.floor(Math.random() * deck.cards.length);
+        nextQuestionID = deck.cards[randIndex];
 
-      /** 在卡组中找到这个卡片的下一个的下标 */
-      const nextItemIndex =
-        (lastItemIndex +
-          deck.cards.length +
-          (direction === "forward" ? 1 : -1)) %
-        deck.cards.length;
+        if (!existingIDs.has(nextQuestionID)) break;
+      }
 
       getCards({
-        id: [deck.cards[nextItemIndex]],
+        id: [nextQuestionID],
         deckID,
       }).then((cards) => {
         if (!cards) return;
@@ -122,7 +117,6 @@ export function useCard() {
           direction === "forward"
             ? [...cardQueue.slice(1, 5), ...cards]
             : [...cards, ...cardQueue.slice(0, -1)];
-        console.log("# useCard", "switchCard", { newCardQueue });
 
         setCardQueue(newCardQueue as CardQueue);
       });
