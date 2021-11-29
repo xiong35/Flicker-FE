@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import TheTopBar from "../../components/TheTopBar";
 import Comments from "./components/Comments";
-import { useSetup } from "./hooks";
 import { useCard } from "./hooks/useCard";
 import useQuestionComp from "./hooks/useQuestionComp";
 
