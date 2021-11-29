@@ -26,7 +26,10 @@ type HttpRes<T> = {
 
 const DEFAULT_ERR_MSG = "出错了！";
 
-export default function _request<T = {}>(config: AxiosRequestConfig) {
+export default function _request<T = {}>(
+  config: AxiosRequestConfig,
+  shouldShowHint = true
+) {
   // const { addToastFn } = useAddToast();
 
   const instance = axios.create({
@@ -74,7 +77,7 @@ export default function _request<T = {}>(config: AxiosRequestConfig) {
       }
 
       console.log({ errMsg });
-      showToast(errMsg, "error");
+      shouldShowHint && showToast(errMsg, "error");
 
       resolve(null);
     }
