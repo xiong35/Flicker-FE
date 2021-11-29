@@ -1,19 +1,17 @@
-import './index.scss';
+import "./index.scss";
 
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 
-import { Fab } from '@mui/material';
+import { Fab } from "@mui/material";
 
-import DeckCard from '../../components/DeckCard';
-import TheBottomTabs from '../../components/TheBottomTabs';
-import AddIcon from '../../imgComponents/AddIcon';
-import { useSetup } from './hooks';
+import DeckCard from "../../components/DeckCard";
+import TheBottomTabs from "../../components/TheBottomTabs";
+import AddIcon from "../../imgComponents/AddIcon";
 
 type ExploreProps = {};
 
 function Explore(props: ExploreProps) {
   const {} = props;
-  const {} = useSetup();
   const history = useHistory();
 
   return (

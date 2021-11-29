@@ -2,9 +2,10 @@ import "./index.scss";
 
 import { useState } from "react";
 
-import useQuestionComp from "./hooks/useQuestionComp";
-import { useCard } from "./hooks/useCard";
 import TheTopBar from "../../components/TheTopBar";
+import Comments from "./components/Comments";
+import { useCard } from "./hooks/useCard";
+import useQuestionComp from "./hooks/useQuestionComp";
 
 type DeckQuestionProps = {};
 
@@ -19,6 +20,7 @@ function DeckQuestion(props: DeckQuestionProps) {
     <>
       <TheTopBar title="学习" />
       <Comp cards={cardQueue} switchCard={switchCard} />
+      <Comments />
     </>
   );
 }
