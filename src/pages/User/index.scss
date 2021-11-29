@@ -6,12 +6,34 @@
     margin: 3rem auto 1rem;
     border-radius: 999px;
     border: 1px solid var(--secondary);
+    object-fit: cover;
+    cursor: pointer;
   }
 
   &-name {
-    text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-input.m {
+      margin: auto;
+      display: flex;
+      max-width: 15rem;
+      .user-name-input-finish_icon {
+        width: 1.6em;
+        height: 1.6em;
+        cursor: pointer;
+      }
+    }
+
+    &-icon {
+      margin-left: 0.5em;
+      width: 1em;
+      height: 1em;
+      cursor: pointer;
+    }
   }
 
   &-menu {
