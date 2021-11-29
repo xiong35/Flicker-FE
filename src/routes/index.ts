@@ -30,18 +30,18 @@ export const routes: RouteConfig[] = [
     strict: true,
   },
   {
-    path: "/deck/edit/:id",
+    path: "/deck/:id/edit",
     component: loadable(() => import("../pages/DeckEdit")),
     exact: true,
   },
   {
-    path: "/deck/intro/:id",
+    path: "/deck/:id/intro",
     component: loadable(() => import("../pages/DeckIntro")),
     exact: true,
     strict: true,
   },
   {
-    path: "/deck/question/:id",
+    path: "/deck/:deckID/question/:questionID",
     component: loadable(() => import("../pages/DeckQuestion")),
     exact: true,
     strict: true,
