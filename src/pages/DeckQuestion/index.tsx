@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import useQuestionComp from "./hooks/useQuestionComp";
 import { useCard } from "./hooks/useCard";
-import { useSetup } from "./hooks";
 import TheTopBar from "../../components/TheTopBar";
 
 type DeckQuestionProps = {};
