@@ -29,3 +29,12 @@ export type Deck = {
   /** 包含的卡片 id */
   cards: CardId[];
 };
+
+export const initDeck: Deck = {
+  access: 0,
+  cards: [],
+  description: "",
+  id: "",
+  name: "",
+  template: "",
+};
