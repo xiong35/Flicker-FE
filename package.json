@@ -2,7 +2,7 @@
   "name": "flicker",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
     "build": "tsc && vite build",
     "build:dev": "tsc && vite build --mode dev",
     "serve": "vite preview",

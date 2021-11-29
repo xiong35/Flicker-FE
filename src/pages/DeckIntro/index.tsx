@@ -5,9 +5,11 @@ import { useHistory, useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 
 import { useDeck } from "./hooks/useDeck";
+import { dateFormat } from "../../utils/dateFormat";
 import Star from "../../imgComponents/Star";
 import Fire from "../../imgComponents/Fire";
 import TheTopBar from "../../components/TheTopBar";
+import Loading from "../../components/Loading";
 
 type DeckIntroProps = {};
 
@@ -17,31 +19,33 @@ function DeckIntro(props: DeckIntroProps) {
   const { deck } = useDeck(id);
 
   const history = useHistory();
+  function jumpToQuestion() {
+    history.push(`/deck/${id}/question`);
+  }
+
+  if (!deck) return <Loading></Loading>;
 
   return (
     <div className="deck_intro">
       <TheTopBar title="详情" />
       <div className="deck_intro-info">
-        <div className="deck_intro-info-title">标题标题</div>
+        <div className="deck_intro-info-title">{deck.name}</div>
         <div className="deck_intro-info-data">
           <div className="deck_intro-info-data-time">
-            <span className="t-p">@王小明</span> 2020/2/2
+            <span className="t-p">@{deck.owner_name}</span>
+            {dateFormat(deck.create_time)}
           </div>
-          {/* <div className="deck_intro-info-data-question_count">题目数: 56</div> */}
           <div className="spacer"></div>
           <div className="deck_intro-info-data-collection">
             <Star className="deck_intro-info-data-icon" />
-            123
+            {deck.favorite_count}
           </div>
           <div className="deck_intro-info-data-hot">
             <Fire className="deck_intro-info-data-icon scale-110" />
-            123
+            {deck.visit_count}
           </div>
         </div>
-        <div className="deck_intro-info-brief">
-          简介简介简介简介简介简介简介简介简介简介 简介 简介 简介 简介
-          简介简介简介简介简介简介
-        </div>
+        <div className="deck_intro-info-brief">{deck.description}</div>
       </div>
 
       <div className="deck_intro-some_ques">
@@ -51,28 +55,16 @@ function DeckIntro(props: DeckIntroProps) {
       <div className="deck_intro-study deck_intro-action_container">
         <h4>学习</h4>
         <div className="deck_intro-action_container-actions">
-          <Button
-            onClick={() => history.push("/deck/123/question")}
-            variant="outlined"
-          >
+          <Button onClick={jumpToQuestion} variant="outlined">
             浏览
           </Button>
-          <Button
-            onClick={() => history.push("/deck/123/question")}
-            variant="outlined"
-          >
+          <Button onClick={jumpToQuestion} variant="outlined">
             单词卡
           </Button>
-          <Button
-            onClick={() => history.push("/deck/123/question")}
-            variant="outlined"
-          >
+          <Button onClick={jumpToQuestion} variant="outlined">
             填空
           </Button>
-          <Button
-            onClick={() => history.push("/deck/123/question")}
-            variant="outlined"
-          >
+          <Button onClick={jumpToQuestion} variant="outlined">
             配对
           </Button>
         </div>
