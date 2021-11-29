@@ -10,3 +10,8 @@ export const DEFAULT_USER: UserPublic = {
   id: "",
   username: "",
 };
+
+export type UserDetail = {
+  mail: string;
+  password: string;
+} & UserPublic;

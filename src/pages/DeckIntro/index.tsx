@@ -1,20 +1,21 @@
 import "./index.scss";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 
-import { useSetup } from "./hooks";
+import { useDeck } from "./hooks/useDeck";
 import Star from "../../imgComponents/Star";
 import Fire from "../../imgComponents/Fire";
 import TheTopBar from "../../components/TheTopBar";
-import DeckCard from "../../components/DeckCard";
 
 type DeckIntroProps = {};
 
 function DeckIntro(props: DeckIntroProps) {
   const {} = props;
-  const { id } = useSetup();
+  let { id } = useParams<{ id: string }>();
+  const { deck } = useDeck(id);
+
   const history = useHistory();
 
   return (
@@ -51,25 +52,25 @@ function DeckIntro(props: DeckIntroProps) {
         <h4>学习</h4>
         <div className="deck_intro-action_container-actions">
           <Button
-            onClick={() => history.push("/deck/question/123")}
+            onClick={() => history.push("/deck/123/question")}
             variant="outlined"
           >
             浏览
           </Button>
           <Button
-            onClick={() => history.push("/deck/question/123")}
+            onClick={() => history.push("/deck/123/question")}
             variant="outlined"
           >
             单词卡
           </Button>
           <Button
-            onClick={() => history.push("/deck/question/123")}
+            onClick={() => history.push("/deck/123/question")}
             variant="outlined"
           >
             填空
           </Button>
           <Button
-            onClick={() => history.push("/deck/question/123")}
+            onClick={() => history.push("/deck/123/question")}
             variant="outlined"
           >
             配对

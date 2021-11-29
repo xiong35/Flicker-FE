@@ -1,22 +1,13 @@
-
 import "./index.scss";
 
 import { useSetup } from "./hooks";
+import { CompProps } from "../../hooks/useQuestionComp";
 
-
-type FillInProps = {
-  
-};
-
-function FillIn(props: FillInProps) {
+function FillIn(props: CompProps) {
   const {} = props;
   const {} = useSetup();
 
-  return (
-    <div className="fill_in">
-      FillIn
-    </div>
-  );
+  return <div className="fill_in">FillIn</div>;
 }
 
 export default FillIn;

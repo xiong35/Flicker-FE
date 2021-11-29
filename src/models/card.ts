@@ -1,11 +1,13 @@
 export type Card = {
-  id: string;
+  id: CardID;
   /** 题面 */
   question: string;
   /** 答案 */
   answer: string;
   /** 图片url */
-  image: string;
+  image?: string;
   /** 音频url */
-  audio: string;
+  audio?: string;
 };
+
+export type CardID = string;

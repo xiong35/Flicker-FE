@@ -2,42 +2,33 @@ import "./index.scss";
 
 import { useState } from "react";
 
+import { useCardState } from "./hooks/useCardState";
 import { useSetup } from "./hooks";
+import { CompProps } from "../../hooks/useQuestionComp";
 import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
+import Loading from "../../../../components/Loading";
 
-type FlipCardProps = {};
-
-const ans = `this is answer`;
-const question = `Lorem ipsum, dolor sit amet consectetur adipisicing
- elit. Ipsum
-          inventore recusandae modi repudiandae accusantium quia tenetur, quasi
-          amet! Animi eius inventore itaque maiores molestiae commodi aliquid
-          distinctio tempora cumque nostrum?`;
 const ANIMATION_TIME = 150;
 
-function FlipCard(props: FlipCardProps) {
-  const {} = props;
-  const {} = useSetup();
+function FlipCard(props: CompProps) {
+  const { cards, switchCard } = props;
+  console.log("# index FlipCard", { cards });
+  const card = cards?.[2] ?? undefined;
+  if (!card) return <Loading></Loading>;
 
-  const [questionState, setQuestionState] = useState<
-    "answer" | "question" | "fading"
-  >("question");
+  const { questionState, setQuestionState, text } = useCardState(card);
 
-  const [text, setText] = useState(question);
   return (
     <div className="dq-flip_card">
       <div
         onClick={() => {
-          console.log("# index", "click");
           if (questionState === "fading") return;
           setQuestionState("fading");
 
           setTimeout(() => {
             if (questionState === "answer") {
-              setText(question);
               setQuestionState("question");
             } else {
-              setText(ans);
               setQuestionState("answer");
             }
           }, ANIMATION_TIME);
@@ -47,11 +38,17 @@ function FlipCard(props: FlipCardProps) {
         <div className="dq-flip_card-card-scroll">{text}</div>
       </div>
       <div className="dq-flip_card-actions">
-        <div className="dq-flip_card-actions-action">
+        <div
+          onClick={() => switchCard("backward")}
+          className="dq-flip_card-actions-action"
+        >
           <ArrowLeftCircle className="dq-flip_card-actions-action-icon" />
           上一条
         </div>
-        <div className="dq-flip_card-actions-action">
+        <div
+          onClick={() => switchCard("forward")}
+          className="dq-flip_card-actions-action"
+        >
           下一条
           <ArrowLeftCircle className="dq-flip_card-actions-action-icon rotate" />
         </div>
