@@ -12,6 +12,7 @@ export default function Record({ className, onClick }: SvgProps) {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         p-id="34510"
+        onClick={onClick}
       >
         <path
           d="M540.860772 966.783479A427.090819 427.090819 0 1 0 113.769953 540.830052 427.090819 427.090819 0 0 0 540.860772 966.783479z"
@@ -34,6 +35,6 @@ export default function Record({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

@@ -12,6 +12,7 @@ export default function Deck({ className, onClick }: SvgProps) {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         p-id="27892"
+        onClick={onClick}
       >
         <path
           d="M317.3376 208.22016h459.63264c38.89152 0 70.69696 32.21504 70.69696 71.59808v540.54912l-84.84864 68.01408H317.3376c-38.912 0-70.71744-32.21504-70.71744-71.59808V279.81824c0-39.38304 31.82592-71.59808 70.71744-71.59808z"
@@ -36,6 +37,6 @@ export default function Deck({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

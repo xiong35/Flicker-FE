@@ -45,6 +45,6 @@ export default function ArrowLeftCircle({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

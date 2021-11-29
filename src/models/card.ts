@@ -1,13 +1,15 @@
-export type Card = {
-  id: CardID;
+import { nanoid } from "@reduxjs/toolkit";
+
+export class Card {
+  id: CardID = nanoid();
   /** 题面 */
-  question: string;
+  question = "";
   /** 答案 */
-  answer: string;
+  answer = "";
   /** 图片url */
   image?: string;
   /** 音频url */
   audio?: string;
-};
+}
 
 export type CardID = string;

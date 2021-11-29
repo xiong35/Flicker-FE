@@ -14,6 +14,7 @@ export default function AddUpper({ className, onClick }: SvgProps) {
         p-id="11420"
         width="200"
         height="200"
+        onClick={onClick}
       >
         <path
           className="on-bg-l-fill"
@@ -22,6 +23,6 @@ export default function AddUpper({ className, onClick }: SvgProps) {
         ></path>
       </svg>
     ),
-    []
+    [onClick]
   );
 }

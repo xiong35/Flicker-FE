@@ -2,13 +2,13 @@ import "./index.scss";
 
 import { useHistory } from "react-router-dom";
 
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
-import { useSetup } from "./hooks";
-import { showToast } from "../../utils/showToast";
-import Logo from "../../imgComponents/Logo";
 import logoImg from "../../../public/logo.svg";
+import Logo from "../../imgComponents/Logo";
+import { showToast } from "../../utils/showToast";
+import { useSetup } from "./hooks";
 
 type LoginProps = {};
 
@@ -54,7 +54,7 @@ function Login(props: LoginProps) {
       <div className="login-actions">
         <div
           className="login-actions-item"
-          onClick={() => showToast("敬请期待", "warn")}
+          onClick={() => showToast("敬请期待", "warning")}
         >
           找回密码
         </div>
