@@ -12,13 +12,15 @@ type DeckQuestionProps = {};
 
 function DeckQuestion(props: DeckQuestionProps) {
   const {} = props;
-  const { card } = useCard();
+  const { cardQueue, switchCard } = useCard();
   const { Comp } = useQuestionComp();
+
+  console.log("# index", { cardQueue });
 
   return (
     <>
       <TheTopBar title="学习" />
-      <Comp card={card} />
+      <Comp cards={cardQueue} switchCard={switchCard} />
     </>
   );
 }

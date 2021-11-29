@@ -1,3 +1,4 @@
+import { CardQueue } from "./useCard";
 import FlipCard from "../components/FlipCard";
 import FillIn from "../components/FillIn";
 import { Card } from "../../../models/card";
@@ -9,7 +10,8 @@ enum QuesType {
 }
 
 export type CompProps = {
-  card?: Card;
+  cards?: CardQueue;
+  switchCard: (direction: "forward" | "backward") => void;
 };
 
 const type2Comp: Record<QuesType, (props: CompProps) => JSX.Element> = {

@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 
@@ -13,7 +13,9 @@ type DeckIntroProps = {};
 
 function DeckIntro(props: DeckIntroProps) {
   const {} = props;
-  const { deck } = useDeck();
+  let { id } = useParams<{ id: string }>();
+  const { deck } = useDeck(id);
+
   const history = useHistory();
 
   return (

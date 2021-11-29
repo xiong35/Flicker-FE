@@ -41,7 +41,7 @@ export const routes: RouteConfig[] = [
     strict: true,
   },
   {
-    path: "/deck/:deckID/question/:questionID",
+    path: "/deck/:deckID/question",
     component: loadable(() => import("../pages/DeckQuestion")),
     exact: true,
     strict: true,

@@ -1,4 +1,4 @@
-import { Card, CardId } from "./card";
+import { Card, CardID } from "./card";
 
 export type DeckID = string;
 
@@ -27,7 +27,7 @@ export type Deck = {
   access: 0 | 1;
 
   /** 包含的卡片 id */
-  cards: CardId[];
+  cards: CardID[];
 };
 
 export const initDeck: Deck = {

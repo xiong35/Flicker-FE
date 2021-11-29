@@ -1,12 +1,13 @@
 import _request from "../_request";
 import { pickFromArr } from "../../utils/pickFromArr";
 import { DeckID } from "../../models/deck";
-import { Card, CardId } from "../../models/card";
+import { Card, CardID } from "../../models/card";
 import { mockCards } from "../../mock/card";
+import { wait } from "../../mock";
 
 export type GetCardByIdReqData = {
-  id: CardId[];
-  cardSetId: DeckID;
+  id: CardID[];
+  deckID: DeckID;
 };
 
 /**
@@ -14,10 +15,11 @@ export type GetCardByIdReqData = {
  * @returns 卡片集数组
  */
 export async function getCards(data: GetCardByIdReqData): Promise<Card[]> {
-  return mockCards.slice(0, 5);
+  await wait(1000);
+  return Array.from({ length: data.id.length }, () => pickFromArr(mockCards));
 
   const res = await _request<Card[]>({
-    url: `/cardset/${data.cardSetId}/card`,
+    url: `/cardset/${data.deckID}/card`,
     method: "GET",
     params: {
       id: `[${data.id.join(",")}]`,

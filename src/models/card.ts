@@ -1,5 +1,5 @@
 export type Card = {
-  id: CardId;
+  id: CardID;
   /** 题面 */
   question: string;
   /** 答案 */
@@ -10,4 +10,4 @@ export type Card = {
   audio?: string;
 };
 
-export type CardId = string;
+export type CardID = string;
