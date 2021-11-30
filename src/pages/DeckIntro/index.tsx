@@ -30,18 +30,22 @@ function DeckIntro(props: DeckIntroProps) {
       <TheTopBar title="详情" />
       <div className="deck_intro-info">
         <div className="deck_intro-info-title">{deck.name}</div>
-        <div className="deck_intro-info-data">
-          <div className="deck_intro-info-data-time">
-            <span className="t-p">@{deck.owner_name}</span>
-            {dateFormat(deck.create_time)}
+        <div className="deck_intro-info-body">
+          <div className="deck_intro-info-body-create">
+            <span className="deck_intro-info-body-create-by t-p">
+              @{deck.owner_name}
+            </span>
+            <span className="deck_intro-info-body-create-at">
+              {dateFormat(deck.create_time)}
+            </span>
           </div>
           <div className="spacer"></div>
-          <div className="deck_intro-info-data-collection">
-            <Star className="deck_intro-info-data-icon" />
+          <div className="deck_intro-info-body-collection">
+            <Star className="deck_intro-info-body-icon" />
             {deck.favorite_count}
           </div>
-          <div className="deck_intro-info-data-hot">
-            <Fire className="deck_intro-info-data-icon scale-110" />
+          <div className="deck_intro-info-body-hot">
+            <Fire className="deck_intro-info-body-icon scale-110" />
             {deck.visit_count}
           </div>
         </div>

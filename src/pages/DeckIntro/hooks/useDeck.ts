@@ -9,7 +9,7 @@ export function useDeck(id: DeckID) {
 
   useEffect(() => {
     getDeckByIdReq({ id }).then((res) => {
-      setDeck(res);
+      if (res) setDeck(res);
     });
   });
 
