@@ -1,6 +1,7 @@
 @import "../../../../styles/css-constants.scss";
 .comments {
   width: $page-max-width * 0.86;
+  max-width: 86vw;
   left: 0;
   right: 0;
   bottom: calc(-80vh + 2rem);
