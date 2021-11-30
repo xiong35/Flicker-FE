@@ -6,6 +6,7 @@ import { useComments } from "./hooks/useComments";
 import { CardID } from "../../../../models/card";
 import Send from "../../../../imgComponents/Send";
 import Discuss from "../../../../imgComponents/Discuss";
+import Empty from "../../../../components/Empty";
 
 type CommentProps = {
   id: CardID;
@@ -14,7 +15,7 @@ type CommentProps = {
 export default function Comments(props: CommentProps) {
   const { id } = props;
 
-  const { isUp, setIsUp } = useComments();
+  const { isUp, setIsUp, comments } = useComments(id);
 
   return (
     <div
@@ -37,26 +38,25 @@ export default function Comments(props: CommentProps) {
           }}
         />
         <div className="comments-list">
-          {Array.from({ length: 5 }, (_, index) => index).map(
-            (comment, index) => (
-              <div className="comments-list-comment" key={index}>
-                <div className="comments-list-comment-user">
-                  <Avatar
-                    className="comments-list-comment-user-avatar"
-                    src="https://flicker-static.hust.online/avater/0.svg"
-                  />
-                  <div className="comments-list-comment-user-name">王小明</div>
-                  <div className="spacer"></div>
-                  <div className="comments-list-comment-user-time">
-                    2020/1/1
-                  </div>
+          {comments.map((comment) => (
+            <div className="comments-list-comment" key={comment.id}>
+              <div className="comments-list-comment-user">
+                <Avatar
+                  className="comments-list-comment-user-avatar"
+                  src={comment.owner.avatar}
+                />
+                <div className="comments-list-comment-user-name">
+                  {comment.owner.username}
                 </div>
-                <div className="comments-list-comment-content">
-                  说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对说得对
-                </div>
+                <div className="spacer"></div>
+                <div className="comments-list-comment-user-time">2020/1/1</div>
               </div>
-            )
-          )}
+              <div className="comments-list-comment-content">
+                {comment.comment}
+              </div>
+            </div>
+          ))}
+          {comments.length === 0 && <Empty></Empty>}
         </div>
       </div>
     </div>
