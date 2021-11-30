@@ -9,6 +9,7 @@ import { useDecks } from "./hooks/useDecks";
 import Search from "../../imgComponents/Search";
 import AddIcon from "../../imgComponents/AddIcon";
 import TheBottomTabs from "../../components/TheBottomTabs";
+import NoMore from "../../components/NoMore";
 import Empty from "../../components/Empty";
 import DeckCard from "../../components/DeckCard";
 
@@ -18,7 +19,7 @@ function Explore(props: ExploreProps) {
   const {} = props;
   const history = useHistory();
   const { decks, getRandDecks, setDecks } = useDecks();
-  const { doSearch, keyword, loadMore, setKeyword, isSearching } =
+  const { doSearch, keyword, setKeyword, isSearching, noMore } =
     useSearch(setDecks);
 
   return (
@@ -52,6 +53,7 @@ function Explore(props: ExploreProps) {
         ))}
 
         {decks.length === 0 && <Empty></Empty>}
+        {noMore && <NoMore></NoMore>}
       </div>
 
       {!isSearching && (

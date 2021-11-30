@@ -71,5 +71,5 @@ export function useSearch(
 
   const isSearching = page !== undefined;
 
-  return { keyword, setKeyword, doSearch, loadMore, isSearching };
+  return { keyword, setKeyword, doSearch, loadMore, isSearching, noMore };
 }
