@@ -17,5 +17,5 @@ export const useDecks = () => {
     setDecks(newDecks);
   }
 
-  return { decks };
+  return { decks, getRandDecks };
 };

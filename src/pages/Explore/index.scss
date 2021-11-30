@@ -9,4 +9,11 @@
       height: 1.5rem;
     }
   }
+
+  &-random_body {
+    &-btn.m {
+      display: flex;
+      margin: 3rem auto;
+    }
+  }
 }

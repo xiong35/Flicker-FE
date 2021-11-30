@@ -10,7 +10,7 @@ export type ExploreCardsetReqData = {
  * @returns 卡组数组
  */
 export async function exploreCardsetReq(
-  params: ExploreCardsetReqData = { count: 10 }
+  params: ExploreCardsetReqData = { count: 7 }
 ) {
   const res = await _request<DeckBrief[]>({
     url: "/cardset/random",

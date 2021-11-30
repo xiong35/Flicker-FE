@@ -2,7 +2,7 @@ import "./index.scss";
 
 import { useHistory } from "react-router";
 
-import { Fab } from "@mui/material";
+import { Button, Fab, TextField } from "@mui/material";
 
 import { useDecks } from "./hooks/useDecks";
 import AddIcon from "../../imgComponents/AddIcon";
@@ -14,7 +14,7 @@ type ExploreProps = {};
 function Explore(props: ExploreProps) {
   const {} = props;
   const history = useHistory();
-  const { decks } = useDecks();
+  const { decks, getRandDecks } = useDecks();
 
   return (
     <div className="explore">
@@ -26,10 +26,24 @@ function Explore(props: ExploreProps) {
       >
         <AddIcon className="explore-add-icon" />
       </Fab>
-      <div className="explore-deck_container">
+
+      <div className="explore-search">
+        <TextField></TextField>
+      </div>
+
+      <div className="explore-search_body"></div>
+
+      <div className="explore-random_body">
         {decks.map((deck) => (
           <DeckCard deckBrief={deck} key={deck.id} />
         ))}
+        <Button
+          className="explore-random_body-btn m"
+          variant="contained"
+          onClick={getRandDecks}
+        >
+          换一批
+        </Button>
       </div>
       <TheBottomTabs />
     </div>
