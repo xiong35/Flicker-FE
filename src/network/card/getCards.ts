@@ -1,9 +1,6 @@
 import _request from "../_request";
-import { pickFromArr } from "../../utils/pickFromArr";
 import { DeckID } from "../../models/deck";
 import { Card, CardID } from "../../models/card";
-import { mockCards } from "../../mock/card";
-import { wait } from "../../mock";
 
 export type GetCardByIdReqData = {
   ids: CardID[];
