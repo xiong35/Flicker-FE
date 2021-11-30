@@ -2,9 +2,9 @@ import "./App.scss";
 
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import Toasts from "./components/Toasts";
-import SelfHOC from "./context/Self";
 import { routes } from "./routes";
+import SelfHOC from "./context/Self";
+import Toasts from "./components/Toasts";
 
 export default function App() {
   return (
