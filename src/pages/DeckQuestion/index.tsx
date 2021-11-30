@@ -27,7 +27,6 @@ function DeckQuestion(props: DeckQuestionProps) {
           return (
             <div className="deck_question-queue-item" key={card.id}>
               <Comp card={card} switchCard={switchWithAnim} />
-              <Comments />
             </div>
           );
         })}

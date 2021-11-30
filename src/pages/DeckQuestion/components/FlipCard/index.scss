@@ -10,10 +10,6 @@ $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
   rgba(99, 99, 99, 15%) 2px 2px 3px 0px inset;
 
 .dq-flip_card {
-  position: relative;
-  // height: calc(100vh - #{$header-h});
-  transform-style: preserve-3d;
-
   &-card {
     display: flex;
     align-items: center;

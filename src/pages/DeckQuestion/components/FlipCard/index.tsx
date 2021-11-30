@@ -1,6 +1,7 @@
 import "./index.scss";
 
 import { useCardState } from "./hooks/useCardState";
+import Comments from "../Comments";
 import { CompProps } from "../../hooks/useQuestionComp";
 import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
 import Loading from "../../../../components/Loading";
@@ -42,6 +43,8 @@ function FlipCard(props: CompProps) {
           onClick={() => switchCard("forward")}
         />
       </div>
+
+      <Comments id={card.id}></Comments>
     </div>
   );
 }
