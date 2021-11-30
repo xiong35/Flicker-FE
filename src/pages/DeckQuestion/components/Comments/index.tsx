@@ -1,8 +1,11 @@
 import "./index.scss";
 
+import { useParams } from "react-router-dom";
+
 import { Avatar, TextField } from "@mui/material";
 
 import { useComments } from "./hooks/useComments";
+import { useAddComment } from "./hooks/useAddComment";
 import { CardID } from "../../../../models/card";
 import Send from "../../../../imgComponents/Send";
 import Discuss from "../../../../imgComponents/Discuss";
@@ -15,7 +18,14 @@ type CommentProps = {
 export default function Comments(props: CommentProps) {
   const { id } = props;
 
-  const { isUp, setIsUp, comments } = useComments(id);
+  const { deckID } = useParams<{ deckID: string }>();
+
+  const { isUp, setIsUp, comments, addSelfComment } = useComments(id, deckID);
+  const { addComment, comment, setComment } = useAddComment(
+    id,
+    deckID,
+    addSelfComment
+  );
 
   return (
     <div
@@ -33,8 +43,15 @@ export default function Comments(props: CommentProps) {
           className="comments-input m"
           multiline={true}
           maxRows={5}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
           InputProps={{
-            endAdornment: <Send className="comments-input-icon" />,
+            endAdornment: (
+              <Send onClick={addComment} className="comments-input-icon" />
+            ),
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") addComment();
           }}
         />
         <div className="comments-list">

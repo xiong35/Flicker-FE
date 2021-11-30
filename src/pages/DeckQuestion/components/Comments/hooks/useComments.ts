@@ -2,10 +2,12 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { getCommentsReq } from "../../../../../network/card/getComments";
+import { DeckID } from "../../../../../models/deck";
 import { Comment } from "../../../../../models/comment";
 import { CardID } from "../../../../../models/card";
+import { useSelf } from "../../../../../context/Self/useSelf";
 
-export function useComments(cardID: CardID) {
+export function useComments(cardID: CardID, deckID: DeckID) {
   const [isUp, setIsUp] = useState(false);
 
   useEffect(() => {
@@ -17,7 +19,6 @@ export function useComments(cardID: CardID) {
   }, [isUp]);
 
   const [comments, setComments] = useState<Comment[]>([]);
-  const { deckID } = useParams<{ deckID: string }>();
 
   useEffect(() => {
     if (!isUp) return;
@@ -33,5 +34,13 @@ export function useComments(cardID: CardID) {
     });
   }, [isUp, comments]);
 
-  return { isUp, setIsUp, comments };
+  const { self } = useSelf();
+  function addSelfComment(content: string) {
+    setComments([
+      { comment: content, id: Date.now().toString(), owner: self },
+      ...comments,
+    ]);
+  }
+
+  return { isUp, setIsUp, comments, addSelfComment };
 }
