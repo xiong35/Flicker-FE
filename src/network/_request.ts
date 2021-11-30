@@ -11,6 +11,9 @@ import { showToast } from "../utils/showToast";
 
 const SERVER_BASE_URL = import.meta.env.VITE_BE_URL as string;
 
+/** 根据哈希值判断有无重复发起的请求 */
+const sendingRequest = new Set<string>();
+
 /**
  * 失败会返回200以外的http状态码
  */
@@ -30,7 +33,13 @@ export default function _request<T = {}>(
   config: AxiosRequestConfig,
   shouldShowHint = true
 ) {
-  // const { addToastFn } = useAddToast();
+  const hashedReq = JSON.stringify({
+    u: config.url,
+    d: config.data,
+    p: config.params,
+  });
+  if (sendingRequest.has(hashedReq)) return;
+  sendingRequest.add(hashedReq);
 
   const instance = axios.create({
     baseURL: SERVER_BASE_URL,
@@ -80,6 +89,10 @@ export default function _request<T = {}>(
       shouldShowHint && showToast(errMsg, "error");
 
       resolve(null);
+    } finally {
+      setTimeout(() => {
+        sendingRequest.delete(hashedReq);
+      }, 70);
     }
   });
 }
