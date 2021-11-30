@@ -37,6 +37,7 @@ function Explore(props: ExploreProps) {
         className="explore-search m"
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
+        placeholder="输入关键词查找卡片集"
         onKeyDown={(e) => {
           e.key === "Enter" && doSearch();
         }}
