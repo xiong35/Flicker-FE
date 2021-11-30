@@ -34,7 +34,7 @@ export function useCard() {
     console.log("# useCard", { idToFetch, deck });
 
     getCards({
-      id: idToFetch,
+      ids: idToFetch,
       deckID,
     }).then((cardsRes) => {
       if (!cardsRes) return;
@@ -109,7 +109,7 @@ export function useCard() {
       }
 
       getCards({
-        id: [nextQuestionID],
+        ids: [nextQuestionID],
         deckID,
       }).then((cards) => {
         if (!cards) return;
