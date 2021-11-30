@@ -1,6 +1,7 @@
 @use "sass:math";
 
 $queue-w: 450%;
+$ml: math.div($queue-w - 100%, -2);
 
 .deck_question {
   overflow: hidden;
@@ -24,8 +25,20 @@ $queue-w: 450%;
 
   &-queue {
     width: $queue-w;
-    margin-left: math.div($queue-w - 100%, -2);
+    margin-left: $ml;
     display: flex;
+
+    transition: margin 0.3s;
+
+    &.left {
+      margin-left: $ml - 90%;
+    }
+    &.right {
+      margin-left: $ml + 90%;
+    }
+    &.mid {
+      transition: margin 0s;
+    }
 
     &-item {
       width: 20%;

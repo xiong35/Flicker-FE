@@ -1,17 +1,14 @@
 import "./index.scss";
 
-import Loading from "../../../../components/Loading";
-import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
-import { CompProps } from "../../hooks/useQuestionComp";
 import { useCardState } from "./hooks/useCardState";
+import { CompProps } from "../../hooks/useQuestionComp";
+import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
+import Loading from "../../../../components/Loading";
 
 const ANIMATION_TIME = 150;
 
 function FlipCard(props: CompProps) {
-  const { cards, switchCard } = props;
-  const card = cards?.[2] ?? undefined;
-
-  if (!card) return <Loading></Loading>;
+  const { card, switchCard } = props;
 
   const { questionState, setQuestionState, text } = useCardState(card);
 

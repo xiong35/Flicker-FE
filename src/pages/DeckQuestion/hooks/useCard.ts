@@ -71,10 +71,9 @@ export function useCard() {
     });
   }, [!!deck]);
 
-  function switchCard(direction: "forward" | "backward") {
+  async function switchCard(direction: "forward" | "backward") {
     // return console.log("# useCard", { direction });
     if (!deck || !cardQueue) return;
-    console.log("# useCard", "switchCard", { deck, cardQueue });
 
     if (deck.cards.length <= 5) {
       /**
@@ -108,18 +107,18 @@ export function useCard() {
         if (!existingIDs.has(nextQuestionID)) break;
       }
 
-      getCards({
+      const cards = await getCards({
         ids: [nextQuestionID],
         deckID,
-      }).then((cards) => {
-        if (!cards) return;
-        const newCardQueue =
-          direction === "forward"
-            ? [...cardQueue.slice(1, 5), ...cards]
-            : [...cards, ...cardQueue.slice(0, -1)];
-
-        setCardQueue(newCardQueue as CardQueue);
       });
+
+      if (!cards) return;
+      const newCardQueue =
+        direction === "forward"
+          ? [...cardQueue.slice(1, 5), ...cards]
+          : [...cards, ...cardQueue.slice(0, -1)];
+
+      setCardQueue(newCardQueue as CardQueue);
     }
   }
 
