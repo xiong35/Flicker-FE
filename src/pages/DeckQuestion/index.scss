@@ -1,0 +1,34 @@
+@use "sass:math";
+
+$queue-w: 450%;
+
+.deck_question {
+  overflow: hidden;
+  position: relative;
+  &-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 6%;
+
+    background: linear-gradient(90deg, var(--bg), transparent);
+
+    &.mask-left {
+      right: 0;
+      left: auto;
+      background: linear-gradient(-90deg, var(--bg), transparent);
+    }
+  }
+
+  &-queue {
+    width: $queue-w;
+    margin-left: math.div($queue-w - 100%, -2);
+    display: flex;
+
+    &-item {
+      width: 20%;
+    }
+  }
+}

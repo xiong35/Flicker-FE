@@ -2,10 +2,10 @@ import "./index.scss";
 
 import { useState } from "react";
 
-import TheTopBar from "../../components/TheTopBar";
-import Comments from "./components/Comments";
-import { useCard } from "./hooks/useCard";
 import useQuestionComp from "./hooks/useQuestionComp";
+import { useCard } from "./hooks/useCard";
+import Comments from "./components/Comments";
+import TheTopBar from "../../components/TheTopBar";
 
 type DeckQuestionProps = {};
 
@@ -17,11 +17,24 @@ function DeckQuestion(props: DeckQuestionProps) {
   console.log("# index", { cardQueue });
 
   return (
-    <>
+    <div className="deck_question">
       <TheTopBar title="学习" />
-      <Comp cards={cardQueue} switchCard={switchCard} />
-      <Comments />
-    </>
+      <div className="deck_question-queue">
+        {cardQueue?.map((card, i) => {
+          if (!card)
+            return <div className="deck_question-queue-item" key={i}></div>;
+          return (
+            <div className="deck_question-queue-item" key={card.id}>
+              <Comp cards={cardQueue} switchCard={switchCard} />
+              <Comments />
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="deck_question-mask mask-left"></div>
+      <div className="deck_question-mask mask-right"></div>
+    </div>
   );
 }
 
