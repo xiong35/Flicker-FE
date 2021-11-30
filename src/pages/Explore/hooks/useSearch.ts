@@ -62,9 +62,7 @@ export function useSearch(
       }, 100);
     };
 
-    window.onscroll = () => {
-      throttled();
-    };
+    window.onscroll = throttled;
 
     return () => clearTimeout(timer);
   }, [page]);
