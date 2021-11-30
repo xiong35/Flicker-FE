@@ -28,7 +28,7 @@ export function useComments(cardID: CardID, deckID: DeckID) {
       cardID,
       deckID,
     }).then((newComments) => {
-      if (!newComments || comments.length === 0) return;
+      if (!newComments || newComments.length === 0) return;
 
       setComments(newComments);
     });
