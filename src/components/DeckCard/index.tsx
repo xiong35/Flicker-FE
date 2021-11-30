@@ -3,26 +3,27 @@ import "./index.scss";
 import { useHistory } from "react-router-dom";
 
 import { useSetup } from "./hooks";
+import { DeckBrief } from "../../models/deck";
 import Star from "../../imgComponents/Star";
 import Fire from "../../imgComponents/Fire";
 
-type DeckCardProps = {};
+type DeckCardProps = {
+  deckBrief: DeckBrief;
+};
 
 function DeckCard(props: DeckCardProps) {
-  const {} = props;
+  const { deckBrief } = props;
   const {} = useSetup();
 
   const history = useHistory();
 
   return (
-    <div className="deck_card" onClick={() => history.push("/deck/213/intro")}>
-      <div className="deck_card-title">title</div>
-      <div className="deck_card-desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-        recusandae, cum dolorum blanditiis error enim illo eum pariatur quam
-        explicabo id impedit esse numquam doloribus aperiam minima hic!
-        Laboriosam, qui?
-      </div>
+    <div
+      className="deck_card"
+      onClick={() => history.push(`/deck/${deckBrief.id}/intro`)}
+    >
+      <div className="deck_card-title">{deckBrief.name}</div>
+      <div className="deck_card-desc">{deckBrief.description}</div>
       <div className="deck_card-footer">
         <div className="deck_card-footer-collected">
           <Star className="deck_card-footer-icon" />

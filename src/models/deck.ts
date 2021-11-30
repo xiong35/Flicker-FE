@@ -2,7 +2,7 @@ import { Card, CardID } from "./card";
 
 export type DeckID = string;
 
-export type Deck = {
+export type DeckBrief = {
   id: DeckID;
 
   /** 名称 */
@@ -12,19 +12,21 @@ export type Deck = {
   description: string;
 
   /**
+   * 整数，可选，访问权限
+   * 0-仅创建者可见，1-所有人可见
+   * 默认为 0
+   */
+  access: 0 | 1;
+};
+
+export type Deck = {
+  /**
    * 模板
    * - 模板一定程度上规定了卡片的样式与布局
    * - 暂定为HTML格式，具体如何设计看前端
    * - 当此字段为空时应使用默认的样式
    */
   template: string;
-
-  /**
-   * 整数，可选，访问权限
-   * 0-仅创建者可见，1-所有人可见
-   * 默认为 0
-   */
-  access: 0 | 1;
 
   /** 包含的卡片 id */
   cards: CardID[];
@@ -40,7 +42,7 @@ export type Deck = {
   /* 整数，创建时间戳 */
   create_time: number;
   /* 整数，访问权限 */
-};
+} & DeckBrief;
 
 export const initDeck: Deck = {
   access: 0,
