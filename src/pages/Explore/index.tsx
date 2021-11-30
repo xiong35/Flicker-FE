@@ -1,20 +1,26 @@
-import './index.scss';
+import "./index.scss";
 
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 
-import { Fab } from '@mui/material';
+import { Button, Fab, TextField } from "@mui/material";
 
-import DeckCard from '../../components/DeckCard';
-import TheBottomTabs from '../../components/TheBottomTabs';
-import AddIcon from '../../imgComponents/AddIcon';
-import { useSetup } from './hooks';
+import { useSearch } from "./hooks/useSearch";
+import { useDecks } from "./hooks/useDecks";
+import Search from "../../imgComponents/Search";
+import AddIcon from "../../imgComponents/AddIcon";
+import TheBottomTabs from "../../components/TheBottomTabs";
+import NoMore from "../../components/NoMore";
+import Empty from "../../components/Empty";
+import DeckCard from "../../components/DeckCard";
 
 type ExploreProps = {};
 
 function Explore(props: ExploreProps) {
   const {} = props;
-  const {} = useSetup();
   const history = useHistory();
+  const { decks, getRandDecks, setDecks } = useDecks();
+  const { doSearch, keyword, setKeyword, isSearching, noMore } =
+    useSearch(setDecks);
 
   return (
     <div className="explore">
@@ -26,11 +32,40 @@ function Explore(props: ExploreProps) {
       >
         <AddIcon className="explore-add-icon" />
       </Fab>
-      <div className="explore-deck_container">
-        {Array.from({ length: 20 }, (v, i) => i).map((i) => (
-          <DeckCard key={i} />
+
+      <TextField
+        className="explore-search m"
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value)}
+        placeholder="输入关键词查找卡片集"
+        onKeyDown={(e) => {
+          e.key === "Enter" && doSearch();
+        }}
+        InputProps={{
+          endAdornment: (
+            <Search onClick={doSearch} className="explore-search-icon"></Search>
+          ),
+        }}
+      ></TextField>
+
+      <div className="explore-decks">
+        {decks.map((deck) => (
+          <DeckCard deckBrief={deck} key={deck.id} />
         ))}
+
+        {decks.length === 0 && <Empty></Empty>}
+        {noMore && <NoMore></NoMore>}
       </div>
+
+      {!isSearching && (
+        <Button
+          className="explore-random_btn m"
+          variant="contained"
+          onClick={getRandDecks}
+        >
+          换一批
+        </Button>
+      )}
       <TheBottomTabs />
     </div>
   );

@@ -1,25 +1,71 @@
-import './index.scss';
+import "./index.scss";
 
-import { Button } from '@mui/material';
+import { Button, TextField } from "@mui/material";
 
-import TheBottomTabs from '../../components/TheBottomTabs';
-import ArrowLeftP from '../../imgComponents/ArrowLeftP';
-import Deck from '../../imgComponents/Deck';
-import NavHome from '../../imgComponents/NavHome';
-import Record from '../../imgComponents/Record';
-import Theme from '../../imgComponents/Theme';
-import { useSetup } from './hooks';
+import { uploadAvatar } from "./utils/uploadAvatar";
+import { useEditName } from "./hooks/useEditName";
+import UserEdit from "../../imgComponents/UserEdit";
+import Theme from "../../imgComponents/Theme";
+import Record from "../../imgComponents/Record";
+import NavHome from "../../imgComponents/NavHome";
+import Deck from "../../imgComponents/Deck";
+import CheckMark from "../../imgComponents/CheckMark";
+import ArrowLeftP from "../../imgComponents/ArrowLeftP";
+import { useSelf } from "../../context/Self/useSelf";
+import TheBottomTabs from "../../components/TheBottomTabs";
 
 type UserProps = {};
 
 function User(props: UserProps) {
   const {} = props;
-  const {} = useSetup();
+
+  const { self, setSelf } = useSelf();
+
+  const { isEditing, newName, startEditing, finishEditing, setNewName } =
+    useEditName();
 
   return (
     <div className="user">
-      <NavHome className="user-avatar" />
-      <div className="user-name">用户名</div>
+      <img
+        src={self.avatar || "https://flicker-static.hust.online/avater/4.svg"}
+        className="user-avatar"
+        alt="头像"
+        onClick={() =>
+          uploadAvatar().then((avatar) => avatar && setSelf({ avatar }))
+        }
+      />
+      <div className="user-name">
+        {isEditing ? (
+          <TextField
+            className="user-name-input m"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key !== "Enter") return;
+              finishEditing();
+            }}
+            onClick={(e) => e.stopPropagation()}
+            autoFocus
+            InputProps={{
+              endAdornment: (
+                <CheckMark
+                  onClick={finishEditing}
+                  className="user-name-input-finish_icon"
+                ></CheckMark>
+              ),
+            }}
+          ></TextField>
+        ) : (
+          <>
+            <div className="user-name-text">{self.username}</div>
+            <UserEdit
+              className="user-name-icon"
+              onClick={startEditing}
+            ></UserEdit>
+          </>
+        )}
+      </div>
+
       <div className="user-menu">
         <div className="user-menu-item">
           <Deck className="user-menu-item-icon scale-110" />

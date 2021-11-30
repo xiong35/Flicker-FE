@@ -10,11 +10,14 @@ export type GetUserReqData = {
  * @returns
  */
 export async function getUserReq(data?: GetUserReqData) {
-  const res = await _request<UserPublic>({
-    url: `/user` + (data?.id ? `/${data.id}` : ""),
-    method: "GET",
-    data,
-  });
+  const res = await _request<UserPublic>(
+    {
+      url: `/user` + (data?.id ? `/${data.id}` : ""),
+      method: "GET",
+      data,
+    },
+    false
+  );
 
   return res;
 }

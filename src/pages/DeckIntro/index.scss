@@ -13,11 +13,17 @@
       color: var(--primary);
     }
 
-    &-data {
+    &-body {
       display: flex;
       align-items: center;
       margin: 0.5rem 0;
       font-size: 0.9rem;
+
+      &-create {
+        &-by {
+          margin-right: 0.5em;
+        }
+      }
 
       &-collection,
       &-hot {
