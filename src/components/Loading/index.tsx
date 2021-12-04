@@ -1,12 +1,8 @@
-
 import "./index.scss";
 
 import { useSetup } from "./hooks";
 
-
-type LoadingProps = {
-  
-};
+type LoadingProps = {};
 
 function Loading(props: LoadingProps) {
   const {} = props;
@@ -14,7 +10,12 @@ function Loading(props: LoadingProps) {
 
   return (
     <div className="loading">
-      Loading
+      <div className="loading-container">
+        <div className="loading-container-item"></div>
+        <div className="loading-container-item"></div>
+        <div className="loading-container-item"></div>
+        <div className="loading-container-item"></div>
+      </div>
     </div>
   );
 }

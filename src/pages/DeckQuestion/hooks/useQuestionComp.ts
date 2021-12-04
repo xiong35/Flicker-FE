@@ -10,7 +10,7 @@ enum QuesType {
 }
 
 export type CompProps = {
-  cards?: CardQueue;
+  card: Card;
   switchCard: (direction: "forward" | "backward") => void;
 };
 

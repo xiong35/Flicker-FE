@@ -9,4 +9,20 @@
       height: 1.5rem;
     }
   }
+
+  &-search.m {
+    display: flex;
+    margin: auto;
+    max-width: 90%;
+    .explore-search-icon {
+      width: 2em;
+      height: 2em;
+      cursor: pointer;
+    }
+  }
+
+  &-random_btn.m {
+    display: flex;
+    margin: 3rem auto;
+  }
 }
