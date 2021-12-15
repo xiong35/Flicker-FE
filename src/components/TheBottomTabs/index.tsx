@@ -1,11 +1,12 @@
-import './index.scss';
+import "./index.scss";
 
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-import NavExplore from '../../imgComponents/NavExplore';
-import NavHome from '../../imgComponents/NavHome';
-import NavUser from '../../imgComponents/NavUser';
-import { useSetup } from './hooks';
+import { useSetup } from "./hooks";
+import NavUser from "../../imgComponents/NavUser";
+import NavHome from "../../imgComponents/NavHome";
+import NavExplore from "../../imgComponents/NavExplore";
+import { useSelf } from "../../context/Self/useSelf";
 
 type TheBottomTabsProps = {};
 
@@ -14,6 +15,7 @@ function TheBottomTabs(props: TheBottomTabsProps) {
   const { activePath } = useSetup();
 
   const history = useHistory();
+  const { self } = useSelf();
 
   return (
     <>
@@ -40,7 +42,13 @@ function TheBottomTabs(props: TheBottomTabsProps) {
           className={`the_bottom_tabs-tab ${
             activePath === "/user" ? "active" : ""
           }`}
-          onClick={() => history.push("/user")}
+          onClick={() => {
+            if (!self.id) {
+              history.push("/login");
+            } else {
+              history.push("/user");
+            }
+          }}
         >
           <NavUser className="the_bottom_tabs-tab-icon" />
           <span className="the_bottom_tabs-tab-text">用户</span>
