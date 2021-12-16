@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../../../models/card";
 import { getCards } from "../../../network/card/getCards";
+import { saveStudyRecord } from "../../../utils/studyRecords/syncRecord";
 import { useDeck } from "../../DeckIntro/hooks/useDeck";
 
 type CardOrNone = Card | undefined;
@@ -74,6 +75,7 @@ export function useCard() {
   async function switchCard(direction: "forward" | "backward") {
     // return console.log("# useCard", { direction });
     if (!deck || !cardQueue) return;
+    saveStudyRecord(deck, cardQueue[2].id, 0);
 
     if (deck.cards.length <= 5) {
       /**
