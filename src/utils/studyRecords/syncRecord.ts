@@ -80,14 +80,15 @@ export function saveStudyRecord(
   // 先将卡组记录下
   addCardID(deck.id);
 
-  const oldDeckRecord = getRecordByDeckID(deck.id);
   const curCardRecord: CardRecord = {
     d: new Date().toLocaleDateString(),
     s: status,
   };
 
+  let oldDeckRecord = getRecordByDeckID(deck.id);
+
   if (!oldDeckRecord) {
-    const record: DeckRecord = {
+    oldDeckRecord = {
       id: deck.id,
       name: deck.name,
       rec: {
@@ -96,22 +97,18 @@ export function saveStudyRecord(
       tot: deck.cards.length,
       l_s_t: Date.now(),
     };
-
-    localStorage.setItem(
-      `${RECORD_PREFIX}-deck-${deck.id}`,
-      JSON.stringify(record)
-    );
   } else {
     oldDeckRecord.rec = {
       ...oldDeckRecord.rec,
       [cardID]: [curCardRecord, ...(oldDeckRecord.rec[cardID] || [])],
     };
-
     oldDeckRecord.l_s_t = Date.now();
-
-    localStorage.setItem(
-      `${RECORD_PREFIX}-deck-${deck.id}`,
-      JSON.stringify(oldDeckRecord)
-    );
   }
+
+  localStorage.setItem(
+    `${RECORD_PREFIX}-deck-${deck.id}`,
+    JSON.stringify(oldDeckRecord)
+  );
+
+  return oldDeckRecord;
 }

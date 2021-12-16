@@ -4,10 +4,11 @@ import { useState } from "react";
 
 import { Tab, Tabs } from "@mui/material";
 
-import { useGetUserCreations } from "./hooks/useGetUserCreation";
-import TheBottomTabs from "../../components/TheBottomTabs";
-import StarDeck from "../../components/StarDeck";
 import DeckCard from "../../components/DeckCard";
+import StarDeck from "../../components/StarDeck";
+import TheBottomTabs from "../../components/TheBottomTabs";
+import { populateDecksWithRecord } from "../../utils/populateDecksWithRecord";
+import { useGetUserCreations } from "./hooks/useGetUserCreation";
 
 type HomeProps = {};
 
@@ -20,7 +21,7 @@ function Home(props: HomeProps) {
   const {} = props;
   const [selectTab, setSelectTab] = useState<TabID>(TabID.collection);
   const { creations } = useGetUserCreations();
-
+  populateDecksWithRecord(creations);
   return (
     <div className="home">
       <Tabs value={selectTab} className="home-tabs">

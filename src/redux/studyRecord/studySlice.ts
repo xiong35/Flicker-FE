@@ -1,38 +1,24 @@
-// import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// import { DeckRecord } from "../../models/study";
-// import { Card } from "../../models/card";
+import { Card } from "../../models/card";
+import { DeckRecord } from "../../models/study";
+import { getAllDeckRecords, saveStudyRecord } from "../../utils/studyRecords/syncRecord";
 
-// // 定义 state 对应类型的初始值
-// const initialState: DeckRecord[] = [];
+// 定义 state 对应类型的初始值
+const initialState: { deckRecords: DeckRecord[] } = { deckRecords: [] };
 
-// export const studySlice = createSlice({
-//   name: "studyReducer",
-//   // createSlice 将会根据 initialState 参数推断 state 的类型
-//   initialState,
-//   reducers: {
-//     // 使用 PayloadAction 类型来声明 action.payload 的内容
-//     learnCard: (
-//       state,
-//       // 用 ConstructorParameters 获取 ToastType 类的第一个参数类型传给 PayloadAction
-//       action: PayloadAction<Card>
-//     ) => {
-//       const toast = {
-//         ...action.payload,
-//       };
-//       state.toasts = [...state.toasts, toast];
-//     },
+export const studySlice = createSlice({
+  name: "studyReducer",
+  // createSlice 将会根据 initialState 参数推断 state 的类型
+  initialState,
+  reducers: {
+    /** 初始化, 从 local storage 中获得所有学习记录 */
+    syncDeckRecords: (state) => {
+      state.deckRecords = getAllDeckRecords();
+    },
+  },
+});
 
-//     removeToast: (state, action: PayloadAction<string>) => {
-//       const toastToRemove = [...state.toasts].findIndex(
-//         (toast) => toast._id === action.payload
-//       );
+export const { syncDeckRecords } = studySlice.actions;
 
-//       state.toasts.splice(toastToRemove, 1);
-//     },
-//   },
-// });
-
-// export const { addToast, removeToast } = toastsSlice.actions;
-
-// export default toastsSlice.reducer;
+export default studySlice.reducer;

@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import studyReducer from "./studyRecord/studySlice";
 import toastsReducer from "./toasts/toastsSlice";
 
 export const store = configureStore({
   reducer: {
     toastsReducer,
+    studyReducer,
   },
 });
 

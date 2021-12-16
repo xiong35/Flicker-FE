@@ -1,19 +1,26 @@
 import "./App.scss";
 
-import { Redirect, Route, Switch } from "react-router-dom";
 import { useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import { getToken } from "./utils/token";
-import { showToast } from "./utils/showToast";
-import { routes } from "./routes";
-import SelfHOC from "./context/Self";
 import Toasts from "./components/Toasts";
+import SelfHOC from "./context/Self";
+import { useAppDispatch } from "./hooks/useAppDispatch";
+import { useAppSelector } from "./hooks/useAppSelector";
+import { syncDeckRecords } from "./redux/studyRecord/studySlice";
+import { routes } from "./routes";
+import { showToast } from "./utils/showToast";
+import { getToken } from "./utils/token";
 
 export default function App() {
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     const token = getToken();
 
     if (!token) showToast("您还没有登录, 请登录以查看所有功能", "warning");
+
+    dispatch(syncDeckRecords());
   }, []);
 
   return (
