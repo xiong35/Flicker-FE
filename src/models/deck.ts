@@ -17,6 +17,13 @@ export type DeckBrief = {
    * 默认为 0
    */
   access: 0 | 1;
+
+  /** 字符串，收藏数量 */
+  favorite_count: string;
+  /** 字符串，访问数量 */
+  visit_count: string;
+  /** 整数，创建时间戳 */
+  create_time: number;
 };
 
 export type Deck = {
@@ -31,17 +38,12 @@ export type Deck = {
   /** 包含的卡片 id */
   cards: CardID[];
 
-  /* 字符串，创建者id */
+  /** 字符串，创建者id */
   owner_id: string;
-  /* 字符串，创建者用户名 */
+  /** 字符串，创建者用户名 */
   owner_name: string;
-  /* 字符串，收藏数量 */
-  favorite_count: string;
-  /* 字符串，访问数量 */
-  visit_count: string;
-  /* 整数，创建时间戳 */
-  create_time: number;
-  /* 整数，访问权限 */
+  /** 布尔值，是否被当前登录用户喜欢 */
+  is_favorite: boolean;
 } & DeckBrief;
 
 export const initDeck: Deck = {
@@ -56,4 +58,5 @@ export const initDeck: Deck = {
   owner_id: "",
   owner_name: "",
   visit_count: "0",
+  is_favorite: false,
 };

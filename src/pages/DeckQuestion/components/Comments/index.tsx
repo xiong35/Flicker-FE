@@ -8,6 +8,7 @@ import Empty from "../../../../components/Empty";
 import Discuss from "../../../../imgComponents/Discuss";
 import Send from "../../../../imgComponents/Send";
 import { CardID } from "../../../../models/card";
+import { dateFormat } from "../../../../utils/dateFormat";
 import { useAddComment } from "./hooks/useAddComment";
 import { useComments } from "./hooks/useComments";
 
@@ -52,24 +53,28 @@ export default function Comments(props: CommentProps) {
           }}
         />
         <div className="comments-list">
-          {comments.map((comment) => (
-            <div className="comments-list-comment" key={comment.id}>
-              <div className="comments-list-comment-user">
-                <Avatar
-                  className="comments-list-comment-user-avatar"
-                  src={comment.owner.avatar}
-                />
-                <div className="comments-list-comment-user-name">
-                  {comment.owner.username}
+          {comments
+            .sort((c1, c2) => parseInt(c2.lastupdate) - parseInt(c1.lastupdate))
+            .map((comment) => (
+              <div className="comments-list-comment" key={comment.id}>
+                <div className="comments-list-comment-user">
+                  <Avatar
+                    className="comments-list-comment-user-avatar"
+                    src={comment.owner.avatar}
+                  />
+                  <div className="comments-list-comment-user-name">
+                    {comment.owner.username}
+                  </div>
+                  <div className="spacer"></div>
+                  <div className="comments-list-comment-user-time">
+                    {dateFormat(comment.lastupdate)}
+                  </div>
                 </div>
-                <div className="spacer"></div>
-                <div className="comments-list-comment-user-time">2020/1/1</div>
+                <div className="comments-list-comment-content">
+                  {comment.comment}
+                </div>
               </div>
-              <div className="comments-list-comment-content">
-                {comment.comment}
-              </div>
-            </div>
-          ))}
+            ))}
           {comments.length === 0 && <Empty></Empty>}
         </div>
       </div>

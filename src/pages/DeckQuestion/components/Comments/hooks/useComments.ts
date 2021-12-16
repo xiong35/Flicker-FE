@@ -37,7 +37,12 @@ export function useComments(cardID: CardID, deckID: DeckID) {
   const { self } = useSelf();
   function addSelfComment(content: string) {
     setComments([
-      { comment: content, id: Date.now().toString(), owner: self },
+      {
+        comment: content,
+        id: Date.now().toString(),
+        owner: self,
+        lastupdate: (Date.now() / 1000).toString(),
+      },
       ...comments,
     ]);
   }

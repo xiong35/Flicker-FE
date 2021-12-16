@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 
-import { Deck } from "../../../models/deck";
 import { getUserCreationReq } from "../../../network/user/getUserCreation";
+import { Deck } from "../../../models/deck";
 
-export const useGetUserCreation = () => {
-  const [creation, setCreation] = useState<Deck[]>([]);
+export const useGetUserCreations = () => {
+  const [creations, setCreations] = useState<Deck[]>([]);
 
-  const getCreation = async () => {
+  const getCreations = async () => {
     const res = await getUserCreationReq();
     if (!res) return;
-    setCreation(res);
+    setCreations(res);
   };
 
   useEffect(() => {
-    getCreation();
+    getCreations();
   }, []);
 
-  return { creation };
+  return { creations };
 };
