@@ -4,10 +4,12 @@ import { useState } from "react";
 
 import { Tab, Tabs } from "@mui/material";
 
-import { useGetUserCreations } from "./hooks/useGetUserCreation";
-import TheBottomTabs from "../../components/TheBottomTabs";
-import StarDeck from "../../components/StarDeck";
 import DeckCard from "../../components/DeckCard";
+import Empty from "../../components/Empty";
+import StarDeck from "../../components/StarDeck";
+import TheBottomTabs from "../../components/TheBottomTabs";
+import { useGetUserCollections } from "./hooks/useGetUserCollections";
+import { useGetUserCreations } from "./hooks/useGetUserCreation";
 
 type HomeProps = {};
 
@@ -20,6 +22,7 @@ function Home(props: HomeProps) {
   const {} = props;
   const [selectTab, setSelectTab] = useState<TabID>(TabID.collection);
   const { creations } = useGetUserCreations();
+  const { collections } = useGetUserCollections();
 
   return (
     <div className="home">
@@ -29,12 +32,28 @@ function Home(props: HomeProps) {
       </Tabs>
       <div className="home-deck_container">
         {selectTab === TabID.creation &&
-          creations.map((creation, i) => (
-            <StarDeck
-              deck={creation}
-              key={creation.id}
-              progress={~~(Math.random() * 100)}
-            />
+          (creations.length ? (
+            creations.map((creation, i) => (
+              <StarDeck
+                deck={creation}
+                key={creation.id}
+                progress={~~(Math.random() * 100)}
+              />
+            ))
+          ) : (
+            <Empty />
+          ))}
+        {selectTab === TabID.collection &&
+          (collections.length ? (
+            collections.map((collection, i) => (
+              <StarDeck
+                deck={collection}
+                key={collection.id}
+                progress={~~(Math.random() * 100)}
+              />
+            ))
+          ) : (
+            <Empty />
           ))}
       </div>
       <TheBottomTabs />

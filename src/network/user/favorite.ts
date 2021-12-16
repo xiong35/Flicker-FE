@@ -12,7 +12,7 @@ export type ChangeFavoriteReqData = {
  */
 export async function changeFavoriteReq(data: ChangeFavoriteReqData) {
   const res = await _request({
-    url: "/favorite",
+    url: "/user/favorite",
     method: "POST",
     data,
   });
@@ -22,7 +22,7 @@ export async function changeFavoriteReq(data: ChangeFavoriteReqData) {
 
 export async function getFavoriteReq() {
   const res = await _request<Deck[]>({
-    url: "/favorite",
+    url: "/user/favorite",
     method: "GET",
   });
 
