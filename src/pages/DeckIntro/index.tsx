@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 
 import Loading from "../../components/Loading";
 import TheTopBar from "../../components/TheTopBar";
+import { useSelf } from "../../context/Self/useSelf";
 import Fire from "../../imgComponents/Fire";
 import Star from "../../imgComponents/Star";
 import { dateFormat } from "../../utils/dateFormat";
@@ -16,7 +17,8 @@ type DeckIntroProps = {};
 function DeckIntro(props: DeckIntroProps) {
   const {} = props;
   let { id } = useParams<{ id: string }>();
-  const { deck, switchFavorite } = useDeck(id);
+  const { deck, switchFavorite, delDeck } = useDeck(id);
+  const { self } = useSelf();
 
   const history = useHistory();
   function jumpToQuestion() {
@@ -83,9 +85,11 @@ function DeckIntro(props: DeckIntroProps) {
           >
             {deck.is_favorite ? "已收藏" : "收藏"}
           </Button>
-          <Button variant="outlined" color="error">
-            删除
-          </Button>
+          {deck.owner_id === self.id && (
+            <Button variant="outlined" color="error" onClick={delDeck}>
+              删除
+            </Button>
+          )}
         </div>
       </div>
     </div>
