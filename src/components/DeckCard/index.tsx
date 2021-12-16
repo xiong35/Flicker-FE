@@ -2,11 +2,12 @@ import "./index.scss";
 
 import { useHistory } from "react-router-dom";
 
-import { useSetup } from "./hooks";
-import { dateFormat } from "../../utils/dateFormat";
-import { DeckBrief } from "../../models/deck";
-import Star from "../../imgComponents/Star";
 import Fire from "../../imgComponents/Fire";
+import Star from "../../imgComponents/Star";
+import { DeckBrief } from "../../models/deck";
+import { dateFormat } from "../../utils/dateFormat";
+import { openNewTab } from "../../utils/openNewTab";
+import { useSetup } from "./hooks";
 
 type DeckCardProps = {
   deckBrief: DeckBrief;
@@ -21,7 +22,8 @@ function DeckCard(props: DeckCardProps) {
   return (
     <div
       className="deck_card"
-      onClick={() => history.push(`/deck/${deckBrief.id}/intro`)}
+      onClick={() => openNewTab({ path: `/deck/${deckBrief.id}/intro` })}
+      // onClick={() => history.push(`/deck/${deckBrief.id}/intro`)}
     >
       <div className="deck_card-title">{deckBrief.name}</div>
       <div className="deck_card-desc">{deckBrief.description}</div>
