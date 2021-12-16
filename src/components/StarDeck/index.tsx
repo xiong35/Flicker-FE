@@ -1,10 +1,10 @@
 import "./index.scss";
 
-import { Deck } from "../../models/deck";
+import { DeckMini } from "../../models/deck";
 
 type StarDeckProps = {
   progress: number; // 学习进度，进度条百分比
-  deck: Deck;
+  deck: DeckMini;
 };
 
 export default function StarDeck(props: StarDeckProps) {
