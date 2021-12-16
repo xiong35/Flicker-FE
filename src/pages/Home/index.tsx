@@ -4,10 +4,10 @@ import { useState } from "react";
 
 import { Tab, Tabs } from "@mui/material";
 
-import DeckCard from "../../components/DeckCard";
-import StarDeck from "../../components/StarDeck";
+import { useGetUserCreations } from "./hooks/useGetUserCreation";
 import TheBottomTabs from "../../components/TheBottomTabs";
-import { useGetUserCreation } from "./hooks/useGetUserCreation";
+import StarDeck from "../../components/StarDeck";
+import DeckCard from "../../components/DeckCard";
 
 type HomeProps = {};
 
@@ -19,7 +19,7 @@ enum TabID {
 function Home(props: HomeProps) {
   const {} = props;
   const [selectTab, setSelectTab] = useState<TabID>(TabID.collection);
-  const { creation } = useGetUserCreation();
+  const { creations } = useGetUserCreations();
 
   return (
     <div className="home">
@@ -28,12 +28,14 @@ function Home(props: HomeProps) {
         <Tab label="我的创建" onClick={() => setSelectTab(TabID.creation)} />
       </Tabs>
       <div className="home-deck_container">
-        {(selectTab === TabID.collection
-          ? Array.from({ length: 20 })
-          : creation
-        ).map((_, i) => (
-          <StarDeck key={i} progress={~~(Math.random() * 100)} />
-        ))}
+        {selectTab === TabID.creation &&
+          creations.map((creation, i) => (
+            <StarDeck
+              deck={creation}
+              key={creation.id}
+              progress={~~(Math.random() * 100)}
+            />
+          ))}
       </div>
       <TheBottomTabs />
     </div>
