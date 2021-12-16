@@ -4,19 +4,19 @@ import { useHistory, useParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
 
-import { useDeck } from "./hooks/useDeck";
-import { dateFormat } from "../../utils/dateFormat";
-import Star from "../../imgComponents/Star";
-import Fire from "../../imgComponents/Fire";
-import TheTopBar from "../../components/TheTopBar";
 import Loading from "../../components/Loading";
+import TheTopBar from "../../components/TheTopBar";
+import Fire from "../../imgComponents/Fire";
+import Star from "../../imgComponents/Star";
+import { dateFormat } from "../../utils/dateFormat";
+import { useDeck } from "./hooks/useDeck";
 
 type DeckIntroProps = {};
 
 function DeckIntro(props: DeckIntroProps) {
   const {} = props;
   let { id } = useParams<{ id: string }>();
-  const { deck } = useDeck(id);
+  const { deck, switchFavorite } = useDeck(id);
 
   const history = useHistory();
   function jumpToQuestion() {
@@ -76,8 +76,12 @@ function DeckIntro(props: DeckIntroProps) {
       <div className="deck_intro-manage deck_intro-action_container">
         <h4>操作</h4>
         <div className="deck_intro-action_container-actions">
-          <Button variant="outlined" color="secondary">
-            收藏
+          <Button
+            variant={deck.is_favorite ? "contained" : "outlined"}
+            color="secondary"
+            onClick={switchFavorite}
+          >
+            {deck.is_favorite ? "已收藏" : "收藏"}
           </Button>
           <Button variant="outlined" color="error">
             删除
