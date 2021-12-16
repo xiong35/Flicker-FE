@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../../../models/card";
+import { CardRecord } from "../../../models/study";
 import { getCards } from "../../../network/card/getCards";
 import { saveStudyRecord } from "../../../utils/studyRecords/syncRecord";
 import { useDeck } from "../../DeckIntro/hooks/useDeck";
+import { CompProps } from "./useQuestionComp";
 
 type CardOrNone = Card | undefined;
 export type CardQueue = [CardOrNone, CardOrNone, Card, CardOrNone, CardOrNone];
@@ -72,10 +74,10 @@ export function useCard() {
     });
   }, [!!deck]);
 
-  async function switchCard(direction: "forward" | "backward") {
+  const switchCard: CompProps["switchCard"] = async (direction, status = 0) => {
     // return console.log("# useCard", { direction });
     if (!deck || !cardQueue) return;
-    saveStudyRecord(deck, cardQueue[2].id, 0);
+    saveStudyRecord(deck, cardQueue[2].id, status);
 
     if (deck.cards.length <= 5) {
       /**
@@ -122,7 +124,7 @@ export function useCard() {
 
       setCardQueue(newCardQueue as CardQueue);
     }
-  }
+  };
 
-  return { cardQueue, switchCard };
+  return { cardQueue, switchCard, deck };
 }

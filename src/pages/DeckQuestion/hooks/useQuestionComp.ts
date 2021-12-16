@@ -1,8 +1,9 @@
-import { CardQueue } from "./useCard";
-import FlipCard from "../components/FlipCard";
-import FillIn from "../components/FillIn";
-import { Card } from "../../../models/card";
 import { useQuery } from "../../../hooks/useQuery";
+import { Card } from "../../../models/card";
+import { CardRecord } from "../../../models/study";
+import FillIn from "../components/FillIn";
+import FlipCard from "../components/FlipCard";
+import { CardQueue } from "./useCard";
 
 enum QuesType {
   FillIn = "fill-in",
@@ -11,7 +12,10 @@ enum QuesType {
 
 export type CompProps = {
   card: Card;
-  switchCard: (direction: "forward" | "backward") => void;
+  switchCard: (
+    direction: "forward" | "backward",
+    status?: CardRecord["s"]
+  ) => Promise<void>;
 };
 
 const type2Comp: Record<QuesType, (props: CompProps) => JSX.Element> = {

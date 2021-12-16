@@ -1,10 +1,10 @@
 import "./index.scss";
 
-import { useCardState } from "./hooks/useCardState";
-import Comments from "../Comments";
-import { CompProps } from "../../hooks/useQuestionComp";
-import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
 import Loading from "../../../../components/Loading";
+import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
+import { CompProps } from "../../hooks/useQuestionComp";
+import Comments from "../Comments";
+import { useCardState } from "./hooks/useCardState";
 
 const ANIMATION_TIME = 150;
 
@@ -37,7 +37,16 @@ function FlipCard(props: CompProps) {
           className="dq-flip_card-actions-icon"
           onClick={() => switchCard("backward")}
         />
-        <div className="dq-flip_card-actions-process">{`2/10`}</div>
+
+        <div className="dq-flip_card-actions-pass">
+          <span
+            onClick={() => switchCard("forward", 1)}
+            className="dq-flip_card-actions-pass-text"
+          >
+            &nbsp;PASS&nbsp;
+          </span>
+        </div>
+
         <ArrowLeftCircle
           className="dq-flip_card-actions-icon rotate"
           onClick={() => switchCard("forward")}

@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-import { CardQueue } from "./useCard";
 import { wait } from "../../../utils/wait";
+import { CardQueue } from "./useCard";
+import { CompProps } from "./useQuestionComp";
 
 export function useAnimate(
-  switchCard: (direction: "forward" | "backward") => Promise<any>,
+  switchCard: CompProps["switchCard"],
   cardQueue?: CardQueue
 ) {
   const [position, setPosition] = useState<"mid" | "left" | "right">("mid");
@@ -20,7 +21,7 @@ export function useAnimate(
     return () => setPosition("mid");
   }
 
-  async function switchWithAnim(direction: "forward" | "backward") {
+  const switchWithAnim: CompProps["switchCard"] = async (direction, status) => {
     if (!cardQueue) return;
     if (direction === "forward") {
       if (!cardQueue[3]) return;
@@ -32,11 +33,11 @@ export function useAnimate(
     const setToMid = await animateTo(direction); // 若滚动成功返回整个操作结束的回调(即设置会中间位置)
     if (setToMid) {
       // 等待更新卡片和卡片队列
-      await switchCard(direction);
+      await switchCard(direction, status);
       // 网络请求结束后数据已经变化, 设置回中间位置即可
       setToMid();
     }
-  }
+  };
 
   return { position, switchWithAnim };
 }
