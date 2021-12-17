@@ -13,7 +13,8 @@ type StarDeckProps = {
 export default function StarDeck(props: StarDeckProps) {
   const { record, deck } = props;
 
-  const progress = (record && Math.round(record.learnt / record.total)) || 0;
+  const progress =
+    (record && Math.round((record.learnt * 100) / record.total)) || 0;
 
   return (
     <div

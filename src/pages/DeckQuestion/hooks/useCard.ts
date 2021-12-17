@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../../../models/card";
 import { getCards } from "../../../network/card/getCards";
-import { addStudyRecord } from "../../../utils/studyRecords/syncRecord";
 import { useDeck } from "../../DeckIntro/hooks/useDeck";
 import { getNextNQuestion } from "../utils/recommand";
 import { CompProps } from "./useQuestionComp";
@@ -107,6 +106,8 @@ export function useCard() {
         direction === "forward"
           ? [...cardQueue.slice(1, 5), card]
           : [card, ...cardQueue.slice(0, -1)];
+
+      console.log("# useCard", { newCardQueue });
 
       setCardQueue(newCardQueue as CardQueue);
     }
