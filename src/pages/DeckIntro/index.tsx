@@ -7,8 +7,12 @@ import Button from "@mui/material/Button";
 import Loading from "../../components/Loading";
 import TheTopBar from "../../components/TheTopBar";
 import { useSelf } from "../../context/Self/useSelf";
+import Browse from "../../imgComponents/Browse";
+import Cards from "../../imgComponents/Cards";
 import Fire from "../../imgComponents/Fire";
 import Star from "../../imgComponents/Star";
+import UserEdit from "../../imgComponents/UserEdit";
+import Write from "../../imgComponents/Write";
 import { dateFormat } from "../../utils/dateFormat";
 import { useDeck } from "./hooks/useDeck";
 
@@ -54,25 +58,33 @@ function DeckIntro(props: DeckIntroProps) {
         <div className="deck_intro-info-brief">{deck.description}</div>
       </div>
 
-      <div className="deck_intro-some_ques">
-        <div className="deck_intro-some_ques-title">题目预览</div>
-      </div>
-
       <div className="deck_intro-study deck_intro-action_container">
-        <h4>学习</h4>
+        <h4>开始学习</h4>
+        <div className="deck_intro-study-process">
+          当前学习进度：已学会3题，仍需学习10题
+        </div>
         <div className="deck_intro-action_container-actions">
-          <Button onClick={jumpToQuestion} variant="outlined">
+          <div
+            className="deck_intro-action_container-actions-button"
+            onClick={jumpToQuestion}
+          >
+            <Browse className="deck_intro-action_container-actions-button-icon scale-110" />
             浏览
-          </Button>
-          <Button onClick={jumpToQuestion} variant="outlined">
+          </div>
+          <div
+            className="deck_intro-action_container-actions-button"
+            onClick={jumpToQuestion}
+          >
+            <Cards className="deck_intro-action_container-actions-button-icon" />
             单词卡
-          </Button>
-          <Button onClick={jumpToQuestion} variant="outlined">
+          </div>
+          <div
+            className="deck_intro-action_container-actions-button"
+            onClick={jumpToQuestion}
+          >
+            <Write className="deck_intro-action_container-actions-button-icon scale-90" />
             填空
-          </Button>
-          <Button onClick={jumpToQuestion} variant="outlined">
-            配对
-          </Button>
+          </div>
         </div>
       </div>
       <div className="deck_intro-manage deck_intro-action_container">
