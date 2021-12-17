@@ -66,7 +66,7 @@ export async function getRecordMapByIds(ids: DeckID[]) {
 
   const results = await Promise.all(promises);
 
-  const returnMap: Record<DeckID, DeckRecord | null> = {};
+  const returnMap: Record<DeckID, DeckRecordMap | null> = {};
 
   results.forEach((result, index) => {
     const id = ids[index];

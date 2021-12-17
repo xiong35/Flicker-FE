@@ -1,10 +1,10 @@
 import { useHistory } from "react-router-dom";
 
-import { emailValidator, passwordValidator } from "../../../utils/validators";
-import { setToken } from "../../../utils/token";
-import { showToast } from "../../../utils/showToast";
-import { loginReq } from "../../../network/user/login";
 import { useForm } from "../../../hooks/useForm";
+import { loginReq } from "../../../network/user/login";
+import { showToast } from "../../../utils/showToast";
+import { setToken } from "../../../utils/token";
+import { emailValidator, passwordValidator } from "../../../utils/validators";
 
 export function useSetup() {
   const history = useHistory();
@@ -26,8 +26,8 @@ export function useSetup() {
 
     showToast("登录成功！", "success");
 
-    history.push("/");
     setToken({ value: token });
+    history.push("/");
   }
 
   return {

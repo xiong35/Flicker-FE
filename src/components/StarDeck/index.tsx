@@ -1,15 +1,19 @@
 import "./index.scss";
 
 import { DeckMini } from "../../models/deck";
+import { DeckRecordMap } from "../../models/study";
+import { dateFormat } from "../../utils/dateFormat";
 import { openNewTab } from "../../utils/openNewTab";
 
 type StarDeckProps = {
-  progress: number; // 学习进度，进度条百分比
   deck: DeckMini;
+  record?: DeckRecordMap | null;
 };
 
 export default function StarDeck(props: StarDeckProps) {
-  const { progress, deck } = props;
+  const { record, deck } = props;
+
+  const progress = (record && Math.round(record.learnt / record.total)) || 0;
 
   return (
     <div
@@ -22,7 +26,13 @@ export default function StarDeck(props: StarDeckProps) {
         </div>
       )}
       <div className="star_deck-title">{deck.name}</div>
-      <div className="star_deck-last">上次学习：2021/11/15</div>
+      {record && record.last_study ? (
+        <div className="star_deck-last">
+          上次学习：{dateFormat(record.last_study)}
+        </div>
+      ) : (
+        <div className="star_deck-last">暂未学习</div>
+      )}
     </div>
   );
 }
