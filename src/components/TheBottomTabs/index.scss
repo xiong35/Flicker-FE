@@ -18,6 +18,16 @@ $height: 42px;
 
   cursor: pointer;
   border-top: 1px solid var(--bg);
+  @media (min-width: ($page-max-width + 200px)) {
+    flex-direction: column;
+    top: 2rem;
+    width: 4rem;
+    height: 15rem;
+    right: auto;
+    left: 2rem;
+    bottom: auto;
+    box-shadow: 2px 2px 15px 0 #00000024;
+  }
 
   &-tab {
     flex: 1;
@@ -31,8 +41,15 @@ $height: 42px;
       opacity: 0.6;
     }
 
+    &.active {
+      @media (min-width: ($page-max-width + 200px)) {
+        background-color: var(--bg);
+      }
+    }
+
     &-icon {
       width: 20px;
+      height: 20px;
       margin-bottom: 4px;
     }
     &-text {

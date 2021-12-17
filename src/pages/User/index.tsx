@@ -2,17 +2,17 @@ import "./index.scss";
 
 import { Button, TextField } from "@mui/material";
 
-import { uploadAvatar } from "./utils/uploadAvatar";
-import { useEditName } from "./hooks/useEditName";
-import UserEdit from "../../imgComponents/UserEdit";
-import Theme from "../../imgComponents/Theme";
-import Record from "../../imgComponents/Record";
-import NavHome from "../../imgComponents/NavHome";
-import Deck from "../../imgComponents/Deck";
-import CheckMark from "../../imgComponents/CheckMark";
-import ArrowLeftP from "../../imgComponents/ArrowLeftP";
-import { useSelf } from "../../context/Self/useSelf";
 import TheBottomTabs from "../../components/TheBottomTabs";
+import { useSelf } from "../../context/Self/useSelf";
+import ArrowLeftP from "../../imgComponents/ArrowLeftP";
+import CheckMark from "../../imgComponents/CheckMark";
+import Deck from "../../imgComponents/Deck";
+import NavHome from "../../imgComponents/NavHome";
+import Record from "../../imgComponents/Record";
+import Theme from "../../imgComponents/Theme";
+import UserEdit from "../../imgComponents/UserEdit";
+import { useEditName } from "./hooks/useEditName";
+import { uploadAvatar } from "./utils/uploadAvatar";
 
 type UserProps = {};
 
@@ -86,7 +86,19 @@ function User(props: UserProps) {
           <ArrowLeftP className="user-menu-item-icon rotate arrow" />
         </div>
       </div>
-      <Button variant="outlined" className="user-logout">
+      <div className="user-menu">
+        <div className="user-menu-item">
+          <Deck className="user-menu-item-icon scale-110" />
+          清除本地学习记录
+          <div className="spacer"></div>
+        </div>
+        <div className="user-menu-item">
+          <Record className="user-menu-item-icon" />
+          同步本地记录到云端
+          <div className="spacer"></div>
+        </div>
+      </div>
+      <Button variant="contained" className="user-logout" color="error">
         退出
       </Button>
       {/* <div className="user-logout">退出</div> */}

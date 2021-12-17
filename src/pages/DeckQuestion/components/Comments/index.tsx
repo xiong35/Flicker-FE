@@ -4,13 +4,13 @@ import { useParams } from "react-router-dom";
 
 import { Avatar, TextField } from "@mui/material";
 
-import { useComments } from "./hooks/useComments";
-import { useAddComment } from "./hooks/useAddComment";
-import { dateFormat } from "../../../../utils/dateFormat";
-import { CardID } from "../../../../models/card";
-import Send from "../../../../imgComponents/Send";
-import Discuss from "../../../../imgComponents/Discuss";
 import Empty from "../../../../components/Empty";
+import Discuss from "../../../../imgComponents/Discuss";
+import Send from "../../../../imgComponents/Send";
+import { CardID } from "../../../../models/card";
+import { dateFormat } from "../../../../utils/dateFormat";
+import { useAddComment } from "./hooks/useAddComment";
+import { useComments } from "./hooks/useComments";
 
 type CommentProps = {
   id: CardID;
@@ -50,9 +50,6 @@ export default function Comments(props: CommentProps) {
             endAdornment: (
               <Send onClick={addComment} className="comments-input-icon" />
             ),
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") addComment();
           }}
         />
         <div className="comments-list">

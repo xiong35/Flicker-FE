@@ -1,6 +1,7 @@
 import "./index.scss";
 
 import { DeckMini } from "../../models/deck";
+import { openNewTab } from "../../utils/openNewTab";
 
 type StarDeckProps = {
   progress: number; // 学习进度，进度条百分比
@@ -11,7 +12,10 @@ export default function StarDeck(props: StarDeckProps) {
   const { progress, deck } = props;
 
   return (
-    <div className="star_deck">
+    <div
+      className="star_deck"
+      onClick={() => openNewTab({ path: `/deck/${deck.id}/intro` })}
+    >
       {progress > 1 && (
         <div className="star_deck-percent" style={{ width: progress + "%" }}>
           <div className="star_deck-percent-text">{progress + "%"}</div>
