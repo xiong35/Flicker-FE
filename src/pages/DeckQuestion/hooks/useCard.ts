@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../../../models/card";
 import { getCards } from "../../../network/card/getCards";
 import { addStudyRecord } from "../../../utils/studyRecords/syncRecord";
 import { useDeck } from "../../DeckIntro/hooks/useDeck";
+import { getNextNQuestion } from "../utils/recommand";
 import { CompProps } from "./useQuestionComp";
 
 type CardOrNone = Card | undefined;
@@ -20,8 +21,9 @@ export function useCard() {
   const { deckID } = useParams<{ deckID: string }>();
   const { deck } = useDeck(deckID);
 
+  const questionLeft = useRef<Card[]>([]);
+
   useEffect(() => {
-    // return;
     if (!deck) return;
 
     /** 初始化的时候需要得到的问题们 */
@@ -32,8 +34,6 @@ export function useCard() {
       // 开头三道题和结尾两道
       idToFetch = [...deck.cards.slice(-2), ...deck.cards.slice(0, 3)];
     }
-
-    console.log("# useCard", { idToFetch, deck });
 
     getCards({
       ids: idToFetch,
@@ -96,28 +96,17 @@ export function useCard() {
 
       setCardQueue(newCardQueue);
     } else {
-      const existingIDs = new Set(cardQueue.map((c) => c?.id));
-
-      // 随机出一个没出现过的 ID 作为下一题
-      let nextQuestionID: string = "";
-      let maxIter = 20;
-      while (maxIter--) {
-        const randIndex = Math.floor(Math.random() * deck.cards.length);
-        nextQuestionID = deck.cards[randIndex];
-
-        if (!existingIDs.has(nextQuestionID)) break;
+      if (questionLeft.current.length === 0) {
+        questionLeft.current = await getNextNQuestion(deck);
+        if (questionLeft.current.length === 0) return;
       }
 
-      const cards = await getCards({
-        ids: [nextQuestionID],
-        deckID,
-      });
+      const card = questionLeft.current.splice(0, 1)[0];
 
-      if (!cards) return;
       const newCardQueue =
         direction === "forward"
-          ? [...cardQueue.slice(1, 5), ...cards]
-          : [...cards, ...cardQueue.slice(0, -1)];
+          ? [...cardQueue.slice(1, 5), card]
+          : [card, ...cardQueue.slice(0, -1)];
 
       setCardQueue(newCardQueue as CardQueue);
     }

@@ -26,7 +26,7 @@ export function useBeforeEnter() {
     }
   }, [history.location]);
 
-  useEffect(() => {
-    if (history.location.pathname === "/home") dispatch(syncDeckRecords());
-  }, [history.location]);
+  // useEffect(() => {
+  //   if (history.location.pathname === "/home") dispatch(syncDeckRecords());
+  // }, [history.location]);
 }
