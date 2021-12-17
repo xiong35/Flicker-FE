@@ -64,13 +64,24 @@ $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 1rem;
 
-    &-process {
-      margin: 0 4rem;
+    &-pass {
+      flex: 1;
+      font-size: 2.5rem;
+      font-weight: bold;
+      font-style: italic;
+      text-decoration: line-through;
+      text-align: center;
+
+      &-text {
+        cursor: pointer;
+        user-select: none;
+      }
     }
 
     &-icon {
-      width: 1.7em;
+      width: 2.3rem;
       line-height: 0;
       cursor: pointer;
     }

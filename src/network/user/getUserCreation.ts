@@ -1,4 +1,4 @@
-import { Deck } from "../../models/deck";
+import { DeckMini } from "../../models/deck";
 import _request from "../_request";
 
 /**
@@ -6,7 +6,7 @@ import _request from "../_request";
  * @returns
  */
 export async function getUserCreationReq() {
-  const res = await _request<Deck[]>({
+  const res = await _request<DeckMini[]>({
     url: "/user/created",
     method: "GET",
   });

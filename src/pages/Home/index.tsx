@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { Tab, Tabs } from "@mui/material";
 
-import DeckCard from "../../components/DeckCard";
 import Empty from "../../components/Empty";
 import StarDeck from "../../components/StarDeck";
 import TheBottomTabs from "../../components/TheBottomTabs";
@@ -21,8 +20,8 @@ enum TabID {
 function Home(props: HomeProps) {
   const {} = props;
   const [selectTab, setSelectTab] = useState<TabID>(TabID.collection);
-  const { creations } = useGetUserCreations();
-  const { collections } = useGetUserCollections();
+  const { creations, creationRecordMap } = useGetUserCreations();
+  const { collections, collectionRecordMap } = useGetUserCollections();
 
   return (
     <div className="home">
@@ -37,7 +36,7 @@ function Home(props: HomeProps) {
               <StarDeck
                 deck={creation}
                 key={creation.id}
-                progress={~~(Math.random() * 100)}
+                record={creationRecordMap[creation.id]}
               />
             ))
           ) : (
@@ -49,7 +48,7 @@ function Home(props: HomeProps) {
               <StarDeck
                 deck={collection}
                 key={collection.id}
-                progress={~~(Math.random() * 100)}
+                record={collectionRecordMap[collection.id]}
               />
             ))
           ) : (

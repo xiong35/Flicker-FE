@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-import { CardQueue } from "./useCard";
+import { showToast } from "../../../utils/showToast";
 import { wait } from "../../../utils/wait";
+import { CardQueue } from "./useCard";
+import { CompProps } from "./useQuestionComp";
 
 export function useAnimate(
-  switchCard: (direction: "forward" | "backward") => Promise<any>,
+  switchCard: CompProps["switchCard"],
   cardQueue?: CardQueue
 ) {
   const [position, setPosition] = useState<"mid" | "left" | "right">("mid");
@@ -20,12 +22,18 @@ export function useAnimate(
     return () => setPosition("mid");
   }
 
-  async function switchWithAnim(direction: "forward" | "backward") {
+  const switchWithAnim: CompProps["switchCard"] = async (direction) => {
     if (!cardQueue) return;
     if (direction === "forward") {
-      if (!cardQueue[3]) return;
+      if (!cardQueue[3]) {
+        showToast("到头了！", "warning");
+        return;
+      }
     } else {
-      if (!cardQueue[1]) return;
+      if (!cardQueue[1]) {
+        showToast("到头了！", "warning");
+        return;
+      }
     }
 
     // 切换卡片时卡片先滚过去
@@ -36,7 +44,7 @@ export function useAnimate(
       // 网络请求结束后数据已经变化, 设置回中间位置即可
       setToMid();
     }
-  }
+  };
 
   return { position, switchWithAnim };
 }

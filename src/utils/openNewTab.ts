@@ -5,7 +5,11 @@ type OpenNewTabProps = {
 };
 
 export const openNewTab = (props: OpenNewTabProps) => {
-  const { base = "http://localhost:3000", path, query = "" } = props;
+  const {
+    base = window.location.protocol + "//" + window.location.host,
+    path,
+    query = "",
+  } = props;
   const url = `${base}${path}${query && "?"}${query}`;
   window.open(url, "_blank");
 };

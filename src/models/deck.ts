@@ -2,6 +2,11 @@ import { Card, CardID } from "./card";
 
 export type DeckID = string;
 
+/** 仅展示学习进度 */
+export type DeckMini = Pick<
+  Deck,
+  "id" | "owner_id" | "name" | "description" | "access"
+>;
 export type DeckBrief = {
   id: DeckID;
 

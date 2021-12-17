@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
-import { getToken } from "../utils/token";
 import { showToast } from "../utils/showToast";
+import { getToken } from "../utils/token";
 
 // import { nanoid } from "@reduxjs/toolkit";
 
@@ -29,16 +29,16 @@ type HttpRes<T> = {
 
 const DEFAULT_ERR_MSG = "出错了！";
 
-export default function _request<T = {}>(
+export default async function _request<T = {}>(
   config: AxiosRequestConfig,
   shouldShowHint = true
-) {
+): Promise<T | null> {
   const hashedReq = JSON.stringify({
     u: config.url,
     d: config.data,
     p: config.params,
   });
-  if (sendingRequest.has(hashedReq)) return;
+  if (sendingRequest.has(hashedReq)) return null;
   sendingRequest.add(hashedReq);
 
   const instance = axios.create({
