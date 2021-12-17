@@ -2,18 +2,18 @@ import { CardRecord, DeckRecord } from "../../models/study";
 
 export function _isDeckRecord(toCheck: DeckRecord): boolean {
   if (!toCheck) return false;
-  if (toCheck.id === undefined) return false;
-  if (toCheck.name === undefined) return false;
-  if (toCheck.rec === undefined) return false;
-  if (toCheck.tot === undefined) return false;
+  if (typeof toCheck.records !== "object") return false;
+  if (typeof toCheck.total !== "number") return false;
 
   return true;
 }
 
 export function _isCardRecord(toCheck: CardRecord): boolean {
   if (!toCheck) return false;
-  if (toCheck.d === undefined) return false;
-  if (toCheck.s === undefined) return false;
+  if (typeof toCheck.id !== "string") return false;
+  if (typeof toCheck.last_study !== "number") return false;
+  if (typeof toCheck.status !== "number") return false;
+  if (typeof toCheck.study_times !== "number") return false;
 
   return true;
 }

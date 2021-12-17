@@ -1,114 +1,90 @@
-import { CardID } from "../../models/card";
-import { Deck, DeckID } from "../../models/deck";
-import { CardRecord, DeckRecord } from "../../models/study";
+import { RECORD_PREFIX } from ".";
+import { DeckID } from "../../models/deck";
+import { DeckRecord } from "../../models/study";
+import {
+  addStudyRecordReq,
+  AddStudyRecordReqData,
+} from "../../network/study/addStudyRecord";
+import { getDeckRecordsReq } from "../../network/study/getDeckRecords";
+import { Scheduler } from "../scheduler";
 import { _isDeckRecord } from "./check";
-
-const RECORD_PREFIX = "__Flicker__record";
-
-/********************************/
-/* 学习过的卡组 id 数组相关操作 */
-/********************************/
-
-/** 保存 id 到本地存储, 会进行去重 */
-function saveDeckIDs(deckID: DeckID[]) {
-  localStorage.setItem(
-    `${RECORD_PREFIX}-deck_ids`,
-    JSON.stringify(Array.from(new Set(deckID)))
-  );
-}
-
-/** 将新的 id 加入本地存储 */
-function addCardID(newID: DeckID) {
-  const oldIDs = getAllID();
-  saveDeckIDs([newID, ...oldIDs]);
-}
-
-/** 获得本地存过的所有 id */
-function getAllID() {
-  const idsStr = localStorage.getItem(`${RECORD_PREFIX}-deck_ids`);
-  if (!idsStr) return [];
-
-  let ids: DeckID[] = [];
-  try {
-    ids = JSON.parse(idsStr) as DeckID[];
-  } catch {}
-  return ids;
-}
+import { addCardID, getAllID } from "./ids";
 
 /****************/
-/* 卡组相关操作 */
+/* 学习记录相关操作 */
 /****************/
 
-/** 根据传入卡组 id 获得其学习记录, 如果不能得到合法的记录会返回 null 且清除之 */
-export function getRecordByDeckID(id: DeckID) {
+/** 从本地获得卡组学习记录 */
+export function getRecordByDeckIDFromLocal(id: DeckID) {
   const recordStr = localStorage.getItem(`${RECORD_PREFIX}-deck-${id}`);
 
-  if (!recordStr) return null;
-
   try {
-    const record = JSON.parse(recordStr) as DeckRecord;
+    const record = JSON.parse(recordStr!) as DeckRecord;
+    // 2. 找到不合法的: 清除之, 进行 3
     if (!_isDeckRecord(record)) throw "not a valid record";
-
+    // 1. 找到合法的: 返回之
+    addCardID(id);
     return record;
   } catch {
     localStorage.removeItem(`${RECORD_PREFIX}-deck-${id}`);
-    return null;
   }
+
+  return null;
 }
 
-/** 获得所有卡组的学习记录 */
-export function getAllDeckRecords() {
+function saveRecord(id: DeckID, record: DeckRecord) {
+  addCardID(id);
+  localStorage.setItem(`${RECORD_PREFIX}-deck-${id}`, JSON.stringify(record));
+}
+
+/** 获得所有本地卡组的学习记录 */
+export function getAllLocalDeckRecords() {
   const ids = getAllID();
 
-  const returnArr: DeckRecord[] = [];
+  const results = ids.map((id) => getRecordByDeckIDFromLocal(id));
 
-  for (let id of ids) {
-    const record = getRecordByDeckID(id);
-
-    if (record) returnArr.push(record);
-  }
-
-  return returnArr;
+  return results.filter((result) => result !== null) as DeckRecord[];
 }
 
-/** 记录学习一个卡片的结果. 会更新 local storage 中的记录, 若是新的卡组会创建此记录 */
-export function saveStudyRecord(
-  deck: Deck,
-  cardID: CardID,
-  status: CardRecord["s"]
-) {
-  // 先将卡组记录下
-  addCardID(deck.id);
+async function _addStudyRecord(data: AddStudyRecordReqData) {
+  const { card_id, cardset_id, status } = data;
 
-  const curCardRecord: CardRecord = {
-    d: new Date().toLocaleDateString(),
-    s: status,
-  };
+  const localRecord = getRecordByDeckIDFromLocal(cardset_id);
 
-  let oldDeckRecord = getRecordByDeckID(deck.id);
+  if (localRecord) {
+    // 如果本地有记录, 直接更新记录, 异步的通知后端即可
+    addStudyRecordReq(data);
 
-  if (!oldDeckRecord) {
-    oldDeckRecord = {
-      id: deck.id,
-      name: deck.name,
-      rec: {
-        [cardID]: [curCardRecord],
-      },
-      tot: deck.cards.length,
-      l_s_t: Date.now(),
-    };
+    let oldRecordOfCardID = localRecord.records.find(
+      (record) => record.id === card_id
+    );
+
+    if (!oldRecordOfCardID) {
+      const newRecordOfCardID = {
+        id: card_id,
+        last_study: ~~(Date.now() / 1000),
+        status,
+        study_times: 1,
+      };
+      localRecord.records = [newRecordOfCardID, ...localRecord.records];
+    } else {
+      oldRecordOfCardID.last_study = ~~(Date.now() / 1000);
+      oldRecordOfCardID.study_times++;
+      oldRecordOfCardID.status = status;
+    }
+
+    saveRecord(cardset_id, localRecord);
   } else {
-    oldDeckRecord.rec = {
-      ...oldDeckRecord.rec,
-      [cardID]: [curCardRecord, ...(oldDeckRecord.rec[cardID] || [])],
-    };
-    oldDeckRecord.l_s_t = Date.now();
+    // 如果本地没有记录, 需先在后端添加记录, 请求记录, 保存到本地
+    await addStudyRecordReq(data);
+
+    const netRecord = await getDeckRecordsReq({ deckID: cardset_id });
+    if (netRecord) saveRecord(cardset_id, netRecord);
   }
+}
 
-  localStorage.setItem(
-    `${RECORD_PREFIX}-deck-${deck.id}`,
-    JSON.stringify(oldDeckRecord)
-  );
-
-  return oldDeckRecord;
+const addStudyRecordScheduler = new Scheduler(1);
+/** 记录学习一个卡片的结果. 会更新 local storage 中的记录同时通知后端, 若是新的卡组会创建此记录 */
+export function addStudyRecord(data: AddStudyRecordReqData) {
+  addStudyRecordScheduler.add(() => _addStudyRecord(data));
 }

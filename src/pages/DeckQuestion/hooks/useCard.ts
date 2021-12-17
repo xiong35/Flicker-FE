@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Card } from "../../../models/card";
 import { CardRecord } from "../../../models/study";
 import { getCards } from "../../../network/card/getCards";
-import { saveStudyRecord } from "../../../utils/studyRecords/syncRecord";
+import { addStudyRecord } from "../../../utils/studyRecords/syncRecord";
 import { useDeck } from "../../DeckIntro/hooks/useDeck";
 import { CompProps } from "./useQuestionComp";
 
@@ -75,9 +75,9 @@ export function useCard() {
   }, [!!deck]);
 
   const switchCard: CompProps["switchCard"] = async (direction, status = 0) => {
-    // return console.log("# useCard", { direction });
+    console.log("# useCard", { direction });
     if (!deck || !cardQueue) return;
-    saveStudyRecord(deck, cardQueue[2].id, status);
+    addStudyRecord({ card_id: cardQueue[2].id, cardset_id: deck.id, status });
 
     if (deck.cards.length <= 5) {
       /**

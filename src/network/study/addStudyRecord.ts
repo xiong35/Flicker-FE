@@ -6,7 +6,7 @@ import _request from "../_request";
 export type AddStudyRecordReqData = {
   card_id: CardID;
   cardset_id: DeckID;
-  status: Pick<CardRecord, "status">;
+  status: CardRecord["status"];
 };
 
 /**
