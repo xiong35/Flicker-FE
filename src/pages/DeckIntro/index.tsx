@@ -15,6 +15,7 @@ import UserEdit from "../../imgComponents/UserEdit";
 import Write from "../../imgComponents/Write";
 import { dateFormat } from "../../utils/dateFormat";
 import { useDeck } from "./hooks/useDeck";
+import { useRecord } from "./hooks/useRecord";
 
 type DeckIntroProps = {};
 
@@ -23,6 +24,8 @@ function DeckIntro(props: DeckIntroProps) {
   let { id } = useParams<{ id: string }>();
   const { deck, switchFavorite, delDeck } = useDeck(id);
   const { self } = useSelf();
+
+  const { record } = useRecord(id);
 
   const history = useHistory();
   function jumpToQuestion() {
@@ -60,9 +63,14 @@ function DeckIntro(props: DeckIntroProps) {
 
       <div className="deck_intro-study deck_intro-action_container">
         <h4>开始学习</h4>
-        <div className="deck_intro-study-process">
-          当前学习进度：已学会3题，仍需学习10题
-        </div>
+        {record && (
+          <div className="deck_intro-study-process">
+            当前学习进度：已学会{record.learnt}题，
+            {record.total === record.learnt
+              ? "已学完"
+              : `仍需学习${record.total - record.learnt}题`}
+          </div>
+        )}
         <div className="deck_intro-action_container-actions">
           <div
             className="deck_intro-action_container-actions-button"
