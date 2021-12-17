@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "../../../models/card";
-import { CardRecord } from "../../../models/study";
 import { getCards } from "../../../network/card/getCards";
 import { addStudyRecord } from "../../../utils/studyRecords/syncRecord";
 import { useDeck } from "../../DeckIntro/hooks/useDeck";

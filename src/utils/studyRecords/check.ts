@@ -10,7 +10,7 @@ export function _isDeckRecord(toCheck: DeckRecord): boolean {
 
 export function _isCardRecord(toCheck: CardRecord): boolean {
   if (!toCheck) return false;
-  if (typeof toCheck.id !== "string") return false;
+  if (typeof toCheck.card_id !== "string") return false;
   if (typeof toCheck.last_study !== "number") return false;
   if (typeof toCheck.status !== "number") return false;
   if (typeof toCheck.study_times !== "number") return false;

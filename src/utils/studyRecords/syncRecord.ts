@@ -67,15 +67,23 @@ async function _addStudyRecord(data: AddStudyRecordReqData) {
 
     if (!oldRecordOfCardID) {
       const newRecordOfCardID = {
-        id: card_id,
+        card_id,
         last_study: ~~(Date.now() / 1000),
         status,
         study_times: 1,
       };
       localRecord.records = [newRecordOfCardID, ...localRecord.records];
     } else {
+      const last_study = oldRecordOfCardID.last_study;
+      // 若这张卡已经学过，如果上次学习时间不在当天，则学习次数加 1；更新学习时间；
+      if (
+        new Date(last_study * 1000).toLocaleDateString() !==
+        new Date().toLocaleDateString()
+      ) {
+        oldRecordOfCardID.study_times++;
+      }
+
       oldRecordOfCardID.last_study = ~~(Date.now() / 1000);
-      oldRecordOfCardID.study_times++;
       oldRecordOfCardID.status = status;
     }
 
