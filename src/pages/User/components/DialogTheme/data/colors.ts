@@ -9,23 +9,23 @@ type Color = {
 
 export const colors: Color[] = [
   {
-    name: "绿色",
-    className: "green",
+    name: "Turquoise",
+    className: "turquoise",
     bg: "#f6f7fb",
     onBg: "#14161a",
     primary: "#0f4c3a",
     secondary: "#ebb471",
   },
   {
-    name: "蓝色",
-    className: "blue",
+    name: "Lazurite",
+    className: "lazurite",
     bg: "#f6f6e9",
     onBg: "#13334c",
     primary: "#005792",
     secondary: "#ebb471",
   },
   {
-    name: "PROMARE",
+    name: "Promare",
     className: "promare",
     bg: "#2C2C2C",
     onBg: "#FCFCFC",
