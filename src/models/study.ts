@@ -1,27 +1,23 @@
-import { Deck } from "./deck";
 import { CardID } from "./card";
 
-/* 学习记录相关定义 */
-
 /** 卡组的记录 */
-export type DeckRecord = Pick<Deck, "id" | "name"> & {
-  /** record, 题库中卡片的学习记录 */
-  rec: Record<CardID, CardRecord[]>;
-  /** total, 此题库的总题目数 */
-  tot: number;
-  /** latest study time, 最近一次学习时间, 毫秒时间戳 */
-  l_s_t: number;
+export type DeckRecord = {
+  /** 总卡片数 */
+  total: number;
+  records: CardRecord[];
 };
 
 /** 每道题的学习情况 */
 export type CardRecord = {
-  /** day, 在哪个日期学过这道题 */
-  d: string;
+  id: CardID;
+  /** 秒时间戳 */
+  last_study: number;
+  /** 学习次数 */
+  study_times: number;
   /**
    * status, 掌握情况\
-   * - `0`: 未设置
+   * - `0`: 未掌握
    * - `1`: 已掌握
-   * - `-1`: 未掌握
    */
-  s: 0 | 1 | -1;
+  status: 0 | 1;
 };
