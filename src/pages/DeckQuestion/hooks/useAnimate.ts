@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { showToast } from "../../../utils/showToast";
 import { wait } from "../../../utils/wait";
 import { CardQueue } from "./useCard";
 import { CompProps } from "./useQuestionComp";
@@ -24,9 +25,17 @@ export function useAnimate(
   const switchWithAnim: CompProps["switchCard"] = async (direction, status) => {
     if (!cardQueue) return;
     if (direction === "forward") {
-      if (!cardQueue[3]) return;
+      if (!cardQueue[3]) {
+        showToast("到头了！", "warning");
+
+        return;
+      }
     } else {
-      if (!cardQueue[1]) return;
+      if (!cardQueue[1]) {
+        showToast("到头了！", "warning");
+
+        return;
+      }
     }
 
     // 切换卡片时卡片先滚过去

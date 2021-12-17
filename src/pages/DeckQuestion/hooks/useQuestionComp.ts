@@ -1,6 +1,6 @@
 import { useQuery } from "../../../hooks/useQuery";
 import { Card } from "../../../models/card";
-import { CardRecord } from "../../../models/study";
+import { StudyStatus } from "../../../models/study";
 import FillIn from "../components/FillIn";
 import FlipCard from "../components/FlipCard";
 import { CardQueue } from "./useCard";
@@ -14,7 +14,7 @@ export type CompProps = {
   card: Card;
   switchCard: (
     direction: "forward" | "backward",
-    status?: CardRecord["s"]
+    status?: StudyStatus
   ) => Promise<void>;
 };
 

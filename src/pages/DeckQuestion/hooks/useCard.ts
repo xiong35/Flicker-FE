@@ -74,7 +74,6 @@ export function useCard() {
   }, [!!deck]);
 
   const switchCard: CompProps["switchCard"] = async (direction, status = 0) => {
-    console.log("# useCard", { direction });
     if (!deck || !cardQueue) return;
     addStudyRecord({ card_id: cardQueue[2].id, cardset_id: deck.id, status });
 
