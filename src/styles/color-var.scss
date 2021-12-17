@@ -8,7 +8,7 @@ $secondary: #ebb471;
 $secondary-d: darken($secondary, 15%);
 $secondary-l: lighten($secondary, 15%);
 
-$on-bg: hsl(220, 13%, 9%);
+$on-bg: #14161a;
 $on-bg-d: darken($on-bg, 5%);
 $on-bg-l: lighten($on-bg, 10%);
 
@@ -16,6 +16,33 @@ $bg: #f6f7fb;
 $bg-d: darken($bg, 8%);
 $bg-l: lighten($bg, 100%);
 $on-primary: $bg;
+
+.main-container {
+  --primary: #{$primary};
+  --primary-d: #{$primary-d};
+  --primary-l: #{$primary-l};
+  --primary-a: #{$primary-a};
+
+  --secondary: #{$secondary};
+  --secondary-d: #{$secondary-d};
+  --secondary-l: #{$secondary-l};
+
+  --on-bg: #{$on-bg};
+  --on-bg-d: #{$on-bg-d};
+  --on-bg-l: #{$on-bg-l};
+
+  --bg: #{$bg};
+  --bg-d: #{$bg-d};
+  --bg-l: #{$bg-l};
+  --on-primary: #{$on-primary};
+  background-color: var(--bg);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+}
 
 .blue {
   $primary: #005792;
@@ -55,7 +82,25 @@ $on-primary: $bg;
   --on-primary: #{$on-primary};
 }
 
-body {
+.promare {
+  $primary: #ff5f5f;
+  $primary-d: darken($primary, 15%);
+  $primary-l: lighten($primary, 15%);
+  $primary-a: rgba($primary, 0.1);
+
+  $secondary: #83ffe6;
+  $secondary-d: darken($secondary, 15%);
+  $secondary-l: lighten($secondary, 15%);
+
+  $on-bg: #fcfcfc;
+  $on-bg-d: darken($on-bg, 5%);
+  $on-bg-l: lighten($on-bg, 10%);
+
+  $bg: #2c2c2c;
+  $bg-d: darken($bg, 8%);
+  $bg-l: darken($bg, 100%);
+  $on-primary: $bg;
+
   --primary: #{$primary};
   --primary-d: #{$primary-d};
   --primary-l: #{$primary-l};

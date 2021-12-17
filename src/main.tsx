@@ -10,25 +10,25 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import App from "./App";
 import { store } from "./redux/store";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#0F4C3A",
-    },
-    secondary: {
-      main: "#EBB471",
-    },
-  },
-});
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#0F4C3A",
+//     },
+//     secondary: {
+//       main: "#EBB471",
+//     },
+//   },
+// });
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
+      {/* <ThemeProvider theme={theme}> */}
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+      {/* </ThemeProvider> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
