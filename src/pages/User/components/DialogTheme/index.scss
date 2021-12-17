@@ -1,0 +1,36 @@
+.dialog_theme {
+  .MuiPaper-root {
+    width: 70rem;
+  }
+
+  &-color {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 999px;
+
+    &-primary {
+      position: absolute;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 999px;
+      bottom: 3%;
+    }
+
+    &-secondary {
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      right: -20%;
+      top: 20%;
+    }
+
+    &-on_bg {
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 999px;
+    }
+  }
+}

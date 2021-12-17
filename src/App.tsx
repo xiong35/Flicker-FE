@@ -1,13 +1,13 @@
 import "./App.scss";
 
-import { Redirect, Route, Switch } from "react-router-dom";
 import { useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import { getToken } from "./utils/token";
-import { showToast } from "./utils/showToast";
-import { routes } from "./routes";
-import SelfHOC from "./context/Self";
 import Toasts from "./components/Toasts";
+import SelfHOC from "./context/Self";
+import { routes } from "./routes";
+import { showToast } from "./utils/showToast";
+import { getToken } from "./utils/token";
 
 export default function App() {
   useEffect(() => {

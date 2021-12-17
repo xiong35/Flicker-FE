@@ -17,6 +17,44 @@ $bg-d: darken($bg, 8%);
 $bg-l: lighten($bg, 100%);
 $on-primary: $bg;
 
+.blue {
+  $primary: #005792;
+  $primary-d: darken($primary, 15%);
+  $primary-l: lighten($primary, 15%);
+  $primary-a: rgba($primary, 0.1);
+
+  $secondary: #ebb471;
+  $secondary-d: darken($secondary, 15%);
+  $secondary-l: lighten($secondary, 15%);
+
+  $on-bg: #13334c;
+  $on-bg-d: darken($on-bg, 5%);
+  $on-bg-l: lighten($on-bg, 10%);
+
+  $bg: #f6f6e9;
+  $bg-d: darken($bg, 8%);
+  $bg-l: lighten($bg, 100%);
+  $on-primary: $bg;
+
+  --primary: #{$primary};
+  --primary-d: #{$primary-d};
+  --primary-l: #{$primary-l};
+  --primary-a: #{$primary-a};
+
+  --secondary: #{$secondary};
+  --secondary-d: #{$secondary-d};
+  --secondary-l: #{$secondary-l};
+
+  --on-bg: #{$on-bg};
+  --on-bg-d: #{$on-bg-d};
+  --on-bg-l: #{$on-bg-l};
+
+  --bg: #{$bg};
+  --bg-d: #{$bg-d};
+  --bg-l: #{$bg-l};
+  --on-primary: #{$on-primary};
+}
+
 body {
   --primary: #{$primary};
   --primary-d: #{$primary-d};

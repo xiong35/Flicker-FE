@@ -11,6 +11,7 @@ import NavHome from "../../imgComponents/NavHome";
 import Record from "../../imgComponents/Record";
 import Theme from "../../imgComponents/Theme";
 import UserEdit from "../../imgComponents/UserEdit";
+import DialogTheme from "./components/DialogTheme";
 import { useEditName } from "./hooks/useEditName";
 import { uploadAvatar } from "./utils/uploadAvatar";
 
@@ -103,6 +104,7 @@ function User(props: UserProps) {
       </Button>
       {/* <div className="user-logout">退出</div> */}
       <TheBottomTabs />
+      <DialogTheme />
     </div>
   );
 }
