@@ -1,6 +1,6 @@
 import { RECORD_PREFIX } from ".";
 import { DeckID } from "../../models/deck";
-import { DeckRecord } from "../../models/study";
+import { DeckRecord, DeckRecordMap } from "../../models/study";
 import {
   addStudyRecordReq,
   AddStudyRecordReqData,
@@ -9,9 +9,10 @@ import { getDeckRecordsReq } from "../../network/study/getDeckRecords";
 import { Scheduler } from "../scheduler";
 import { _isDeckRecord } from "./check";
 import { addCardID, getAllID } from "./ids";
+import { recordArr2Map } from "./mapping";
 
 /****************/
-/* 学习记录相关操作 */
+/* 得到学习记录 */
 /****************/
 
 /** 从本地获得卡组学习记录 */
@@ -24,7 +25,7 @@ export function getRecordByDeckIDFromLocal(id: DeckID) {
     if (!_isDeckRecord(record)) throw "not a valid record";
     // 1. 找到合法的: 返回之
     addCardID(id);
-    return record;
+    return recordArr2Map(record);
   } catch {
     localStorage.removeItem(`${RECORD_PREFIX}-deck-${id}`);
   }
@@ -34,6 +35,9 @@ export function getRecordByDeckIDFromLocal(id: DeckID) {
 
 function saveRecord(id: DeckID, record: DeckRecord) {
   addCardID(id);
+
+  // 过滤字段
+  record = { records: record.records, total: record.total };
   localStorage.setItem(`${RECORD_PREFIX}-deck-${id}`, JSON.stringify(record));
 }
 
@@ -43,8 +47,12 @@ export function getAllLocalDeckRecords() {
 
   const results = ids.map((id) => getRecordByDeckIDFromLocal(id));
 
-  return results.filter((result) => result !== null) as DeckRecord[];
+  return results.filter((result) => result !== null) as DeckRecordMap[];
 }
+
+/******************/
+/* 进行学习的操作 */
+/******************/
 
 async function _addStudyRecord(data: AddStudyRecordReqData) {
   const { card_id, cardset_id, status } = data;
@@ -55,9 +63,7 @@ async function _addStudyRecord(data: AddStudyRecordReqData) {
     // 如果本地有记录, 直接更新记录, 异步的通知后端即可
     addStudyRecordReq(data);
 
-    let oldRecordOfCardID = localRecord.records.find(
-      (record) => record.id === card_id
-    );
+    let oldRecordOfCardID = localRecord.recordMap[card_id];
 
     if (!oldRecordOfCardID) {
       const newRecordOfCardID = {

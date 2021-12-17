@@ -7,6 +7,14 @@ export type DeckRecord = {
   records: CardRecord[];
 };
 
+export type DeckRecordMap = DeckRecord & {
+  /** 有多少已经掌握 */
+  learnt: number;
+  /** 上次学习卡组的时间 */
+  last_study: number;
+  recordMap: Record<CardID, CardRecord>;
+};
+
 /** 每道题的学习情况 */
 export type CardRecord = {
   id: CardID;
@@ -19,5 +27,10 @@ export type CardRecord = {
    * - `0`: 未掌握
    * - `1`: 已掌握
    */
-  status: 0 | 1;
+  status: StudyStatus;
 };
+
+export enum StudyStatus {
+  LEARNING = 0,
+  LEARNT = 1,
+}
