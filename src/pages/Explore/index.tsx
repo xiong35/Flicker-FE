@@ -4,14 +4,14 @@ import { useHistory } from "react-router";
 
 import { Button, Fab, TextField } from "@mui/material";
 
-import { useSearch } from "./hooks/useSearch";
-import { useDecks } from "./hooks/useDecks";
-import Search from "../../imgComponents/Search";
-import AddIcon from "../../imgComponents/AddIcon";
-import TheBottomTabs from "../../components/TheBottomTabs";
-import NoMore from "../../components/NoMore";
-import Empty from "../../components/Empty";
 import DeckCard from "../../components/DeckCard";
+import Empty from "../../components/Empty";
+import NoMore from "../../components/NoMore";
+import TheBottomTabs from "../../components/TheBottomTabs";
+import AddIcon from "../../imgComponents/AddIcon";
+import Search from "../../imgComponents/Search";
+import { useDecks } from "./hooks/useDecks";
+import { useSearch } from "./hooks/useSearch";
 
 type ExploreProps = {};
 
@@ -59,7 +59,7 @@ function Explore(props: ExploreProps) {
 
       {!isSearching && (
         <Button
-          className="explore-random_btn m"
+          className="explore-random_btn m reset_mui_button_contained_primary"
           variant="contained"
           onClick={getRandDecks}
         >

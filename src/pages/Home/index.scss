@@ -13,6 +13,18 @@
 
     .MuiTabs-flexContainer {
       justify-content: space-around;
+
+      .MuiTab-textColorPrimary {
+        color: var(--on-bg);
+      }
+
+      .Mui-selected {
+        color: var(--primary);
+      }
+    }
+
+    .MuiTabs-indicator {
+      background-color: var(--primary);
     }
   }
 

@@ -25,7 +25,7 @@ export default function DialogTheme(props: DialogThemeProps) {
   };
 
   return (
-    <Dialog open={open} className="dialog_theme">
+    <Dialog open={open} className="dialog_theme reset_mui_dialog">
       <DialogTitle>切换主题</DialogTitle>
       <DialogContent className="dialog_theme-content">
         {colors.map((color) => (
