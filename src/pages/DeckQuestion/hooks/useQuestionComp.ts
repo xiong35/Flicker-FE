@@ -12,10 +12,8 @@ enum QuesType {
 
 export type CompProps = {
   card: Card;
-  switchCard: (
-    direction: "forward" | "backward",
-    status?: StudyStatus
-  ) => Promise<void>;
+  switchCard: (direction: "forward" | "backward") => Promise<void>;
+  addStudyRecord: (status: StudyStatus) => void;
 };
 
 const type2Comp: Record<QuesType, (props: CompProps) => JSX.Element> = {

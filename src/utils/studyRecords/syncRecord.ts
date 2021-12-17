@@ -81,18 +81,19 @@ export async function getRecordMapByIds(ids: DeckID[]) {
 /* 进行学习的操作 */
 /******************/
 
-async function _addStudyRecord(data: AddStudyRecordReqData) {
+async function _addStudyRecord(
+  data: AddStudyRecordReqData,
+  isLeaving: boolean
+) {
   const { card_id, cardset_id, status } = data;
 
   const localRecord = getRecordByDeckIDFromLocal(cardset_id);
 
   if (localRecord) {
-    // 如果本地有记录, 直接更新记录, 异步的通知后端即可
-    addStudyRecordReq(data);
-
     let oldRecordOfCardID = localRecord.recordMap[card_id];
 
     if (!oldRecordOfCardID) {
+      // 当前这题是第一次学习
       const newRecordOfCardID = {
         card_id,
         last_study: ~~(Date.now() / 1000),
@@ -108,6 +109,9 @@ async function _addStudyRecord(data: AddStudyRecordReqData) {
         new Date().toLocaleDateString()
       ) {
         oldRecordOfCardID.study_times++;
+      } else {
+        // 如果在当天, 且这是离开前的请求, 则以上次为准, 不做处理
+        if (isLeaving) return;
       }
 
       oldRecordOfCardID.last_study = ~~(Date.now() / 1000);
@@ -115,6 +119,8 @@ async function _addStudyRecord(data: AddStudyRecordReqData) {
     }
 
     saveRecord(cardset_id, localRecord);
+    // 如果本地有记录, 直接更新记录, 异步的通知后端即可
+    addStudyRecordReq(data);
   } else {
     // 如果本地没有记录, 需先在后端添加记录, 请求记录, 保存到本地
     await addStudyRecordReq(data);
@@ -126,6 +132,6 @@ async function _addStudyRecord(data: AddStudyRecordReqData) {
 
 const addStudyRecordScheduler = new Scheduler(1);
 /** 记录学习一个卡片的结果. 会更新 local storage 中的记录同时通知后端, 若是新的卡组会创建此记录 */
-export function addStudyRecord(data: AddStudyRecordReqData) {
-  addStudyRecordScheduler.add(() => _addStudyRecord(data));
+export function addStudyRecord(data: AddStudyRecordReqData, isLeaving = false) {
+  addStudyRecordScheduler.add(() => _addStudyRecord(data, isLeaving));
 }

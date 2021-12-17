@@ -22,18 +22,16 @@ export function useAnimate(
     return () => setPosition("mid");
   }
 
-  const switchWithAnim: CompProps["switchCard"] = async (direction, status) => {
+  const switchWithAnim: CompProps["switchCard"] = async (direction) => {
     if (!cardQueue) return;
     if (direction === "forward") {
       if (!cardQueue[3]) {
         showToast("到头了！", "warning");
-
         return;
       }
     } else {
       if (!cardQueue[1]) {
         showToast("到头了！", "warning");
-
         return;
       }
     }
@@ -42,7 +40,7 @@ export function useAnimate(
     const setToMid = await animateTo(direction); // 若滚动成功返回整个操作结束的回调(即设置会中间位置)
     if (setToMid) {
       // 等待更新卡片和卡片队列
-      await switchCard(direction, status);
+      await switchCard(direction);
       // 网络请求结束后数据已经变化, 设置回中间位置即可
       setToMid();
     }
