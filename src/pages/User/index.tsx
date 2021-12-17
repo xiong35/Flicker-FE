@@ -1,5 +1,7 @@
 import "./index.scss";
 
+import { useState } from "react";
+
 import { Button, TextField } from "@mui/material";
 
 import TheBottomTabs from "../../components/TheBottomTabs";
@@ -11,6 +13,7 @@ import NavHome from "../../imgComponents/NavHome";
 import Record from "../../imgComponents/Record";
 import Theme from "../../imgComponents/Theme";
 import UserEdit from "../../imgComponents/UserEdit";
+import DialogTheme from "./components/DialogTheme";
 import { useEditName } from "./hooks/useEditName";
 import { uploadAvatar } from "./utils/uploadAvatar";
 
@@ -23,6 +26,7 @@ function User(props: UserProps) {
 
   const { isEditing, newName, startEditing, finishEditing, setNewName } =
     useEditName();
+  const [showThemeDialog, setShowThemeDialog] = useState(false);
 
   return (
     <div className="user">
@@ -79,7 +83,10 @@ function User(props: UserProps) {
           <div className="spacer"></div>
           <ArrowLeftP className="user-menu-item-icon rotate arrow" />
         </div>
-        <div className="user-menu-item">
+        <div
+          className="user-menu-item"
+          onClick={() => setShowThemeDialog(true)}
+        >
           <Theme className="user-menu-item-icon" />
           修改主题
           <div className="spacer"></div>
@@ -101,8 +108,11 @@ function User(props: UserProps) {
       <Button variant="contained" className="user-logout" color="error">
         退出
       </Button>
-      {/* <div className="user-logout">退出</div> */}
       <TheBottomTabs />
+      <DialogTheme
+        cancel={() => setShowThemeDialog(false)}
+        open={showThemeDialog}
+      />
     </div>
   );
 }

@@ -21,3 +21,34 @@
 .t-s {
   color: var(--secondary);
 }
+
+.reset_mui_button_contained_primary.reset_mui_button_contained_primary {
+  background-color: var(--primary);
+
+  &:hover {
+    background-color: var(--primary-d);
+  }
+}
+
+.reset_mui_button_outline_secondary.reset_mui_button_outline_secondary {
+  border-color: var(--secondary);
+  color: var(--secondary);
+
+  &:hover {
+    border-color: var(--secondary);
+  }
+}
+
+.reset_mui_button_contained_secondary.reset_mui_button_contained_secondary {
+  background-color: var(--secondary);
+
+  &:hover {
+    background-color: var(--secondary-d);
+  }
+}
+
+// .reset_mui_dialog.reset_mui_dialog {
+//   .MuiDialog-paper {
+//     background-color: var(--bg);
+//   }
+// }

@@ -94,11 +94,16 @@ function DeckIntro(props: DeckIntroProps) {
             variant={deck.is_favorite ? "contained" : "outlined"}
             color="secondary"
             onClick={switchFavorite}
+            className={
+              deck.is_favorite
+                ? "reset_mui_button_contained_secondary"
+                : "reset_mui_button_outline_secondary"
+            }
           >
             {deck.is_favorite ? "已收藏" : "收藏"}
           </Button>
           {deck.owner_id === self.id && (
-            <Button variant="outlined" color="error" onClick={delDeck}>
+            <Button variant="contained" color="error" onClick={delDeck}>
               删除
             </Button>
           )}

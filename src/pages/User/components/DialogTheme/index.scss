@@ -1,0 +1,58 @@
+.dialog_theme {
+  .MuiPaper-root {
+    width: 70rem;
+  }
+
+  &-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &-color {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    cursor: pointer;
+
+    &-bg {
+      position: relative;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+
+    &-primary {
+      position: absolute;
+      width: 50%;
+      height: 25%;
+      border-radius: 999px;
+      bottom: 12%;
+      left: 5%;
+    }
+
+    &-secondary {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      border-radius: 999px;
+      right: -20%;
+      top: 20%;
+    }
+
+    &-on_bg {
+      position: absolute;
+      width: 40%;
+      height: 20%;
+      border-radius: 999px;
+      top: 27%;
+      left: 50%;
+    }
+
+    &-name {
+      font-weight: bold;
+    }
+  }
+}
