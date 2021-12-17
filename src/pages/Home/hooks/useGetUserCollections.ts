@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Deck } from "../../../models/deck";
 import { getFavoriteReq } from "../../../network/user/favorite";
 import { getRecordMapByIds } from "../../../utils/studyRecords/syncRecord";
+import { Awaited } from "../../../utils/types";
 
 export const useGetUserCollections = () => {
   const [collections, setCollections] = useState<Deck[]>([]);

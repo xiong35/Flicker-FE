@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { DeckMini } from "../../../models/deck";
 import { getUserCreationReq } from "../../../network/user/getUserCreation";
 import { getRecordMapByIds } from "../../../utils/studyRecords/syncRecord";
+import { Awaited } from "../../../utils/types";
 
 export const useGetUserCreations = () => {
   const [creations, setCreations] = useState<DeckMini[]>([]);
