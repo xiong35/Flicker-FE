@@ -9,7 +9,7 @@ export function recordArr2Map(record: DeckRecord): DeckRecordMap {
   };
 
   record.records.forEach((r) => {
-    map.recordMap[r.id] = r;
+    map.recordMap[r.card_id] = r;
     if (r.status === StudyStatus.LEARNT) map.learnt++;
     if (r.last_study > map.last_study) map.last_study = r.last_study;
   });
