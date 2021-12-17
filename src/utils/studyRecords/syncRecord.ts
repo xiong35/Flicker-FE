@@ -33,7 +33,7 @@ export function getRecordByDeckIDFromLocal(id: DeckID) {
   return null;
 }
 
-function saveRecord(id: DeckID, record: DeckRecord) {
+export function saveRecord(id: DeckID, record: DeckRecord) {
   addCardID(id);
 
   // 过滤字段
@@ -48,6 +48,33 @@ export function getAllLocalDeckRecords() {
   const results = ids.map((id) => getRecordByDeckIDFromLocal(id));
 
   return results.filter((result) => result !== null) as DeckRecordMap[];
+}
+
+/**
+ * 根据传入 id 数组获得一个 id->record 的 map\
+ * 优先在本地找, 找不到就在云端找\
+ * 最后将记录存在本地(不存在 localstorage 里保存的 ids 中)
+ */
+export async function getRecordMapByIds(ids: DeckID[]) {
+  const promises = ids.map(async (id) => {
+    const local = getRecordByDeckIDFromLocal(id);
+    if (local) return local;
+
+    const net = await getDeckRecordsReq({ deckID: id });
+    return net;
+  });
+
+  const results = await Promise.all(promises);
+
+  const returnMap: Record<DeckID, DeckRecord | null> = {};
+
+  results.forEach((result, index) => {
+    const id = ids[index];
+    returnMap[id] = result;
+    result && saveRecord(id, result);
+  });
+
+  return returnMap;
 }
 
 /******************/
