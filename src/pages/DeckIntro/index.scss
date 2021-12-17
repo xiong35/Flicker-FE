@@ -1,5 +1,5 @@
 .deck_intro {
-  padding: 0 1rem;
+  padding: 0 1rem 2rem;
 
   &-info {
     margin: 1rem 0;
@@ -67,7 +67,7 @@
       &-button {
         display: inline-flex;
         align-items: center;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: bold;
         cursor: pointer;
         padding: 0.5rem 1rem 0.5rem 0.8rem;
@@ -80,8 +80,8 @@
         }
 
         &-icon {
-          width: 2rem;
-          height: 2rem;
+          width: 1.6rem;
+          height: 1.6rem;
         }
       }
     }
