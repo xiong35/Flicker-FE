@@ -10,9 +10,11 @@ import AddIcon from "../../imgComponents/AddIcon";
 import AddUpper from "../../imgComponents/AddUpper";
 import TrashBin from "../../imgComponents/TrashBin";
 import { Card } from "../../models/card";
+import DialogLoadLastCards from "./components/DialogLoadLastCards";
 import { useCards } from "./hooks/useCards";
 import { useCreate } from "./hooks/useCreate";
 import { useDeck } from "./hooks/useDeck";
+import { useLoadLast } from "./hooks/useLoadLast";
 
 type DeckUploadProps = {};
 
@@ -21,6 +23,7 @@ function DeckUpload(props: DeckUploadProps) {
   const {
     form,
     setForm,
+    setFormAndWriteToLocal,
     formErrorHint,
     doValidate,
     clearError,
@@ -29,15 +32,20 @@ function DeckUpload(props: DeckUploadProps) {
   } = useDeck();
   const {
     addCard,
+    setCards,
     cards,
     removeCard,
     updateCard,
     createCards,
     cardPostProgress,
     showCardPostProgress,
-    syncToLocalStorage,
   } = useCards();
   const { create } = useCreate({ createDeck, createCards });
+
+  const { cancelLoad, showDialogLoadLast, loadLast } = useLoadLast({
+    setCards,
+    setForm,
+  });
 
   const postCards = cards.filter((card) => card.answer && card.question);
 
@@ -50,7 +58,7 @@ function DeckUpload(props: DeckUploadProps) {
         variant="outlined"
         placeholder="例如：六级英语词汇"
         value={form.name}
-        onChange={(e) => setForm({ name: e.target.value })}
+        onChange={(e) => setFormAndWriteToLocal({ name: e.target.value })}
         onBlur={() => doValidate("name")}
         helperText={formErrorHint.name}
         error={!!formErrorHint.name}
@@ -63,7 +71,9 @@ function DeckUpload(props: DeckUploadProps) {
         multiline={true}
         maxRows="7"
         value={form.description}
-        onChange={(e) => setForm({ description: e.target.value })}
+        onChange={(e) =>
+          setFormAndWriteToLocal({ description: e.target.value })
+        }
         onBlur={() => doValidate("description")}
         helperText={formErrorHint.description}
         error={!!formErrorHint.description}
@@ -75,7 +85,9 @@ function DeckUpload(props: DeckUploadProps) {
           <Checkbox
             checked={form.access === "1"}
             onChange={() =>
-              setForm({ access: form.access === "0" ? "1" : "0" })
+              setFormAndWriteToLocal({
+                access: form.access === "0" ? "1" : "0",
+              })
             }
           />
         }
@@ -153,6 +165,10 @@ function DeckUpload(props: DeckUploadProps) {
           </div>
         </DialogContent>
       </Dialog>
+
+      {showDialogLoadLast && (
+        <DialogLoadLastCards cancel={cancelLoad} confirm={loadLast} />
+      )}
     </div>
   );
 }
