@@ -24,6 +24,7 @@
 
 .reset_mui_button_contained_primary.reset_mui_button_contained_primary {
   background-color: var(--primary);
+  color: var(--on-primary);
 
   &:hover {
     background-color: var(--primary-d);

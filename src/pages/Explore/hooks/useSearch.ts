@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-import { showToast } from "../../../utils/showToast";
-import { hasScrolledToBottom } from "../../../utils/hasScrolledToBottom";
-import { searchCardsetReq } from "../../../network/cardset/searchCardset";
-import { DeckBrief } from "../../../models/deck";
 import { PER_PAGE } from "../../../constants/request";
+import { DeckBrief } from "../../../models/deck";
+import { searchCardsetReq } from "../../../network/cardset/searchCardset";
+import { hasScrolledToBottom } from "../../../utils/hasScrolledToBottom";
+import { showToast } from "../../../utils/showToast";
 
 export function useSearch(
-  setDecks: React.Dispatch<React.SetStateAction<DeckBrief[]>>
+  setDecks: React.Dispatch<React.SetStateAction<DeckBrief[] | null>>
 ) {
   const [keyword, setKeyword] = useState("");
   /** page 为 undefined 时显示随机卡组, 不为 undefined 则显示搜索结果 */
@@ -21,9 +21,10 @@ export function useSearch(
 
   async function doSearch() {
     if (!keyword) return showToast("关键词为空", "warning");
+    setDecks(null);
 
     const decks = await searchCardsetReq({ keyword, page: 0 });
-    if (!decks) return;
+    if (!decks) return setDecks([]);
 
     setDecks(decks);
     setPage(0);
@@ -40,7 +41,7 @@ export function useSearch(
     const newDecks = await searchCardsetReq({ keyword, page: newPage });
     if (!newDecks) return;
 
-    setDecks((oldDecks) => [...oldDecks, ...newDecks]);
+    setDecks((oldDecks) => (oldDecks ? [...oldDecks, ...newDecks] : null));
     setPage(newPage);
     if (newDecks.length !== PER_PAGE) {
       setNoMore(true);

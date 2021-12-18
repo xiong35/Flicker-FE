@@ -78,13 +78,15 @@ function DeckIntro(props: DeckIntroProps) {
             重置学习记录
           </span>
         </div>
-        {record && (
+        {record ? (
           <div className="deck_intro-study-process">
             当前学习进度：已学会{record.learnt}题，
             {record.total === record.learnt
               ? "已学完"
               : `仍需学习${record.total - record.learnt}题`}
           </div>
+        ) : (
+          <div className="deck_intro-study-process">还未开始学习</div>
         )}
         <div className="deck_intro-action_container-actions">
           <div

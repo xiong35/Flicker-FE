@@ -18,9 +18,9 @@ export const useGetUserCreations = () => {
     getCreations();
   }, []);
 
-  const [creationRecordMap, setCreationRecordMap] = useState<
-    Awaited<ReturnType<typeof getRecordMapByIds>>
-  >({});
+  const [creationRecordMap, setCreationRecordMap] = useState<Awaited<
+    ReturnType<typeof getRecordMapByIds>
+  > | null>(null);
   useEffect(() => {
     if (creations.length === 0) return;
     getRecordMapByIds(creations.map((c) => c.id)).then((map) =>

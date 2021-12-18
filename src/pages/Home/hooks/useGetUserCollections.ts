@@ -18,9 +18,9 @@ export const useGetUserCollections = () => {
     getCollections();
   }, []);
 
-  const [collectionRecordMap, setCollectionRecordMap] = useState<
-    Awaited<ReturnType<typeof getRecordMapByIds>>
-  >({});
+  const [collectionRecordMap, setCollectionRecordMap] = useState<Awaited<
+    ReturnType<typeof getRecordMapByIds>
+  > | null>(null);
   useEffect(() => {
     if (collections.length === 0) return;
     getRecordMapByIds(collections.map((c) => c.id)).then((map) =>
