@@ -1,6 +1,6 @@
 kind: pipeline
 name: node-default
-    
+
 steps:
   - name: restore-cache
     image: drillster/drone-volume-cache
@@ -12,13 +12,13 @@ steps:
     volumes:
       - name: cache
         path: /cache
-    
+
   - name: npm-install
-    image: node:14
+    image: node:14.18.1
     commands:
       - npm config set cache ./.npm-cache --global
       - npm i
-    
+
   - name: rebuild-cache
     image: drillster/drone-volume-cache
     settings:
@@ -29,12 +29,12 @@ steps:
     volumes:
       - name: cache
         path: /cache
-    
+
   - name: build-dist
-    image: node:14
+    image: node:14.18.1
     commands:
       - npm run build
-    
+
   - name: scp_files
     image: appleboy/drone-scp
     settings:
