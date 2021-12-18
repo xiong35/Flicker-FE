@@ -20,7 +20,10 @@ export const md = new MarkdownIt({ html: true })
     auto: false,
   })
   .use(MdXss, {
-    xss: function (xss) {
+    xss: function (xss: {
+      getDefaultWhiteList: Function;
+      getDefaultCSSWhiteList: Function;
+    }) {
       // xss = require('xss')
       return {
         whiteList: Object.assign({}, xss.getDefaultWhiteList(), {
@@ -29,7 +32,7 @@ export const md = new MarkdownIt({ html: true })
         css: {
           whiteList: Object.assign({}, xss.getDefaultCSSWhiteList(), {}),
         },
-        escapeHtml(html) {
+        escapeHtml(html: string) {
           return html;
         },
       };
