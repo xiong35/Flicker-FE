@@ -1,0 +1,75 @@
+.main-container,
+.turquoise {
+  // $primary: hsl(162, 67%, 18%);
+  // $secondary: hsl(33, 75%, 68%);
+  // $on-bg: hsl(220, 13%, 9%);
+  // $bg: hsl(228, 38%, 97%);
+
+  --p-h: 162;
+  --p-s: 67;
+  --p-l: 18;
+
+  --s-h: 33;
+  --s-s: 75;
+  --s-l: 68;
+
+  --on-bg-h: 220;
+  --on-bg-s: 13;
+  --on-bg-light: 9;
+
+  --bg-h: 228;
+  --bg-s: 38;
+  --bg-light: 97;
+
+  --dark: -1;
+}
+
+.lazurite {
+  // $primary: hsl(204, 100%, 29%);
+  // $secondary: hsl(33, 75%, 68%);
+  // $on-bg: hsl(207, 61%, 13%);
+  // $bg: hsl(60, 42%, 94%);
+
+  --p-h: 204;
+  --p-s: 100;
+  --p-l: 29;
+
+  --s-h: 33;
+  --s-s: 75;
+  --s-l: 68;
+
+  --on-bg-h: 206;
+  --on-bg-s: 60;
+  --on-bg-light: 13;
+
+  --bg-h: 60;
+  --bg-s: 42;
+  --bg-light: 94;
+
+  --dark: -1;
+}
+
+.promare {
+  // $secondary: hsl(0, 100%, 80%);
+  // $primary: hsl(168, 100%, 76%);
+  // $on-bg: hsl(0, 0%, 96%);
+  // $bg: hsl(0, 0%, 17%);
+
+  --s-h: 0;
+  --s-s: 100;
+  --s-l: 75;
+
+  --p-h: 168;
+  --p-s: 100;
+  --p-l: 76;
+
+  --on-bg-h: 0;
+  --on-bg-s: 0;
+  --on-bg-light: 96;
+
+  --bg-h: 0;
+  --bg-s: 0;
+  --bg-light: 17;
+
+  --dark: 1;
+}

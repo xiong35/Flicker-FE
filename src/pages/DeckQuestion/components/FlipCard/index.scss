@@ -86,4 +86,12 @@ $inset-shadow: rgba(99, 99, 99, 10%) 3px 3px 3px 1px inset,
       cursor: pointer;
     }
   }
+
+  &-note {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--on-bg);
+    opacity: 0.4;
+  }
 }

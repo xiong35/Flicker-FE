@@ -66,6 +66,12 @@ function FlipCard(props: CompProps) {
         />
       </div>
 
+      <div className="dq-flip_card-note">
+        点击 PASS 以标注学会此题，学会的题目将不再显示
+        <br />
+        点击左右键切换题目
+      </div>
+
       <Comments id={card.id}></Comments>
     </div>
   );

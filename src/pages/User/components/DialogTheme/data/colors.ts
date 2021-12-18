@@ -32,4 +32,12 @@ export const colors: Color[] = [
     primary: "#FF5F5F",
     secondary: "#83FFE6",
   },
+  {
+    name: "vue",
+    className: "vue",
+    bg: "#FCFCFC",
+    onBg: "#2C2C2C",
+    primary: "#41B883",
+    secondary: "#35495E",
+  },
 ];
