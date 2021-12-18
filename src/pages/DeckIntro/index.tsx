@@ -1,5 +1,6 @@
 import "./index.scss";
 
+import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import Button from "@mui/material/Button";
@@ -11,9 +12,12 @@ import Browse from "../../imgComponents/Browse";
 import Cards from "../../imgComponents/Cards";
 import Fire from "../../imgComponents/Fire";
 import Star from "../../imgComponents/Star";
+import TrashBin from "../../imgComponents/TrashBin";
 import UserEdit from "../../imgComponents/UserEdit";
 import Write from "../../imgComponents/Write";
 import { dateFormat } from "../../utils/dateFormat";
+import { delRecordOfDeck } from "../../utils/studyRecords/syncRecord";
+import DialogDeleteRecord from "./components/DialogDeleteRecord";
 import { useDeck } from "./hooks/useDeck";
 import { useRecord } from "./hooks/useRecord";
 
@@ -31,6 +35,8 @@ function DeckIntro(props: DeckIntroProps) {
   function jumpToQuestion() {
     history.push(`/deck/${id}/question`);
   }
+
+  const [showConfirmDelDialog, setShowConfirmDelDialog] = useState(false);
 
   if (!deck) return <Loading></Loading>;
 
@@ -62,7 +68,16 @@ function DeckIntro(props: DeckIntroProps) {
       </div>
 
       <div className="deck_intro-study deck_intro-action_container">
-        <h4>开始学习</h4>
+        <div className="deck_intro-study-header">
+          <span className="deck_intro-study-header-begin">开始学习</span>
+          <span
+            className="deck_intro-study-header-reset"
+            onClick={() => setShowConfirmDelDialog(true)}
+          >
+            <TrashBin className="deck_intro-study-header-reset-icon"></TrashBin>
+            重置学习记录
+          </span>
+        </div>
         {record && (
           <div className="deck_intro-study-process">
             当前学习进度：已学会{record.learnt}题，
@@ -117,6 +132,16 @@ function DeckIntro(props: DeckIntroProps) {
           )}
         </div>
       </div>
+
+      {showConfirmDelDialog && (
+        <DialogDeleteRecord
+          cancel={() => setShowConfirmDelDialog(false)}
+          confirm={() => {
+            delRecordOfDeck(id);
+            setShowConfirmDelDialog(false);
+          }}
+        ></DialogDeleteRecord>
+      )}
     </div>
   );
 }

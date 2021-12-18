@@ -5,10 +5,12 @@ import {
   addStudyRecordReq,
   AddStudyRecordReqData,
 } from "../../network/study/addStudyRecord";
+import { delRecordOfDeckReq } from "../../network/study/delRecordOfDeck";
 import { getDeckRecordsReq } from "../../network/study/getDeckRecords";
 import { Scheduler } from "../scheduler";
+import { showToast } from "../showToast";
 import { _isDeckRecord } from "./check";
-import { addCardID, getAllID } from "./ids";
+import { addCardID, getAllID, removeLocalId } from "./ids";
 import { recordArr2Map } from "./mapping";
 
 /****************/
@@ -134,4 +136,20 @@ const addStudyRecordScheduler = new Scheduler(1);
 /** 记录学习一个卡片的结果. 会更新 local storage 中的记录同时通知后端, 若是新的卡组会创建此记录 */
 export function addStudyRecord(data: AddStudyRecordReqData, isLeaving = false) {
   addStudyRecordScheduler.add(() => _addStudyRecord(data, isLeaving));
+}
+
+/****************/
+/* 删除学习记录 */
+/****************/
+
+export async function delRecordOfDeck(deckID: DeckID) {
+  const success = await delRecordOfDeckReq({ deckID });
+
+  if (success) {
+    localStorage.removeItem(`${RECORD_PREFIX}-deck-${deckID}`);
+
+    removeLocalId(deckID);
+
+    showToast("删除成功！", "success");
+  }
 }

@@ -30,3 +30,13 @@ export function getAllID() {
   } catch {}
   return ids;
 }
+
+export function removeLocalId(id: DeckID) {
+  const oldIds = getAllID();
+
+  const idSet = new Set(oldIds);
+
+  idSet.delete(id);
+
+  _saveDeckIDs(Array.from(idSet));
+}

@@ -88,9 +88,30 @@
   }
 
   &-study {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &-begin {
+        font-weight: bold;
+        font-style: 1.2rem;
+      }
+      &-reset {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: var(--secondary);
+        cursor: pointer;
+        &-icon {
+          width: 1.2em;
+          height: 1.2em;
+          margin-right: 0.2em;
+        }
+      }
+    }
     &-process {
       margin-bottom: 2rem;
-      margin-top: -0.7rem;
+      margin-top: 0.7rem;
       opacity: 0.4;
     }
   }
