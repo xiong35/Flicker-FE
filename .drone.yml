@@ -32,6 +32,8 @@ steps:
 
   - name: build-dist
     image: node:14.18.1
+    environment:
+      NODE_OPTIONS: --max_old_space_size=4096
     commands:
       - npm run build
 
