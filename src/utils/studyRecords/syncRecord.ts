@@ -153,3 +153,14 @@ export async function delRecordOfDeck(deckID: DeckID) {
     showToast("删除成功！", "success");
   }
 }
+
+export async function delAllLocalRecords() {
+  const ids = getAllID();
+  ids.forEach((id) => {
+    localStorage.removeItem(`${RECORD_PREFIX}-deck-${id}`);
+
+    removeLocalId(id);
+  });
+
+  showToast("删除成功！", "success");
+}

@@ -1,6 +1,7 @@
 import "./index.scss";
 
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { Button, TextField } from "@mui/material";
 
@@ -13,6 +14,8 @@ import NavHome from "../../imgComponents/NavHome";
 import Record from "../../imgComponents/Record";
 import Theme from "../../imgComponents/Theme";
 import UserEdit from "../../imgComponents/UserEdit";
+import { delAllLocalRecords } from "../../utils/studyRecords/syncRecord";
+import { clearToken } from "../../utils/token";
 import DialogTheme from "./components/DialogTheme";
 import { useEditName } from "./hooks/useEditName";
 import { uploadAvatar } from "./utils/uploadAvatar";
@@ -27,6 +30,8 @@ function User(props: UserProps) {
   const { isEditing, newName, startEditing, finishEditing, setNewName } =
     useEditName();
   const [showThemeDialog, setShowThemeDialog] = useState(false);
+
+  const history = useHistory();
 
   return (
     <div className="user">
@@ -71,13 +76,13 @@ function User(props: UserProps) {
       </div>
 
       <div className="user-menu">
-        <div className="user-menu-item">
+        <div className="user-menu-item" onClick={() => history.push("/home")}>
           <Deck className="user-menu-item-icon scale-110" />
           我的题库
           <div className="spacer"></div>
           <ArrowLeftP className="user-menu-item-icon rotate arrow" />
         </div>
-        <div className="user-menu-item">
+        <div className="user-menu-item" style={{ opacity: 0.2 }}>
           <Record className="user-menu-item-icon" />
           学习记录
           <div className="spacer"></div>
@@ -94,18 +99,21 @@ function User(props: UserProps) {
         </div>
       </div>
       <div className="user-menu">
-        <div className="user-menu-item">
+        <div className="user-menu-item" onClick={delAllLocalRecords}>
           <Deck className="user-menu-item-icon scale-110" />
           清除本地学习记录
           <div className="spacer"></div>
         </div>
-        <div className="user-menu-item">
-          <Record className="user-menu-item-icon" />
-          同步本地记录到云端
-          <div className="spacer"></div>
-        </div>
       </div>
-      <Button variant="contained" className="user-logout" color="error">
+      <Button
+        variant="contained"
+        className="user-logout"
+        color="error"
+        onClick={() => {
+          clearToken();
+          history.push("/login");
+        }}
+      >
         退出
       </Button>
       <TheBottomTabs />
