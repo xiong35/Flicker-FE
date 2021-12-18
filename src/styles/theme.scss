@@ -22,6 +22,8 @@
   --bg-light: 97;
 
   --dark: -1;
+
+  --on-primary: var(--bg);
 }
 
 .lazurite {
@@ -50,18 +52,18 @@
 }
 
 .promare {
-  // $secondary: hsl(0, 100%, 80%);
   // $primary: hsl(168, 100%, 76%);
+  // $secondary: hsl(0, 100%, 80%);
   // $on-bg: hsl(0, 0%, 96%);
   // $bg: hsl(0, 0%, 17%);
-
-  --s-h: 0;
-  --s-s: 100;
-  --s-l: 75;
 
   --p-h: 168;
   --p-s: 100;
   --p-l: 76;
+
+  --s-h: 0;
+  --s-s: 100;
+  --s-l: 75;
 
   --on-bg-h: 0;
   --on-bg-s: 0;
@@ -70,6 +72,56 @@
   --bg-h: 0;
   --bg-s: 0;
   --bg-light: 17;
+
+  --dark: 1;
+}
+
+.vue {
+  // $primary: hsl(153, 48%, 49%);
+  // $secondary: hsl(211, 28%, 29%);
+  // $on-bg: hsl(0, 0%, 15%);
+  // $bg: hsl(0, 0%, 95%);
+
+  --p-h: 153;
+  --p-s: 48;
+  --p-l: 49;
+
+  --s-h: 211;
+  --s-s: 28;
+  --s-l: 29;
+
+  --on-bg-h: 0;
+  --on-bg-s: 0;
+  --on-bg-light: 15;
+
+  --bg-h: 0;
+  --bg-s: 0;
+  --bg-light: 95;
+
+  --dark: -1;
+}
+
+.pink-cat {
+  // $primary: hsl(13, 69%, 74%);
+  // $secondary: hsl(339, 100%, 64%);
+  // $on-bg: hsl(39, 100%, 92%);
+  // $bg: hsl(229, 20%, 16%);
+
+  --p-h: 13;
+  --p-s: 69;
+  --p-l: 74;
+
+  --s-h: 339;
+  --s-s: 100;
+  --s-l: 64;
+
+  --on-bg-h: 39;
+  --on-bg-s: 100;
+  --on-bg-light: 92;
+
+  --bg-h: 229;
+  --bg-s: 20;
+  --bg-light: 16;
 
   --dark: 1;
 }

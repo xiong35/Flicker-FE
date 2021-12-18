@@ -17,12 +17,6 @@
     0.1
   );
 
-  --on-primary: hsl(
-    var(--on-p-h),
-    calc(var(--on-p-s) * 1%),
-    calc(var(--on-p-l) * 1%)
-  );
-
   --secondary: hsl(var(--s-h), calc(var(--s-s) * 1%), calc(var(--s-l) * 1%));
   --secondary-l: hsl(
     var(--s-h),
