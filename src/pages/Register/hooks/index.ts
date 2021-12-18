@@ -40,6 +40,7 @@ export function useSetup() {
     if (token) {
       setToken({ value: token });
       history.push("/");
+      return;
     }
     showToast("自动登录失败，请手动登录", "error");
     history.push("/login");
