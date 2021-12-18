@@ -45,7 +45,7 @@ export const colors: Color[] = [
     className: "promare",
     bg: "#2C2C2C",
     onBg: "#FCFCFC",
-    primary: "#FF5F5F",
-    secondary: "#83FFE6",
+    primary: "#75d1bf",
+    secondary: "#FF5F5F",
   },
 ];
