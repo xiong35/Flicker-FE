@@ -89,13 +89,13 @@ function DeckIntro(props: DeckIntroProps) {
           <div className="deck_intro-study-process">还未开始学习</div>
         )}
         <div className="deck_intro-action_container-actions">
-          <div
+          {/* <div
             className="deck_intro-action_container-actions-button"
             onClick={jumpToQuestion}
           >
             <Browse className="deck_intro-action_container-actions-button-icon scale-110" />
             浏览
-          </div>
+          </div> */}
           <div
             className="deck_intro-action_container-actions-button"
             onClick={jumpToQuestion}

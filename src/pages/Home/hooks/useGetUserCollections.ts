@@ -6,7 +6,7 @@ import { getRecordMapByIds } from "../../../utils/studyRecords/syncRecord";
 import { Awaited } from "../../../utils/types";
 
 export const useGetUserCollections = () => {
-  const [collections, setCollections] = useState<Deck[]>([]);
+  const [collections, setCollections] = useState<Deck[] | null>(null);
 
   const getCollections = async () => {
     const res = await getFavoriteReq();
@@ -22,11 +22,11 @@ export const useGetUserCollections = () => {
     ReturnType<typeof getRecordMapByIds>
   > | null>(null);
   useEffect(() => {
-    if (collections.length === 0) return;
+    if (!collections) return;
     getRecordMapByIds(collections.map((c) => c.id)).then((map) =>
       setCollectionRecordMap(map)
     );
-  }, [collections.length]);
+  }, [collections]);
 
   return { collections, collectionRecordMap };
 };
