@@ -35,6 +35,7 @@ function DeckUpload(props: DeckUploadProps) {
     clearError,
     createDeck,
     showDeckProgress,
+    updateAccess,
   } = useDeck(param.id);
   const {
     addCard,
@@ -95,12 +96,10 @@ function DeckUpload(props: DeckUploadProps) {
           <Checkbox
             checked={form.access === "1"}
             onChange={() => {
+              updateAccess();
               setFormAndWriteToLocal({
                 access: form.access === "0" ? "1" : "0",
               });
-              setTimeout(() => {
-                onDeckInputBlur("access");
-              }, 160);
             }}
           />
         }

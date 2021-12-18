@@ -40,7 +40,7 @@ export const useDeck = (id: string | undefined) => {
   };
 
   const setFormAndWriteToLocal = (partOfForm: Partial<Form>) => {
-    id &&
+    id ||
       window.localStorage.setItem(
         DECK_KEY,
         JSON.stringify({ ...form, ...partOfForm })
@@ -51,6 +51,11 @@ export const useDeck = (id: string | undefined) => {
   const onDeckInputBlur = async (key: keyof Form) => {
     const useable = await doValidate(key);
     if (useable && id) updateDeck();
+  };
+
+  const updateAccess = () => {
+    if (!id) return;
+    updateCardsetReq({ ...form, access: form.access === "0" ? 1 : 0 }, { id });
   };
 
   const updateDeck = async () => {
@@ -67,5 +72,6 @@ export const useDeck = (id: string | undefined) => {
     clearError,
     createDeck,
     showDeckProgress,
+    updateAccess,
   };
 };
