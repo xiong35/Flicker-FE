@@ -53,7 +53,7 @@ function DeckUpload(props: DeckUploadProps) {
     <div className="deck_upload">
       <TheTopBar title="创建卡组" />
       <TextField
-        className="deck_upload-input m"
+        className="deck_upload-input m reset_mui_input_primary"
         label="标题"
         variant="outlined"
         placeholder="例如：六级英语词汇"
@@ -65,7 +65,7 @@ function DeckUpload(props: DeckUploadProps) {
         onFocus={() => clearError("name")}
       />
       <TextField
-        className="deck_upload-input m"
+        className="deck_upload-input m reset_mui_input_primary"
         label="添加描述..."
         variant="outlined"
         multiline={true}
@@ -110,7 +110,7 @@ function DeckUpload(props: DeckUploadProps) {
               />
             </div>
             <TextField
-              className="deck_upload-input m light"
+              className="deck_upload-input m light reset_mui_input_primary"
               label="题目"
               variant="standard"
               multiline={true}
@@ -119,7 +119,7 @@ function DeckUpload(props: DeckUploadProps) {
               onChange={(e) => updateCard(card.id, "question", e.target.value)}
             />
             <TextField
-              className="deck_upload-input m light"
+              className="deck_upload-input m light reset_mui_input_primary"
               label="答案"
               variant="standard"
               multiline={true}

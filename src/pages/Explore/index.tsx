@@ -34,7 +34,7 @@ function Explore(props: ExploreProps) {
       </Fab>
 
       <TextField
-        className="explore-search m"
+        className="explore-search m reset_mui_input_primary"
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="输入关键词查找卡片集"

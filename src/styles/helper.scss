@@ -52,3 +52,27 @@
 //     background-color: var(--bg);
 //   }
 // }
+
+.reset_mui_input_primary.reset_mui_input_primary {
+  .Mui-focused {
+    border-color: var(--primary);
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--primary);
+    }
+
+    &::after {
+      border-color: var(--primary);
+    }
+  }
+
+  .MuiInput-underline {
+    &::after {
+      border-color: var(--primary);
+    }
+  }
+
+  .MuiInputLabel-shrink {
+    color: var(--primary);
+  }
+}
