@@ -1,5 +1,7 @@
 import "./index.scss";
 
+import { useHistory, useLocation, useParams } from "react-router-dom";
+
 import {
     Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel,
     LinearProgress, TextField
@@ -11,25 +13,29 @@ import AddUpper from "../../imgComponents/AddUpper";
 import TrashBin from "../../imgComponents/TrashBin";
 import { Card } from "../../models/card";
 import DialogLoadLastCards from "./components/DialogLoadLastCards";
+import DialogProcess from "./components/DialogProcess";
 import { useCards } from "./hooks/useCards";
 import { useCreate } from "./hooks/useCreate";
 import { useDeck } from "./hooks/useDeck";
+import { useEdit } from "./hooks/useEdit";
 import { useLoadLast } from "./hooks/useLoadLast";
 
 type DeckUploadProps = {};
 
 function DeckUpload(props: DeckUploadProps) {
   const {} = props;
+  const param = useParams<{ id?: string }>();
+
   const {
     form,
     setForm,
     setFormAndWriteToLocal,
     formErrorHint,
-    doValidate,
+    onDeckInputBlur,
     clearError,
     createDeck,
     showDeckProgress,
-  } = useDeck();
+  } = useDeck(param.id);
   const {
     addCard,
     setCards,
@@ -39,13 +45,17 @@ function DeckUpload(props: DeckUploadProps) {
     createCards,
     cardPostProgress,
     showCardPostProgress,
-  } = useCards();
+    onCardsInputBlur,
+  } = useCards(param.id);
   const { create } = useCreate({ createDeck, createCards });
+  const {} = useEdit({ setCards, setForm, id: param.id });
 
   const { cancelLoad, showDialogLoadLast, loadLast } = useLoadLast({
     setCards,
     setForm,
   });
+
+  const history = useHistory();
 
   const postCards = cards.filter((card) => card.answer && card.question);
 
@@ -59,7 +69,7 @@ function DeckUpload(props: DeckUploadProps) {
         placeholder="例如：六级英语词汇"
         value={form.name}
         onChange={(e) => setFormAndWriteToLocal({ name: e.target.value })}
-        onBlur={() => doValidate("name")}
+        onBlur={() => onDeckInputBlur("name")}
         helperText={formErrorHint.name}
         error={!!formErrorHint.name}
         onFocus={() => clearError("name")}
@@ -74,7 +84,7 @@ function DeckUpload(props: DeckUploadProps) {
         onChange={(e) =>
           setFormAndWriteToLocal({ description: e.target.value })
         }
-        onBlur={() => doValidate("description")}
+        onBlur={() => onDeckInputBlur("description")}
         helperText={formErrorHint.description}
         error={!!formErrorHint.description}
         onFocus={() => clearError("description")}
@@ -84,11 +94,14 @@ function DeckUpload(props: DeckUploadProps) {
         control={
           <Checkbox
             checked={form.access === "1"}
-            onChange={() =>
+            onChange={() => {
               setFormAndWriteToLocal({
                 access: form.access === "0" ? "1" : "0",
-              })
-            }
+              });
+              setTimeout(() => {
+                onDeckInputBlur("access");
+              }, 160);
+            }}
           />
         }
         label="公开卡组"
@@ -102,7 +115,7 @@ function DeckUpload(props: DeckUploadProps) {
               <div className="spacer"></div>
               <AddUpper
                 className="deck_upload-cards-item-opts-icon"
-                onClick={() => addCard(new Card(), card.id)}
+                onClick={() => addCard(new Card(), param.id, card.id)}
               />
               <TrashBin
                 className="deck_upload-cards-item-opts-icon"
@@ -116,6 +129,7 @@ function DeckUpload(props: DeckUploadProps) {
               multiline={true}
               maxRows="7"
               value={card.question}
+              onBlur={() => onCardsInputBlur(card.id)}
               onChange={(e) => updateCard(card.id, "question", e.target.value)}
             />
             <TextField
@@ -126,12 +140,13 @@ function DeckUpload(props: DeckUploadProps) {
               maxRows="7"
               value={card.answer}
               onChange={(e) => updateCard(card.id, "answer", e.target.value)}
+              onBlur={() => onCardsInputBlur(card.id)}
             />
           </div>
         ))}
         <div
           className="deck_upload-cards-add"
-          onClick={() => addCard(new Card())}
+          onClick={() => addCard(new Card(), param.id)}
         >
           <AddIcon className="deck_upload-cards-add-icon" />
           添加卡片
@@ -139,36 +154,22 @@ function DeckUpload(props: DeckUploadProps) {
         <Button
           variant="contained"
           className="reset_mui_button_contained_primary"
-          onClick={() => create(cards)}
+          onClick={() => {
+            if (!param.id) create(cards);
+            else history.push(`/deck/${param.id}/intro`);
+          }}
         >
-          创建
+          {param.id ? "完成" : "创建"}
         </Button>
       </div>
 
-      <Dialog
-        open={showCardPostProgress || showDeckProgress}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-        className="deck_upload-dialog"
-      >
-        <DialogTitle>当前进度</DialogTitle>
-        <DialogContent>
-          <div className="deck_upload-dialog-content">
-            {showDeckProgress ? (
-              <div>正在创建卡片集……</div>
-            ) : (
-              <>
-                <LinearProgress
-                  variant="determinate"
-                  value={~~((cardPostProgress / postCards.length) * 100)}
-                  className="deck_upload-dialog-content-linear_progress"
-                />
-                <div className="deck_upload-dialog-content-progress_text">{`${cardPostProgress}/${cards.length}`}</div>
-              </>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
+      <DialogProcess
+        cardPostProgress={cardPostProgress}
+        cardsLength={cards.length}
+        postCardsLength={postCards.length}
+        showCardPostProgress={showCardPostProgress}
+        showDeckProgress={showDeckProgress}
+      />
 
       {showDialogLoadLast && (
         <DialogLoadLastCards cancel={cancelLoad} confirm={loadLast} />

@@ -8,10 +8,11 @@ import { DECK_KEY } from "./useDeck";
 type useCreateProps = {
   createCards: (cardsetID: string) => Promise<void>;
   createDeck: () => Promise<undefined | null | string>;
+  id?: string;
 };
 
 export const useCreate = (props: useCreateProps) => {
-  const { createCards, createDeck } = props;
+  const { createCards, createDeck, id } = props;
   const history = useHistory();
 
   const create = async (cards: Card[]) => {

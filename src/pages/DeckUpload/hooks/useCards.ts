@@ -1,20 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Card, CardID } from "../../../models/card";
+import { delCardReq } from "../../../network/card/delCard";
+import { updateCardReq } from "../../../network/card/updateCard";
 import { createCardReq } from "../../../network/cardset/createCard";
-import { showToast } from "../../../utils/showToast";
+import { Scheduler } from "../../../utils/scheduler";
 
 const initialCards = Array.from({ length: 5 }, () => new Card());
 
 export const CARDS_KEY = "flicker-cards";
 
-export const useCards = () => {
+const scheduler = new Scheduler(1);
+
+export const useCards = (id?: string) => {
   const [cards, _setCards] = useState<Card[]>(initialCards);
   const [cardPostProgress, setCardPostProgress] = useState(0);
   const [showCardPostProgress, setShowCardPostProgress] = useState(false);
 
   const setCards = (cards: Card[]) => {
-    syncToLocalStorage(cards);
+    id || syncToLocalStorage(cards);
     _setCards(cards);
   };
 
@@ -23,7 +27,16 @@ export const useCards = () => {
    * @param card 需要新加 的card
    * @param posteriorCardID cardID，可选，若有则在该card前插入，若无则在最后插入
    */
-  const addCard = (card: Card, posteriorCardID?: CardID) => {
+  const addCard = async (
+    card: Card,
+    cardsetID?: string,
+    posteriorCardID?: CardID
+  ) => {
+    if (cardsetID && id) {
+      let newCardID =
+        (await createCardReq({ ...card, id: undefined }, { cardsetID })) || "";
+      card.id = newCardID;
+    }
     if (!posteriorCardID) {
       setCards([...cards, card]);
       return;
@@ -40,6 +53,7 @@ export const useCards = () => {
    * @param removeCardID cardID，将要移除的card的id
    */
   const removeCard = (removeCardID: CardID) => {
+    if (id) delCardReq({ cardID: removeCardID, cardsetID: id });
     const index = cards.findIndex((card) => card.id === removeCardID);
     if (index === -1) return;
     const newCards = [...cards];
@@ -80,6 +94,15 @@ export const useCards = () => {
     setCardPostProgress(0);
   };
 
+  const onCardsInputBlur = (cardID: string) => {
+    if (!id) return;
+    const card = cards.find((cardItem) => cardItem.id === cardID);
+    if (!card) return;
+    console.log({ card });
+
+    scheduler.add(() => updateCardReq({ ...card }, { cardID, cardsetID: id }));
+  };
+
   return {
     cards,
     setCards: _setCards,
@@ -89,5 +112,6 @@ export const useCards = () => {
     createCards,
     cardPostProgress,
     showCardPostProgress,
+    onCardsInputBlur,
   };
 };

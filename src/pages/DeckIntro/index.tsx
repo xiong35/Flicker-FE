@@ -126,9 +126,18 @@ function DeckIntro(props: DeckIntroProps) {
             {deck.is_favorite ? "已收藏" : "收藏"}
           </Button>
           {deck.owner_id === self.id && (
-            <Button variant="contained" color="error" onClick={delDeck}>
-              删除
-            </Button>
+            <>
+              <Button
+                variant="contained"
+                className="reset_mui_button_contained_primary"
+                onClick={() => history.push(`/deck/${id}/edit`)}
+              >
+                编辑
+              </Button>
+              <Button variant="contained" color="error" onClick={delDeck}>
+                删除
+              </Button>
+            </>
           )}
         </div>
       </div>

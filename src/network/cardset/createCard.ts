@@ -18,7 +18,7 @@ export async function createCardReq(
   data: CreateCardReqData,
   params: CreateCardReqParams
 ) {
-  const res = await _request({
+  const res = await _request<string>({
     url: `/cardset/${params.cardsetID}/card`,
     method: "POST",
     data,

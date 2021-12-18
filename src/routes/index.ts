@@ -31,7 +31,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/deck/:id/edit",
-    component: loadable(() => import("../pages/DeckEdit")),
+    component: loadable(() => import("../pages/DeckUpload")),
     exact: true,
   },
   {
