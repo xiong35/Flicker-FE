@@ -12,12 +12,26 @@ type UseLoadLastProps = {
 export const useLoadLast = (props: UseLoadLastProps) => {
   const { setCards, setForm } = props;
 
+  type Form = Parameters<typeof setForm>[0];
+
   const [showDialogLoadLast, setShowDialogLoadLast] = useState(false);
 
   useEffect(() => {
     const lastCards = window.localStorage.getItem(CARDS_KEY);
     const lastDeck = window.localStorage.getItem(DECK_KEY);
-    if (lastCards || lastDeck) setShowDialogLoadLast(true);
+    let showDialog = false;
+    if (lastDeck) {
+      const deck = JSON.parse(lastDeck) as Form;
+      delete deck.access;
+      showDialog = Object.values(deck).some((value) => value);
+    }
+    if (!showDialog && lastCards) {
+      const cards = JSON.parse(lastCards) as Card[];
+      showDialog = cards.some((card) =>
+        Object.values(card).some((value) => value)
+      );
+    }
+    setShowDialogLoadLast(showDialog);
   }, []);
 
   const loadLast = () => {

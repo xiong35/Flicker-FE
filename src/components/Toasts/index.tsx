@@ -11,7 +11,6 @@ export default function Toasts() {
     <div className="toasts">
       {toasts.map((toast) => (
         <Alert
-          variant="outlined"
           severity={toast.severity}
           key={toast._id}
           className="toasts-toast"

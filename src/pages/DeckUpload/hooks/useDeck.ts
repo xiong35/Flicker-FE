@@ -10,8 +10,8 @@ export const DECK_KEY = "flicker-deck";
 
 export const useDeck = () => {
   const { form, setForm, doValidate, formErrorHint, clearError } = useForm({
-    name: { validator: deckNameValidator },
-    description: { validator: deckDescriptionValidator },
+    name: { validator: deckNameValidator, default: "" },
+    description: { validator: deckDescriptionValidator, default: "" },
     access: { validator: async () => undefined, default: "0" },
   });
 

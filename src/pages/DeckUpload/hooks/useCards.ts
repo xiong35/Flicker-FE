@@ -77,6 +77,7 @@ export const useCards = () => {
     }
     window.localStorage.removeItem(CARDS_KEY);
     setShowCardPostProgress(false);
+    setCardPostProgress(0);
   };
 
   return {

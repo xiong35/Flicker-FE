@@ -1,13 +1,18 @@
+import { useHistory } from "react-router-dom";
+
 import { Card } from "../../../models/card";
 import { showToast } from "../../../utils/showToast";
+import { CARDS_KEY } from "./useCards";
+import { DECK_KEY } from "./useDeck";
 
 type useCreateProps = {
-  createCards: (cardsetID: string) => void;
+  createCards: (cardsetID: string) => Promise<void>;
   createDeck: () => Promise<undefined | null | string>;
 };
 
 export const useCreate = (props: useCreateProps) => {
   const { createCards, createDeck } = props;
+  const history = useHistory();
 
   const create = async (cards: Card[]) => {
     for (let i = 0; i < cards.length; i++) {
@@ -23,7 +28,10 @@ export const useCreate = (props: useCreateProps) => {
 
     const cardsetID = await createDeck();
     if (!cardsetID) return;
-    createCards(cardsetID);
+    await createCards(cardsetID);
+    window.localStorage.removeItem(CARDS_KEY);
+    window.localStorage.removeItem(DECK_KEY);
+    history.push(`/deck/${cardsetID}/intro`);
   };
 
   return { create };

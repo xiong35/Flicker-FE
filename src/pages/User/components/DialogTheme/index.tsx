@@ -22,6 +22,7 @@ export default function DialogTheme(props: DialogThemeProps) {
 
   const switchTheme = (theme: string) => {
     dispatch(changeTheme(theme));
+    cancel();
   };
 
   return (
