@@ -1,0 +1,50 @@
+.comment_item {
+  background-color: var(--bg-l);
+  padding: 1rem;
+  margin: 0 0.5rem 1rem;
+  border-radius: 10px;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--bg-d);
+    padding-bottom: 0.5rem;
+
+    &-info_wrap {
+      padding-left: 0.5rem;
+    }
+
+    &-avatar {
+      border: 1px solid var(--secondary);
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &-name {
+      font-weight: bold;
+    }
+
+    &-time {
+      font-weight: lighter;
+      opacity: 0.7;
+      font-weight: 100;
+      font-size: 12px;
+    }
+
+    &-like {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &-icon {
+        width: 1.2em;
+        height: 1.2em;
+        margin-right: 0.2em;
+      }
+    }
+  }
+
+  &-content {
+    padding: 0.5rem 0;
+  }
+}
