@@ -136,7 +136,11 @@ function DeckUpload(props: DeckUploadProps) {
           <AddIcon className="deck_upload-cards-add-icon" />
           添加卡片
         </div>
-        <Button variant="contained" onClick={() => create(cards)}>
+        <Button
+          variant="contained"
+          className="reset_mui_button_contained_primary"
+          onClick={() => create(cards)}
+        >
           创建
         </Button>
       </div>
