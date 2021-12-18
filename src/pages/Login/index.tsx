@@ -28,7 +28,7 @@ function Login(props: LoginProps) {
       <Logo className="login-logo"></Logo>
 
       <TextField
-        className="login-input m login-email"
+        className="login-input m login-email reset_mui_input_primary"
         label="邮箱"
         variant="outlined"
         value={form.mail}
@@ -39,7 +39,7 @@ function Login(props: LoginProps) {
         onFocus={() => clearError("mail")}
       />
       <TextField
-        className="login-input m login-password"
+        className="login-input m login-password reset_mui_input_primary"
         label="密码"
         variant="outlined"
         value={form.password}
@@ -66,7 +66,11 @@ function Login(props: LoginProps) {
         </div>
       </div>
 
-      <Button onClick={login} className="login-login_btn m" variant="outlined">
+      <Button
+        onClick={login}
+        className="login-login_btn m reset_mui_button_contained_primary"
+        variant="contained"
+      >
         登录
       </Button>
     </div>
