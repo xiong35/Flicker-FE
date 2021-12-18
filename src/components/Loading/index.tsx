@@ -1,14 +1,11 @@
 import "./index.scss";
 
-import { useSetup } from "./hooks";
-
 type LoadingProps = {
   full?: boolean;
 };
 
 function Loading(props: LoadingProps) {
   const { full = true } = props;
-  const {} = useSetup();
 
   if (full)
     return (
