@@ -1,11 +1,8 @@
 import "./index.scss";
 
-import { useHistory } from "react-router-dom";
-
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
-import logoImg from "../../../public/logo.svg";
 import Logo from "../../imgComponents/Logo";
 import { showToast } from "../../utils/showToast";
 import { useSetup } from "./hooks";

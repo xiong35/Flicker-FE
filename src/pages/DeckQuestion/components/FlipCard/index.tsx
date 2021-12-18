@@ -1,11 +1,10 @@
 import "./index.scss";
 
-import Loading from "../../../../components/Loading";
 import ArrowLeftCircle from "../../../../imgComponents/ArrowLeftCircle";
 import { StudyStatus } from "../../../../models/study";
+import { useCardState } from "../../hooks/useCardState";
 import { CompProps } from "../../hooks/useQuestionComp";
 import Comments from "../Comments";
-import { useCardState } from "./hooks/useCardState";
 
 const ANIMATION_TIME = 150;
 

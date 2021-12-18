@@ -6,6 +6,7 @@ import { Button, Fab, TextField } from "@mui/material";
 
 import DeckCard from "../../components/DeckCard";
 import Empty from "../../components/Empty";
+import Loading from "../../components/Loading";
 import NoMore from "../../components/NoMore";
 import TheBottomTabs from "../../components/TheBottomTabs";
 import AddIcon from "../../imgComponents/AddIcon";
@@ -49,11 +50,13 @@ function Explore(props: ExploreProps) {
       ></TextField>
 
       <div className="explore-decks">
-        {decks.map((deck) => (
-          <DeckCard deckBrief={deck} key={deck.id} />
-        ))}
-
-        {decks.length === 0 && <Empty></Empty>}
+        {decks === null ? (
+          <Loading full={false}></Loading>
+        ) : decks.length === 0 ? (
+          <Empty></Empty>
+        ) : (
+          decks.map((deck) => <DeckCard deckBrief={deck} key={deck.id} />)
+        )}
         {noMore && <NoMore></NoMore>}
       </div>
 

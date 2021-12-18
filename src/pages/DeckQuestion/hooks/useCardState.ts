@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { Card } from "../../../../../models/card";
-import { md } from "../../../../../utils/setupMdEditor";
+import { Card } from "../../../models/card";
+import { md } from "../../../utils/setupMdEditor";
 
 export function useCardState(card: Card) {
   const { answer, question } = card;

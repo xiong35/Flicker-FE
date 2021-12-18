@@ -21,10 +21,6 @@
 
 <!-- Status -->
 
-<h4 align="center">
-	🚧  Flicker 🚀 Under construction...  🚧
-</h4>
-
 <hr>
 
 <p align="center">

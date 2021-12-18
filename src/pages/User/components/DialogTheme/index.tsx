@@ -37,7 +37,7 @@ export default function DialogTheme(props: DialogThemeProps) {
           >
             <div
               className="dialog_theme-color-bg"
-              style={{ backgroundColor: color.bg }}
+              style={{ backgroundColor: color.bg, borderColor: color.primary }}
             >
               <div
                 className="dialog_theme-color-primary"

@@ -24,6 +24,7 @@
 
 .reset_mui_button_contained_primary.reset_mui_button_contained_primary {
   background-color: var(--primary);
+  color: var(--on-primary);
 
   &:hover {
     background-color: var(--primary-d);
@@ -84,5 +85,29 @@
 
   .MuiInputLabel-shrink {
     color: var(--primary);
+  }
+}
+
+.reset_mui_input_secondary.reset_mui_input_secondary {
+  .Mui-focused {
+    border-color: var(--secondary);
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary);
+    }
+
+    &::after {
+      border-color: var(--secondary);
+    }
+  }
+
+  .MuiInput-underline {
+    &::after {
+      border-color: var(--secondary);
+    }
+  }
+
+  .MuiInputLabel-shrink {
+    color: var(--secondary);
   }
 }

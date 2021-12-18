@@ -1,21 +1,30 @@
 import "./index.scss";
 
-import { useSetup } from "./hooks";
-
-type LoadingProps = {};
+type LoadingProps = {
+  full?: boolean;
+};
 
 function Loading(props: LoadingProps) {
-  const {} = props;
-  const {} = useSetup();
+  const { full = true } = props;
+
+  if (full)
+    return (
+      <div className="loading">
+        <div className="loading-container">
+          <div className="loading-container-item"></div>
+          <div className="loading-container-item"></div>
+          <div className="loading-container-item"></div>
+          <div className="loading-container-item"></div>
+        </div>
+      </div>
+    );
 
   return (
-    <div className="loading">
-      <div className="loading-container">
-        <div className="loading-container-item"></div>
-        <div className="loading-container-item"></div>
-        <div className="loading-container-item"></div>
-        <div className="loading-container-item"></div>
-      </div>
+    <div className="loading-container">
+      <div className="loading-container-item"></div>
+      <div className="loading-container-item"></div>
+      <div className="loading-container-item"></div>
+      <div className="loading-container-item"></div>
     </div>
   );
 }

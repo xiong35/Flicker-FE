@@ -1,8 +1,8 @@
-import { RouteConfig } from "react-router-config";
+import { RouteProps } from "react-router-dom";
 
 import loadable from "@loadable/component";
 
-export const routes: RouteConfig[] = [
+export const routes: RouteProps[] = [
   {
     path: "/home",
     component: loadable(() => import("../pages/Home")),
