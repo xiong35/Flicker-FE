@@ -13,6 +13,7 @@ import Deck from "../../imgComponents/Deck";
 import NavHome from "../../imgComponents/NavHome";
 import Record from "../../imgComponents/Record";
 import Theme from "../../imgComponents/Theme";
+import TrashBin from "../../imgComponents/TrashBin";
 import UserEdit from "../../imgComponents/UserEdit";
 import { delAllLocalRecords } from "../../utils/studyRecords/syncRecord";
 import { clearToken } from "../../utils/token";
@@ -100,7 +101,7 @@ function User(props: UserProps) {
       </div>
       <div className="user-menu">
         <div className="user-menu-item" onClick={delAllLocalRecords}>
-          <Deck className="user-menu-item-icon scale-110" />
+          <TrashBin className="user-menu-item-icon" />
           清除本地学习记录
           <div className="spacer"></div>
         </div>

@@ -70,6 +70,16 @@
     &::after {
       border-color: var(--primary);
     }
+
+    &::before {
+      border-color: var(--on-bg);
+    }
+
+    &:hover {
+      &::before {
+        border-color: var(--on-bg);
+      }
+    }
   }
 
   .MuiInputLabel-shrink {
