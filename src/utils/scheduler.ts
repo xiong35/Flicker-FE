@@ -37,13 +37,14 @@ export class Scheduler {
   }
 
   add(task: Task) {
-    let thisTaskIsDone = new Promise((resolve) => {
+    let thisTaskIsDone = new Promise((resolve, reject) => {
       // 返回当前任务完成时才 resolve 的 promise
       this.tasks.push(() =>
         // 推进队列
         task()
           .then(resolve)
-          .then(() => {
+          .catch(reject)
+          .finally(() => {
             this.onGoing--; // 调整进行任务数
             this.executeNext(); // 调用下一个任务
           })
