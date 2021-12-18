@@ -31,7 +31,10 @@ function FlipCard(props: CompProps) {
         }}
         className={`dq-flip_card-card ${questionState}`}
       >
-        <div className="dq-flip_card-card-scroll">{text}</div>
+        <div
+          className="dq-flip_card-card-scroll"
+          dangerouslySetInnerHTML={{ __html: text }}
+        ></div>
       </div>
       <div className="dq-flip_card-actions">
         <ArrowLeftCircle
