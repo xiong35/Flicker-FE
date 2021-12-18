@@ -1,0 +1,67 @@
+@import "../../../../styles/css-constants.scss";
+.comments {
+  width: $page-max-width * 0.86;
+  max-width: 86vw;
+  left: 0;
+  right: 0;
+  bottom: calc(-80vh + 2rem);
+  margin: auto;
+  position: absolute;
+  transition: bottom 0.3s;
+  padding: 10px;
+  box-shadow: 0 -2px 6px -1px #0000001f;
+  background-color: var(--bg);
+
+  z-index: 1;
+
+  border: 1px solid var(--primary);
+
+  height: 80vh;
+  border: {
+    top-left-radius: 1rem;
+    top-right-radius: 1rem;
+  }
+
+  &.is-up {
+    bottom: 0;
+    .comments-wrap {
+      overflow-y: scroll;
+    }
+  }
+
+  &-wrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    justify-content: center;
+    opacity: 0.7;
+    font-size: 0.8rem;
+    &-icon {
+      width: 1.4em;
+      height: 1.4em;
+    }
+  }
+
+  &-input {
+    &.m {
+      margin: 1rem;
+      width: calc(100% - 2rem);
+    }
+
+    &-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      padding-left: 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+  &-list {
+  }
+}

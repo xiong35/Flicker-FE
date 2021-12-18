@@ -1,0 +1,34 @@
+@import "../../styles/css-constants.scss";
+
+$height: 50px;
+.the_top_bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $height;
+  display: flex;
+  align-items: center;
+  max-width: $page-max-width;
+  margin: auto;
+
+  background-color: var(--bg-l);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 3px -2px,
+    rgba(0, 0, 0, 0.06) 0px 3px 2px -2px;
+
+  z-index: 3;
+
+  &-back {
+    width: 1rem;
+    margin: 0 1rem;
+    cursor: pointer;
+  }
+
+  &-title {
+    line-height: 0;
+  }
+
+  &-spacer {
+    height: $height;
+  }
+}

@@ -21,10 +21,6 @@
 
 <!-- Status -->
 
-<h4 align="center">
-	🚧  Flicker 🚀 Under construction...  🚧
-</h4>
-
 <hr>
 
 <p align="center">
@@ -86,10 +82,12 @@ This project is under license from MIT. For more details, see the [LICENSE](LICE
 
 Made with :heart: by
 
-- FE:
-  - <a href="https://github.com/xiong35" target="_blank">xiong35</a>
-  - <a href="https://github.com/gucan707" target="_blank">gucan707</a>
-- BE: [TODO]
+- [FE](https://github.com/xiong35/Flicker-FE)
+  - [xiong35](https://github.com/xiong35)
+  - [gucan707](https://github.com/gucan707)
+- [BE](https://github.com/woolen-sheep/Flicker-BE)
+  - [ueqri](https://github.com/ueqri)
+  - [woolen-sheep](https://github.com/woolen-sheep)
 
 &#xa0;
 

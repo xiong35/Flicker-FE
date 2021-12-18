@@ -1,0 +1,59 @@
+.main-container {
+  --primary: hsl(var(--p-h), calc(var(--p-s) * 1%), calc(var(--p-l) * 1%));
+  --primary-l: hsl(
+    var(--p-h),
+    calc(var(--p-s) * 1%),
+    calc(var(--p-l) * 1% - var(--dark) * 10%)
+  );
+  --primary-d: hsl(
+    var(--p-h),
+    calc(var(--p-s) * 1%),
+    calc(var(--p-l) * 1% + var(--dark) * 10%)
+  );
+  --primary-a: hsla(
+    var(--p-h),
+    calc(var(--p-s) * 1%),
+    calc(var(--p-l) * 1%),
+    0.1
+  );
+
+  --secondary: hsl(var(--s-h), calc(var(--s-s) * 1%), calc(var(--s-l) * 1%));
+  --secondary-l: hsl(
+    var(--s-h),
+    calc(var(--s-s) * 1%),
+    calc(var(--s-l) * 1% - var(--dark) * 10%)
+  );
+  --secondary-d: hsl(
+    var(--s-h),
+    calc(var(--s-s) * 1%),
+    calc(var(--s-l) * 1% + var(--dark) * 10%)
+  );
+
+  --on-bg: hsl(
+    var(--on-bg-h),
+    calc(var(--on-bg-s) * 1%),
+    calc(var(--on-bg-light) * 1%)
+  );
+  --on-bg-l: hsl(
+    var(--on-bg-h),
+    calc(var(--on-bg-s) * 1%),
+    calc(var(--on-bg-light) * 1% - var(--dark) * 10%)
+  );
+  --on-bg-d: hsl(
+    var(--on-bg-h),
+    calc(var(--on-bg-s) * 1%),
+    calc(var(--on-bg-light) * 1% + var(--dark) * 10%)
+  );
+
+  --bg: hsl(var(--bg-h), calc(var(--bg-s) * 1%), calc(var(--bg-light) * 1%));
+  --bg-l: hsl(
+    var(--bg-h),
+    calc(var(--bg-s) * 1%),
+    calc(var(--bg-light) * 1% - var(--dark) * 10%)
+  );
+  --bg-d: hsl(
+    var(--bg-h),
+    calc(var(--bg-s) * 1%),
+    calc(var(--bg-light) * 1% + var(--dark) * 10%)
+  );
+}

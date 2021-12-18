@@ -1,0 +1,42 @@
+.toasts {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  &-toast {
+    // opacity: 0;
+    // margin-top: -59px;
+    animation: fadeIn 1.8s;
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        margin-top: -59px;
+      }
+      20% {
+        opacity: 1;
+        margin-top: 0;
+      }
+      80% {
+        opacity: 1;
+        margin-top: 0;
+      }
+      100% {
+        opacity: 0;
+        margin-top: -59px;
+      }
+    }
+  }
+
+  .MuiAlert-root {
+    margin-bottom: 0.5rem;
+    width: 20rem;
+    max-width: 90vw;
+    border: 1px solid;
+
+    * {
+      color: unset;
+    }
+  }
+}

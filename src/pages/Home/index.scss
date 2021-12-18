@@ -1,0 +1,34 @@
+@import "../../styles/index.scss";
+
+.home {
+  &-tabs {
+    position: fixed;
+    top: 0;
+    width: $page-max-width;
+    max-width: 100vw;
+    z-index: 10;
+    background-color: var(--bg-l);
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px,
+      rgb(0 0 0 / 6%) 0px 1px 2px 0px;
+
+    .MuiTabs-flexContainer {
+      justify-content: space-around;
+
+      .MuiTab-textColorPrimary {
+        color: var(--on-bg);
+      }
+
+      .Mui-selected {
+        color: var(--primary);
+      }
+    }
+
+    .MuiTabs-indicator {
+      background-color: var(--primary);
+    }
+  }
+
+  &-deck_container {
+    padding: 4rem 0;
+  }
+}

@@ -1,0 +1,34 @@
+.explore {
+  padding-top: 1rem;
+  .explore-add {
+    position: fixed;
+    right: 1rem;
+    bottom: 5rem;
+    background-color: var(--primary);
+
+    &:hover {
+      background-color: var(--primary-d);
+    }
+
+    &-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &-search.m {
+    display: flex;
+    margin: auto;
+    max-width: 90%;
+    .explore-search-icon {
+      width: 2em;
+      height: 2em;
+      cursor: pointer;
+    }
+  }
+
+  &-random_btn.m {
+    display: flex;
+    margin: 3rem auto;
+  }
+}

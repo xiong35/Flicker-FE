@@ -1,0 +1,56 @@
+.deck_card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgb(50 50 93 / 10%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 15%) 0px 1px 3px -1px;
+  color: var(--primary-d);
+  margin: 0.7rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--bg);
+  cursor: pointer;
+  background: var(--bg-l);
+
+  &-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+
+  &-desc {
+    $line-height: 1.2em;
+
+    line-height: $line-height;
+    opacity: 0.8;
+
+    overflow-wrap: break-word;
+    // text-justify: inter-ideograph;
+    // text-align: justify;
+    word-break: normal;
+
+    max-height: $line-height * 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    margin-top: 0.3rem;
+    &-collected,
+    &-visited {
+      padding-right: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    &-time {
+      opacity: 0.5;
+    }
+  }
+}

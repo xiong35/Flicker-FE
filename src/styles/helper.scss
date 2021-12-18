@@ -1,0 +1,113 @@
+.spacer {
+  flex: 1;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.scale-110 {
+  transform: scale(1.1);
+}
+
+.scale-90 {
+  transform: scale(0.9);
+}
+
+.t-p {
+  color: var(--primary);
+}
+
+.t-s {
+  color: var(--secondary);
+}
+
+.reset_mui_button_contained_primary.reset_mui_button_contained_primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+
+  &:hover {
+    background-color: var(--primary-d);
+  }
+}
+
+.reset_mui_button_outline_secondary.reset_mui_button_outline_secondary {
+  border-color: var(--secondary);
+  color: var(--secondary);
+
+  &:hover {
+    border-color: var(--secondary);
+  }
+}
+
+.reset_mui_button_contained_secondary.reset_mui_button_contained_secondary {
+  background-color: var(--secondary);
+
+  &:hover {
+    background-color: var(--secondary-d);
+  }
+}
+
+// .reset_mui_dialog.reset_mui_dialog {
+//   .MuiDialog-paper {
+//     background-color: var(--bg);
+//   }
+// }
+
+.reset_mui_input_primary.reset_mui_input_primary {
+  .Mui-focused {
+    border-color: var(--primary);
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--primary);
+    }
+
+    &::after {
+      border-color: var(--primary);
+    }
+  }
+
+  .MuiInput-underline {
+    &::after {
+      border-color: var(--primary);
+    }
+
+    &::before {
+      border-color: var(--on-bg);
+    }
+
+    &:hover {
+      &::before {
+        border-color: var(--on-bg);
+      }
+    }
+  }
+
+  .MuiInputLabel-shrink {
+    color: var(--primary);
+  }
+}
+
+.reset_mui_input_secondary.reset_mui_input_secondary {
+  .Mui-focused {
+    border-color: var(--secondary);
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary);
+    }
+
+    &::after {
+      border-color: var(--secondary);
+    }
+  }
+
+  .MuiInput-underline {
+    &::after {
+      border-color: var(--secondary);
+    }
+  }
+
+  .MuiInputLabel-shrink {
+    color: var(--secondary);
+  }
+}

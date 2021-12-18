@@ -1,0 +1,127 @@
+.main-container,
+.turquoise {
+  // $primary: hsl(162, 67%, 18%);
+  // $secondary: hsl(33, 75%, 68%);
+  // $on-bg: hsl(220, 13%, 9%);
+  // $bg: hsl(228, 38%, 97%);
+
+  --p-h: 162;
+  --p-s: 67;
+  --p-l: 18;
+
+  --s-h: 33;
+  --s-s: 75;
+  --s-l: 68;
+
+  --on-bg-h: 220;
+  --on-bg-s: 13;
+  --on-bg-light: 9;
+
+  --bg-h: 228;
+  --bg-s: 38;
+  --bg-light: 97;
+
+  --dark: -1;
+
+  --on-primary: var(--bg);
+}
+
+.lazurite {
+  // $primary: hsl(204, 100%, 29%);
+  // $secondary: hsl(33, 75%, 68%);
+  // $on-bg: hsl(207, 61%, 13%);
+  // $bg: hsl(60, 42%, 94%);
+
+  --p-h: 204;
+  --p-s: 100;
+  --p-l: 29;
+
+  --s-h: 33;
+  --s-s: 75;
+  --s-l: 68;
+
+  --on-bg-h: 206;
+  --on-bg-s: 60;
+  --on-bg-light: 13;
+
+  --bg-h: 60;
+  --bg-s: 42;
+  --bg-light: 94;
+
+  --dark: -1;
+}
+
+.promare {
+  // $primary: hsl(168, 50%, 64%);
+  // $secondary: hsl(0, 100%, 80%);
+  // $on-bg: hsl(0, 0%, 96%);
+  // $bg: hsl(0, 0%, 17%);
+
+  --p-h: 168;
+  --p-s: 50;
+  --p-l: 50;
+
+  --s-h: 0;
+  --s-s: 100;
+  --s-l: 75;
+
+  --on-bg-h: 0;
+  --on-bg-s: 0;
+  --on-bg-light: 96;
+
+  --bg-h: 0;
+  --bg-s: 0;
+  --bg-light: 17;
+
+  --dark: 1;
+}
+
+.vue {
+  // $primary: hsl(153, 48%, 49%);
+  // $secondary: hsl(211, 28%, 29%);
+  // $on-bg: hsl(0, 0%, 15%);
+  // $bg: hsl(0, 0%, 95%);
+
+  --p-h: 153;
+  --p-s: 48;
+  --p-l: 49;
+
+  --s-h: 211;
+  --s-s: 28;
+  --s-l: 29;
+
+  --on-bg-h: 0;
+  --on-bg-s: 0;
+  --on-bg-light: 15;
+
+  --bg-h: 0;
+  --bg-s: 0;
+  --bg-light: 95;
+
+  --dark: -1;
+}
+
+.pink-cat {
+  // $primary: hsl(13, 69%, 74%);
+  // $secondary: hsl(339, 100%, 64%);
+  // $on-bg: hsl(39, 100%, 92%);
+  // $bg: hsl(229, 20%, 16%);
+
+  --p-h: 13;
+  --p-s: 69;
+  --p-l: 74;
+
+  --s-h: 339;
+  --s-s: 100;
+  --s-l: 64;
+
+  --on-bg-h: 39;
+  --on-bg-s: 100;
+  --on-bg-light: 92;
+
+  --bg-h: 229;
+  --bg-s: 20;
+  --bg-light: 16;
+
+  --dark: 1;
+}

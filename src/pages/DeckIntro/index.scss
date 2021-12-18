@@ -1,0 +1,118 @@
+.deck_intro {
+  padding: 0 1rem 2rem;
+
+  &-info {
+    margin: 1rem 0;
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &-body {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+
+      &-create {
+        &-by {
+          margin-right: 0.5em;
+        }
+      }
+
+      &-collection,
+      &-hot {
+        display: flex;
+        align-items: center;
+        padding-right: 0.5rem;
+      }
+
+      &-icon {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &-question_count {
+        margin-right: 0.5rem;
+      }
+    }
+
+    &-brief {
+      font-size: 0.9rem;
+      padding: 0.8rem 1.5rem;
+      border-top: 2px solid var(--primary);
+      /* background-color: var(--primary-a); */
+      border-radius: 0 0 10px 10px;
+      background: var(--bg-l);
+      box-shadow: 3px 3px 6px 0 #0000000a;
+      margin-top: 1rem;
+    }
+  }
+
+  &-some_ques {
+    &-title {
+      border-left: 5px solid var(--primary);
+      padding: 0.3rem 0.5rem;
+    }
+  }
+
+  &-action_container {
+    &-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      &-button {
+        display: inline-flex;
+        align-items: center;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 0.5rem 1rem 0.5rem 0.8rem;
+        border-radius: 10px;
+        box-shadow: 3px 2px 6px #00000036;
+        background-color: var(--bg-l);
+
+        &:hover {
+          background-color: var(--secondary);
+        }
+
+        &-icon {
+          width: 1.6rem;
+          height: 1.6rem;
+        }
+      }
+    }
+  }
+
+  &-study {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &-begin {
+        font-weight: bold;
+        font-style: 1.2rem;
+      }
+      &-reset {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: var(--secondary);
+        cursor: pointer;
+        &-icon {
+          width: 1.2em;
+          height: 1.2em;
+          margin-right: 0.2em;
+        }
+      }
+    }
+    &-process {
+      margin-bottom: 2rem;
+      margin-top: 0.7rem;
+      opacity: 0.4;
+    }
+  }
+}
