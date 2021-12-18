@@ -33,6 +33,10 @@
     margin-bottom: 0.5rem;
     width: 20rem;
     max-width: 90vw;
-    background-color: #fff;
+    border: 1px solid;
+
+    * {
+      color: unset;
+    }
   }
 }
