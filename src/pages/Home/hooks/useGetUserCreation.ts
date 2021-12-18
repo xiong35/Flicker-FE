@@ -11,7 +11,7 @@ export const useGetUserCreations = () => {
   const getCreations = async () => {
     const res = await getUserCreationReq();
     if (!res) return;
-    setCreations(res);
+    setCreations(res.reverse());
   };
 
   useEffect(() => {

@@ -11,7 +11,7 @@ export const useGetUserCollections = () => {
   const getCollections = async () => {
     const res = await getFavoriteReq();
     if (!res) return;
-    setCollections(res);
+    setCollections(res.reverse());
   };
 
   useEffect(() => {
