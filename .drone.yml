@@ -4,6 +4,11 @@ name: node-default
 steps:
   - name: restore-cache
     image: drillster/drone-volume-cache
+    when:
+      branch:
+        - main
+      event:
+        - push
     settings:
       restore: true
       mount:
@@ -15,12 +20,22 @@ steps:
 
   - name: npm-install
     image: node:14.18.1
+    when:
+      branch:
+        - main
+      event:
+        - push
     commands:
       - npm config set cache ./.npm-cache --global
       - npm i
 
   - name: rebuild-cache
     image: drillster/drone-volume-cache
+    when:
+      branch:
+        - main
+      event:
+        - push
     settings:
       rebuild: true
       mount:
@@ -39,6 +54,11 @@ steps:
 
   - name: scp_files
     image: appleboy/drone-scp
+    when:
+      branch:
+        - main
+      event:
+        - push
     settings:
       host:
         from_secret: ssh_host
