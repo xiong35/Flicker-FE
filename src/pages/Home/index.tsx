@@ -32,7 +32,7 @@ function Home(props: HomeProps) {
       </Tabs>
       <div className="home-deck_container">
         {selectTab === TabID.collection &&
-          (!collectionRecordMap ? (
+          (!creations ? (
             <Loading full={false}></Loading>
           ) : collections.length ? (
             collections.map((collection, i) => (
@@ -46,7 +46,7 @@ function Home(props: HomeProps) {
             <Empty />
           ))}
         {selectTab === TabID.creation &&
-          (!creationRecordMap ? (
+          (!collections ? (
             <Loading full={false}></Loading>
           ) : creations.length ? (
             creations.map((creation, i) => (
