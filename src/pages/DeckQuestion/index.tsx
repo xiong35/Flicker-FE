@@ -2,6 +2,7 @@ import "./index.scss";
 
 import { useEffect, useRef } from "react";
 
+import Loading from "../../components/Loading";
 import TheTopBar from "../../components/TheTopBar";
 import { CardID } from "../../models/card";
 import { StudyStatus } from "../../models/study";
@@ -44,6 +45,8 @@ function DeckQuestion(props: DeckQuestionProps) {
     map[card.id] = (map[card.id] || 0) + 1;
     return map;
   }, {});
+
+  if (!cardQueue || !deck) return <Loading></Loading>;
 
   return (
     <div className="deck_question">
