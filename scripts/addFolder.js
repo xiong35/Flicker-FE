@@ -3,7 +3,7 @@
 const fs = require("fs");
 
 const { exec, readLineSync, kebabCase } = require("./_utils");
-const { tsxTemplate, scssTemplate, hooksTemplate } = require("./_template");
+const { tsxTemplate, scssTemplate } = require("./_template");
 
 (async function () {
   const compName = await readLineSync(`Enter component name: `);
@@ -30,10 +30,6 @@ const { tsxTemplate, scssTemplate, hooksTemplate } = require("./_template");
 
   // 创建 子文件夹
   fs.mkdirSync(compName + "/components");
-  fs.mkdirSync(compName + "/hooks");
-
-  // 创建 hooks/index.ts
-  fs.writeFileSync(compName + "/hooks/index.ts", hooksTemplate);
 
   console.log("\n\n# # # # # # # # # # # #");
   console.log("#       ALL DONE      #");
