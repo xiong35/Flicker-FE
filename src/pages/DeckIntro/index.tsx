@@ -105,7 +105,7 @@ function DeckIntro(props: DeckIntroProps) {
           </div>
           <div
             className="deck_intro-action_container-actions-button"
-            onClick={jumpToQuestion}
+            onClick={() => history.push(`/deck/${id}/question?type=fill-in`)}
           >
             <Write className="deck_intro-action_container-actions-button-icon scale-90" />
             填空

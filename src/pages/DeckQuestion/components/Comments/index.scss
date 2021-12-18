@@ -12,6 +12,8 @@
   box-shadow: 0 -2px 6px -1px #0000001f;
   background-color: var(--bg);
 
+  z-index: 1;
+
   height: 80vh;
   border: {
     top-left-radius: 1rem;

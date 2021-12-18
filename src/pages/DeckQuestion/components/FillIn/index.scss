@@ -1,4 +1,105 @@
+$header-h: 40px;
+$card-m-t: 2rem;
+$action-m-b: 3rem;
 
-.fill_in {
+$outset-shadow: rgb(100 100 111 / 15%) 5px 5px 9px 0px;
 
+.dq-fill_in {
+  &-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 13rem;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+
+    transition: all 0.15s;
+    cursor: pointer;
+    box-shadow: $outset-shadow;
+    background-color: var(--bg-l);
+
+    &.question {
+      transform: rotate3d(1, 0, 0, 0deg);
+    }
+    &.answer {
+      transform: rotate3d(1, 0, 0, 0deg);
+
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--bg);
+        border-radius: 999px;
+        -webkit-border-radius: 6px;
+
+        &:hover {
+          background-color: var(--bg-l);
+        }
+
+        &:active {
+          background-color: var(--bg-d);
+        }
+      }
+    }
+    &.fading {
+      transform: rotate3d(1, 0, 0, 90deg);
+    }
+
+    &-scroll {
+      overflow-y: scroll;
+      // max-height: calc(80vh - #{$header-h} - #{$card-m-t} - #{$action-m-b});
+      max-height: 13rem;
+      padding: 0 0.5rem;
+      overflow-wrap: break-word;
+      text-justify: inter-ideograph;
+      text-align: justify;
+      word-break: normal;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+
+    &-input {
+      &-wrap {
+        flex: 1;
+        text-align: center;
+      }
+
+      &-right {
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+    }
+
+    &-icon {
+      width: 2.3rem;
+      line-height: 0;
+      cursor: pointer;
+    }
+  }
+  &-pass {
+    flex: 1;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: line-through;
+    text-align: center;
+
+    &-text {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    margin-top: 0.5rem;
+  }
+
+  &-note {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--on-bg);
+    opacity: 0.4;
+  }
 }
