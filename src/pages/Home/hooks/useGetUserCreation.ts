@@ -6,7 +6,7 @@ import { getRecordMapByIds } from "../../../utils/studyRecords/syncRecord";
 import { Awaited } from "../../../utils/types";
 
 export const useGetUserCreations = () => {
-  const [creations, setCreations] = useState<DeckMini[]>([]);
+  const [creations, setCreations] = useState<DeckMini[] | null>(null);
 
   const getCreations = async () => {
     const res = await getUserCreationReq();
@@ -22,11 +22,11 @@ export const useGetUserCreations = () => {
     ReturnType<typeof getRecordMapByIds>
   > | null>(null);
   useEffect(() => {
-    if (creations.length === 0) return;
+    if (!creations) return;
     getRecordMapByIds(creations.map((c) => c.id)).then((map) =>
       setCreationRecordMap(map)
     );
-  }, [creations.length]);
+  }, [creations]);
 
   return { creations, creationRecordMap };
 };

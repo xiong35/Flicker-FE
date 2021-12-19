@@ -29,7 +29,10 @@ function Explore(props: ExploreProps) {
         color="primary"
         aria-label="add"
         className="explore-add"
-        onClick={() => history.push("/deck/upload")}
+        onClick={(e) => {
+          e.stopPropagation();
+          history.push("/deck/upload");
+        }}
       >
         <AddIcon className="explore-add-icon" />
       </Fab>
