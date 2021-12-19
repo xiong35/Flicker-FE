@@ -62,7 +62,7 @@ function DeckUpload(props: DeckUploadProps) {
 
   return (
     <div className="deck_upload">
-      <TheTopBar title="创建卡组" />
+      <TheTopBar title={param.id ? "编辑卡组" : "创建卡组"} />
       <TextField
         className="deck_upload-input m reset_mui_input_primary"
         label="标题"

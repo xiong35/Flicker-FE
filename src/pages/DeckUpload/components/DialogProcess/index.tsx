@@ -13,7 +13,6 @@ type DialogProcessProps = {
 export default function DialogProcess(props: DialogProcessProps) {
   const {
     cardPostProgress,
-    cardsLength,
     postCardsLength,
     showCardPostProgress,
     showDeckProgress,
@@ -37,7 +36,7 @@ export default function DialogProcess(props: DialogProcessProps) {
                 value={~~((cardPostProgress / postCardsLength) * 100)}
                 className="deck_upload-dialog-content-linear_progress"
               />
-              <div className="deck_upload-dialog-content-progress_text">{`${cardPostProgress}/${cardsLength}`}</div>
+              <div className="deck_upload-dialog-content-progress_text">{`${cardPostProgress}/${postCardsLength}`}</div>
             </>
           )}
         </div>
