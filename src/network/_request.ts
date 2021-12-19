@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 import { showToast } from "../utils/showToast";
-import { getToken } from "../utils/token";
+import { clearToken, getToken } from "../utils/token";
 
 // import { nanoid } from "@reduxjs/toolkit";
 
@@ -79,6 +79,15 @@ export default async function _request<T = {}>(
       } else if ((err as AxiosError).isAxiosError) {
         const axiosErr = err as AxiosError<HttpRes<T>>;
         if (axiosErr.response) {
+          if (axiosErr.response.status === 401) {
+            shouldShowHint = false;
+            showToast("登录已过期！", "error");
+            clearToken();
+
+            setTimeout(() => {
+              window.location.href = window.location.href + "#";
+            }, 70);
+          }
           errMsg = axiosErr.response.data.message;
         }
       } else if (err instanceof Error) {
