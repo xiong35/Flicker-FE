@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import { getCommentsReq } from "../../../../../network/card/getComments";
-import { DeckID } from "../../../../../models/deck";
-import { Comment } from "../../../../../models/comment";
-import { CardID } from "../../../../../models/card";
 import { useSelf } from "../../../../../context/Self/useSelf";
+import { CardID } from "../../../../../models/card";
+import { Comment, CommentID } from "../../../../../models/comment";
+import { DeckID } from "../../../../../models/deck";
+import { getCommentsReq } from "../../../../../network/card/getComments";
 
 export function useComments(cardID: CardID, deckID: DeckID) {
   const [isUp, setIsUp] = useState(false);
@@ -35,13 +35,15 @@ export function useComments(cardID: CardID, deckID: DeckID) {
   }, [isUp, comments]);
 
   const { self } = useSelf();
-  function addSelfComment(content: string) {
+  function addSelfComment(content: string, id: CommentID) {
     setComments([
       {
         comment: content,
-        id: Date.now().toString(),
+        id,
         owner: self,
         lastupdate: (Date.now() / 1000).toString(),
+        liked: false,
+        likes: 0,
       },
       ...comments,
     ]);

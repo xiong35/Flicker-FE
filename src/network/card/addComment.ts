@@ -1,6 +1,6 @@
-import _request from "../_request";
-import { DeckID } from "../../models/deck";
 import { CardID } from "../../models/card";
+import { DeckID } from "../../models/deck";
+import _request from "../_request";
 
 export type AddCommentReqData = {
   deckID: DeckID;
@@ -10,12 +10,12 @@ export type AddCommentReqData = {
 
 /**
  * 添加一条评论
- * @returns 是否成功
+ * @returns 该评论的 id
  */
 export async function addCommentReq(data: AddCommentReqData) {
   const { cardID, deckID, comment } = data;
 
-  const res = await _request({
+  const res = await _request<string>({
     url: `/cardset/${deckID}/card/${cardID}/comment`,
     method: "POST",
     data: {
@@ -23,5 +23,5 @@ export async function addCommentReq(data: AddCommentReqData) {
     },
   });
 
-  return res !== null;
+  return res;
 }
