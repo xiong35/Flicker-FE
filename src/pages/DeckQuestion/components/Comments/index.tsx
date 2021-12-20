@@ -6,10 +6,8 @@ import { Avatar, TextField } from "@mui/material";
 
 import Empty from "../../../../components/Empty";
 import Discuss from "../../../../imgComponents/Discuss";
-import Like from "../../../../imgComponents/Like";
 import Send from "../../../../imgComponents/Send";
 import { CardID } from "../../../../models/card";
-import { dateFormat } from "../../../../utils/dateFormat";
 import CommentItem from "./components/CommentItem";
 import { useAddComment } from "./hooks/useAddComment";
 import { useComments } from "./hooks/useComments";
