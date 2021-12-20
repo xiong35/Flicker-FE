@@ -25,18 +25,6 @@ function Explore(props: ExploreProps) {
 
   return (
     <div className="explore">
-      <Fab
-        color="primary"
-        aria-label="add"
-        className="explore-add"
-        onClick={(e) => {
-          e.stopPropagation();
-          history.push("/deck/upload");
-        }}
-      >
-        <AddIcon className="explore-add-icon" />
-      </Fab>
-
       <TextField
         className="explore-search m reset_mui_input_primary"
         value={keyword}
@@ -72,6 +60,15 @@ function Explore(props: ExploreProps) {
           换一批
         </Button>
       )}
+
+      <Fab
+        color="primary"
+        aria-label="add"
+        className="explore-add"
+        onClick={() => history.push("/deck/upload")}
+      >
+        <AddIcon className="explore-add-icon" />
+      </Fab>
       <TheBottomTabs />
     </div>
   );
