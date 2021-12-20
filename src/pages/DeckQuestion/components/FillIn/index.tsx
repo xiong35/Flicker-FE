@@ -11,20 +11,23 @@ import { StudyStatus } from "../../../../models/study";
 import { useCardState } from "../../hooks/useCardState";
 import { CompProps } from "../../hooks/useQuestionComp";
 import Comments from "../Comments";
+import { getInnerText } from "./utils/getInnerText";
 
 const ANIMATION_TIME = 150;
 
 function FlipCard(props: CompProps) {
   const { card, switchCard, addStudyRecord } = props;
 
-  const { questionState, setQuestionState, text } = useCardState(card);
+  const { questionState, setQuestionState, text, renderedAnswer } =
+    useCardState(card);
 
   const [answer, setAnswer] = useState("");
 
   const [passed, setPassed] = useState(false);
 
   useEffect(() => {
-    if (answer === card.answer) setPassed(true);
+    const textAnswer = getInnerText(renderedAnswer);
+    if (answer === card.answer || answer === textAnswer) setPassed(true);
   }, [answer]);
 
   return (

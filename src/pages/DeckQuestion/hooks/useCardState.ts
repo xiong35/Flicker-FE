@@ -25,5 +25,5 @@ export function useCardState(card: Card) {
     else if (questionState === "answer") setText(renderedAnswer);
   }, [questionState]);
 
-  return { questionState, text, setQuestionState };
+  return { questionState, text, setQuestionState, renderedAnswer };
 }
