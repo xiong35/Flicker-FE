@@ -56,7 +56,11 @@ export default function Comments(props: CommentProps) {
           {comments
             .sort((c1, c2) => parseInt(c2.lastupdate) - parseInt(c1.lastupdate))
             .map((comment) => (
-              <CommentItem comment={comment} key={comment.id}></CommentItem>
+              <CommentItem
+                comment={comment}
+                key={comment.id}
+                cardID={id}
+              ></CommentItem>
             ))}
           {comments.length === 0 && <Empty></Empty>}
         </div>

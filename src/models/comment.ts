@@ -8,4 +8,6 @@ export type Comment = {
   comment: string;
   /** 秒时间戳 */
   lastupdate: string;
+  likes: number;
+  liked: boolean;
 };
